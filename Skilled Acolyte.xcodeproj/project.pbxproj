@@ -13,6 +13,7 @@
 		6550A19A209726F400068551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6550A199209726F400068551 /* Assets.xcassets */; };
 		6550A19D209726F400068551 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6550A19B209726F400068551 /* LaunchScreen.storyboard */; };
 		6550A1A8209726F400068551 /* Skilled_AcolyteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6550A1A7209726F400068551 /* Skilled_AcolyteTests.swift */; };
+		6571ED45209D935C0006F868 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571ED44209D935C0006F868 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		6550A1A3209726F400068551 /* Skilled AcolyteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Skilled AcolyteTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6550A1A7209726F400068551 /* Skilled_AcolyteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skilled_AcolyteTests.swift; sourceTree = "<group>"; };
 		6550A1A9209726F400068551 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6571ED44209D935C0006F868 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				6550A192209726F100068551 /* AppDelegate.swift */,
-				6550A194209726F100068551 /* ViewController.swift */,
+				6571ED42209D932D0006F868 /* ViewControllers */,
+				6571ED43209D933A0006F868 /* Models */,
 				6550A196209726F100068551 /* Main.storyboard */,
 				6550A199209726F400068551 /* Assets.xcassets */,
 				6550A19B209726F400068551 /* LaunchScreen.storyboard */,
@@ -94,6 +97,22 @@
 				6550A1A9209726F400068551 /* Info.plist */,
 			);
 			path = "Skilled AcolyteTests";
+			sourceTree = "<group>";
+		};
+		6571ED42209D932D0006F868 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6550A194209726F100068551 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6571ED43209D933A0006F868 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6571ED44209D935C0006F868 /* User.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +218,7 @@
 			files = (
 				6550A195209726F100068551 /* ViewController.swift in Sources */,
 				6550A193209726F100068551 /* AppDelegate.swift in Sources */,
+				6571ED45209D935C0006F868 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
