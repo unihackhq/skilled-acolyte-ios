@@ -18,7 +18,7 @@ class Team: NSObject {
     init(data: [String:Any]) {
         id = data["id"] as! String
         name = data["name"] as! String
-        teamDescription = data["teamDescription"] as! String
+        teamDescription = data["description"] as! String
         photoUrl = data["photoUrl"] as! String
     }
 }
