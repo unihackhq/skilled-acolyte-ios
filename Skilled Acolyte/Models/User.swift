@@ -26,7 +26,7 @@ class User: NSObject {
         lastName = data["lastName"] as! String
         preferredName = data["preferredName"] as! String
         email = data["email"] as! String
-        dateOfBirth = data["dateOfBirth"] as! Date
+        //        dateOfBirth = data["dateOfBirth"] as! Date // TODO: this needs converting from a string timestamp or something
         gender = data["gender"] as! String
         mobile = data["mobile"] as! String
     }
