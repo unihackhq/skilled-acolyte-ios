@@ -39,5 +39,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Rubik-Italic.ttf</string>
+		<string>Rubik-LightItalic.ttf</string>
+		<string>Rubik-Regular.ttf</string>
+		<string>Rubik-Italic.ttf</string>
+		<string>texgyreadventor-bold.otf</string>
+		<string>texgyreadventor-regular.otf</string>
+	</array>
 </dict>
 </plist>
