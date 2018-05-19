@@ -11,9 +11,9 @@ import UIKit
 class VerifyViewController: UIViewController {
 
     @IBOutlet weak var verifyIconView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var dobLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var nameLabel: UITextField!
+    @IBOutlet weak var dobLabel: UITextField!
+    @IBOutlet weak var emailLabel: UITextField!
     
     @IBOutlet weak var verifyButton: UIButton!
     

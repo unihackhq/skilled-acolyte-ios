@@ -8,13 +8,14 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak var emailLabel: UITextField!
-    @IBOutlet weak var passwordLabel: UITextField!
+    @IBOutlet weak var hintLabel: UILabel!
     
     @IBOutlet weak var loginButton: UIButton!
+
     
     @IBAction func login() {
         // call API and send confirmation email
@@ -26,10 +27,14 @@ class LoginViewController: UIViewController {
     func goToVerifyPage() {
         // prepare segue to go to verification page
     }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        hintLabel.isHidden = false
+        loginButton.isHidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 

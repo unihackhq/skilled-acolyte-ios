@@ -16,7 +16,8 @@
 		285C57B420AD6AF300C57F03 /* TeamCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285C57B320AD6AF300C57F03 /* TeamCreateViewController.swift */; };
 		285C57B620AD6AF900C57F03 /* TeamManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285C57B520AD6AF900C57F03 /* TeamManageViewController.swift */; };
 		285C57B820AD6AFF00C57F03 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285C57B720AD6AFF00C57F03 /* FAQViewController.swift */; };
-		285C57BA20B051C800C57F03 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 285C57B920B051C800C57F03 /* fonts */; };
+		285C57BB20B070C300C57F03 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 285C57B920B051C800C57F03 /* fonts */; };
+		285C57BE20B0717700C57F03 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6550A19E209726F400068551 /* Info.plist */; };
 		6550A193209726F100068551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6550A192209726F100068551 /* AppDelegate.swift */; };
 		6550A195209726F100068551 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6550A194209726F100068551 /* ViewController.swift */; };
 		6550A198209726F100068551 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6550A196209726F100068551 /* Main.storyboard */; };
@@ -252,10 +253,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				285C57BB20B070C300C57F03 /* fonts in Resources */,
 				6550A19D209726F400068551 /* LaunchScreen.storyboard in Resources */,
 				6550A19A209726F400068551 /* Assets.xcassets in Resources */,
+				285C57BE20B0717700C57F03 /* Info.plist in Resources */,
 				6550A198209726F100068551 /* Main.storyboard in Resources */,
-				285C57BA20B051C800C57F03 /* fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
