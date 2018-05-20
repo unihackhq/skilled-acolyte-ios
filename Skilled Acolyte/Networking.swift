@@ -8,21 +8,36 @@
 
 import Foundation
 
+
 class Networking: NSObject {
     
-    let session: URLSession!
-    
-    override init() {
-        // We must initlize non-nil variables before super.init()
-        self.session = URLSession(configuration: URLSessionConfiguration.default)
-        
-        super.init()
+    struct Methods {
+        static let GET = "GET"
+        static let POST = "POST"
+        static let PUT = "PUT"
     }
     
-    func request(with httpMethod:String!, url:String!, body:[String:Any]?, completion:((Error?, [String:Any]?) -> Void)?) {
+    let session: URLSession! = URLSession(configuration: URLSessionConfiguration.default)
+    let baseURL: String! = "http://localhost:3000"
+    
+    
+    func login(email: String!, completion:((Error?, [String:Any]?) -> Void)?) {
+        
+        // TODO: use the email
+        request(method: Methods.POST, url: "/token", body: nil) { (error, response) in
+            // do something important :)
+            // handle error if any
+        }
+    }
+    
+    // MARK: HTTP request making methods
+    
+    func request(method httpMethod:String!, url:String!, body:[String:Any]?, completion:((Error?, [String:Any]?) -> Void)?) {
         
         // Build a http request
-        let request = NSMutableURLRequest(url: URL(string: url)!)
+        
+        let request = NSMutableURLRequest()
+        request.url = buildURL(with: url)
         request.httpMethod = httpMethod
         // Encode the body as json (if it exists)
         if let body = body {
@@ -53,5 +68,9 @@ class Networking: NSObject {
             }
             
         }.resume()
+    }
+    
+    func buildURL(with path:String!) -> URL! {
+        return URL(string: baseURL + path)!
     }
 }
