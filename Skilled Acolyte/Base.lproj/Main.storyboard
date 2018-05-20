@@ -26,7 +26,6 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="loh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -135,6 +134,7 @@
                         <outlet property="logoView" destination="0cc-P9-YH7" id="jSi-IO-jHX"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-615.20000000000005" y="176.76161919040482"/>
         </scene>

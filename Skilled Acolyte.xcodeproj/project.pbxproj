@@ -457,7 +457,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = BU3JKZ42Q4;
+				DEVELOPMENT_TEAM = A7HRB93R5Z;
 				INFOPLIST_FILE = "Skilled Acolyte/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -480,7 +480,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = BU3JKZ42Q4;
+				DEVELOPMENT_TEAM = A7HRB93R5Z;
 				INFOPLIST_FILE = "Skilled Acolyte/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
