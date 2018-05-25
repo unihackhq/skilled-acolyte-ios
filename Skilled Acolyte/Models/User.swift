@@ -11,23 +11,38 @@ import Foundation
 class User: NSObject {
     
     var id: String!
-    var firstName: String!
+    var firstName: String?
     var lastName: String!
     var preferredName: String!
-    var email: String!
-    var dateOfBirth: Date!
-    var gender: String!
-    var mobile: String!
-    // var deactivated: Bool!
+    var email: String?
+    var dateOfBirth: Date?
+    var gender: String?
+    var mobile: String?
     
     init(data: [String:Any]) {
         id = data["id"] as! String
-        firstName = data["firstName"] as! String
+        firstName = data["firstName"] as? String
         lastName = data["lastName"] as! String
         preferredName = data["preferredName"] as! String
-        email = data["email"] as! String
+        email = data["email"] as? String
         //        dateOfBirth = data["dateOfBirth"] as! Date // TODO: this needs converting from a string timestamp or something
-        gender = data["gender"] as! String
-        mobile = data["mobile"] as! String
+        gender = data["gender"] as? String
+        mobile = data["mobile"] as? String
+    }
+    
+    func toJSON() -> [String:Any] {
+        
+        var json = [String:Any]()
+        
+        if let id = id { json["id"] = id }
+        if let firstName = firstName { json["firstName"] = firstName }
+        if let lastName = lastName { json["lastName"] = lastName }
+        if let preferredName = preferredName { json["preferredName"] = preferredName }
+        if let email = email { json["email"] = email }
+        //        if let dateOfBirth = dateOfBirth { json["dateOfBirth"] = dateOfBirth } // TODO: convert back to string
+        if let gender = gender { json["gender"] = gender }
+        if let mobile = mobile { json["mobile"] = mobile }
+        
+        return json
     }
 }
