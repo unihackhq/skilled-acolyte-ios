@@ -15,27 +15,48 @@ class Networking: NSObject {
         static let GET = "GET"
         static let POST = "POST"
         static let PUT = "PUT"
+        static let DETET = "DELETE"
     }
     
     let session: URLSession! = URLSession(configuration: URLSessionConfiguration.default)
     let baseURL: String! = "http://localhost:3000"
     
     
-    func login(email: String!, completion:((Error?, [String:Any]?) -> Void)?) {
+    // MARK: Unihack API requests
+    
+    func login(email: String!, completion:((Error?) -> Void)?) {
         
-        // TODO: use the email
-        request(method: Methods.POST, url: "/token", body: nil) { (error, response) in
-            // do something important :)
-            // handle error if any
+        let url = "/token/\(email)"
+        request(method: Methods.POST, url: url, body: nil) { (error, response) in
+            
+            self.handleIfError(error: error)
+            if let completion = completion {
+                completion(error)
+            }
         }
     }
     
-    // MARK: HTTP request making methods
+    func verifyLoginToken(token: String!, completion:((Error?) -> Void)?) {
+        
+        request(method: Methods.POST, url: "/token", body: ["token":token]) { (error, response) in
+            
+            if let response = response,
+                let jwt = response["token"] {
+                // TODO: Store jwt token. UserDefaults?
+            }
+            
+            self.handleIfError(error: error)
+            if let completion = completion {
+                completion(error)
+            }
+        }
+    }
+    
+    // MARK: Generic HTTP requests
     
     func request(method httpMethod:String!, url:String!, body:[String:Any]?, completion:((Error?, [String:Any]?) -> Void)?) {
         
-        // Build a http request
-        
+        // Build a http request with a url, method, and body
         let request = NSMutableURLRequest()
         request.url = buildURL(with: url)
         request.httpMethod = httpMethod
@@ -70,7 +91,14 @@ class Networking: NSObject {
         }.resume()
     }
     
+    // MARK: Other Tools
+    
     func buildURL(with path:String!) -> URL! {
         return URL(string: baseURL + path)!
+    }
+    
+    func handleIfError(error:Error?) {
+        guard let error = error else { return }
+        print("Encountered error: \(error)")
     }
 }
