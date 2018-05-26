@@ -425,7 +425,14 @@ class Networking: NSObject {
     // MARK: Other Tools
     
     func buildURL(with path:String!) -> URL! {
-        return URL(string: Constants.HOST_URL + path)!
+        if Constants.Environment == "dev" {
+            return URL(string: Constants.HOST_URL_DEV + path)!
+        } else if Constants.Environment == "local" {
+            return URL(string: Constants.HOST_URL_LOCAL + path)!
+        } else {
+            return URL(string: Constants.HOST_URL + path)!
+        }
+        
     }
     
     func handleIfError(error:Error?) {
