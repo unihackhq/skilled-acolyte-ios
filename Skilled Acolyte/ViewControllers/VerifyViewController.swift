@@ -54,11 +54,18 @@ class VerifyViewController: UIViewController {
                     jwtObject = try decode(jwt: jwt)
                 } catch {
                     print("Failed to decode jwt token: \(jwt)")
+                    if let completion = completion {
+                        completion(nil)
+                    }
+                    return
                 }
                 
                 // Extract student id from jwt
                 guard let studentId = jwtObject!.body["userId"] as? String else {
                     print("Decoded jwt token but could not find userId inside: \(jwtObject!.body)")
+                    if let completion = completion {
+                        completion(nil)
+                    }
                     return
                 }
                 
