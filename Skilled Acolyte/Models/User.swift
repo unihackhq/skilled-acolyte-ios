@@ -10,10 +10,10 @@ import Foundation
 
 struct User: Codable {
     
-    var id: String!
+    var id: String = ""
     var firstName: String?
-    var lastName: String!
-    var preferredName: String!
+    var lastName: String?
+    var preferredName: String?
     var email: String?
     var dateOfBirth: Date?
     var gender: String?
@@ -24,8 +24,8 @@ struct User: Codable {
         
         id = data["id"] as! String
         firstName = data["firstName"] as? String
-        lastName = data["lastName"] as! String
-        preferredName = data["preferredName"] as! String
+        lastName = data["lastName"] as? String
+        preferredName = data["preferredName"] as? String
         email = data["email"] as? String
         //        dateOfBirth = data["dateOfBirth"] as! Date // TODO: this needs converting from a string timestamp or something
         gender = data["gender"] as? String
@@ -36,7 +36,8 @@ struct User: Codable {
         
         var json = [String:Any]()
         
-        if let id = id { json["id"] = id }
+        json["id"] = id
+        
         if let firstName = firstName { json["firstName"] = firstName }
         if let lastName = lastName { json["lastName"] = lastName }
         if let preferredName = preferredName { json["preferredName"] = preferredName }

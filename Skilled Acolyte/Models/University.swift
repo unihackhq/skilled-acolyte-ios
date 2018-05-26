@@ -10,9 +10,9 @@ import Foundation
 
 struct University {
     
-    var id: String!
-    var name: String!
-    var country: String!
+    var id: String = ""
+    var name: String = ""
+    var country: String = ""
     
     init(data: [String:Any]?) {
         guard let data = data else { return }

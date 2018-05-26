@@ -37,6 +37,7 @@ class VerifyViewController: UIViewController {
             guard let student = student else { return }
             
             if let firstLaunch = student.firstLaunch, firstLaunch == true {
+                // Enter the onboarding process since this is the first time the student has logged in
                 self.goToOnboardingPage()
             } else {
                 self.goToHomePage()

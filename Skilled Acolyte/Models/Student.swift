@@ -11,9 +11,9 @@ import Foundation
 struct Student: Codable {
     
     var firstLaunch: Bool?
-    var id: String!
+    var id: String = ""
     var universityId: String?
-    var user: User!
+    var user: User = User(data: nil)
     var studyLevel: String?
     var degree: String?
     var dietaryReq: String?
@@ -45,10 +45,10 @@ struct Student: Codable {
         
         var json = [String:Any]()
         
-        if let firstLaunch = firstLaunch { json["firstLaunch"] = firstLaunch }
-        if let id = id { json["id"] = id }
+        json["id"] = id
+        json["user"] = user.toJSON()
+        
         if let universityId = universityId { json["universityId"] = universityId }
-        if let user = user { json["user"] = user.toJSON() }
         if let studyLevel = studyLevel { json["studyLevel"] = studyLevel }
         if let degree = degree { json["degree"] = degree }
         if let dietaryReq = dietaryReq { json["dietaryReq"] = dietaryReq }

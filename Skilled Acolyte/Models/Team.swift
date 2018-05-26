@@ -10,10 +10,10 @@ import Foundation
 
 struct Team {
     
-    var id: String!
-    var eventId: String!
-    var name: String!
-    var teamDescription: String!
+    var id: String = ""
+    var eventId: String = ""
+    var name: String = ""
+    var teamDescription: String?
     var photoUrl: String?
         
     init(data: [String:Any]?) {
@@ -22,7 +22,7 @@ struct Team {
         id = data["id"] as! String
         eventId = data["eventId"] as! String
         name = data["name"] as! String
-        teamDescription = data["description"] as! String
+        teamDescription = data["description"] as? String
         photoUrl = data["photoUrl"] as? String
     }
     
@@ -30,9 +30,10 @@ struct Team {
         
         var json = [String:Any]()
         
-        if let id = id { json["id"] = id }
-        if let eventId = eventId { json["eventId"] = eventId }
-        if let name = name { json["name"] = name }
+        json["id"] = id
+        json["eventId"] = eventId
+        json["name"] = name
+        
         if let teamDescription = teamDescription { json["description"] = teamDescription }
         if let photoUrl = photoUrl { json["photoUrl"] = photoUrl }
         

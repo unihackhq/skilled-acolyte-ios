@@ -8,12 +8,13 @@
 
 import Foundation
 
-class Event: NSObject {
+struct Event {
     
-    var id: String!
-    var name: String!
+    var id: String = ""
+    var name: String = ""
     
-    init(data: [String:Any]) {
+    init(data: [String:Any]?) {
+        guard let data = data else { return }
         
         // Initalizers
         id = data["id"] as! String

@@ -10,9 +10,9 @@ import Foundation
 
 struct Ticket {
     
-    var id: String!
-    var eventbriteOrder: String!
-    var ticketType: String!
+    var id: String = ""
+    var eventbriteOrder: String = ""
+    var ticketType: String = ""
     var transferred: Bool! = false
     var cancelled: Bool! = false
     
