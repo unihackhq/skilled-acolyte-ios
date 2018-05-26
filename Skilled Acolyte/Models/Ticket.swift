@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Ticket: NSObject {
+struct Ticket {
     
     var id: String!
     var eventbriteOrder: String!
@@ -16,11 +16,14 @@ class Ticket: NSObject {
     var transferred: Bool! = false
     var cancelled: Bool! = false
     
-    init(data: [String:Any]) {
+    init(data: [String:Any]?) {
+        guard let data = data else { return }
+        
         id = data["id"] as! String
         eventbriteOrder = data["eventbriteOrder"] as! String
         ticketType = data["ticketType"] as! String
         if let transferred = data["transferred"] as? Bool { self.transferred = transferred }
         if let cancelled = data["cancelled"] as? Bool { self.cancelled = cancelled }
+            
     }
 }

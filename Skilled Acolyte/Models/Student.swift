@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Student: NSObject {
+struct Student {
     
     var firstLaunch: Bool?
     var id: String!
@@ -21,7 +21,8 @@ class Student: NSObject {
     var shirtSize: String?
     var photoUrl: String?
     
-    init(data: [String:Any]) {
+    init(data: [String:Any]?) {
+        guard let data = data else { return }
         
         // Initalizers
         firstLaunch = data["firstLaunch"] as? Bool
@@ -29,7 +30,7 @@ class Student: NSObject {
         universityId = data["universityId"] as? String
         
         // Personal data
-        user = User(data: data["user"] as! [String:Any])
+        user = User(data: data["user"] as? [String:Any])
         
         // Optional things
         studyLevel = data["studyLevel"] as? String

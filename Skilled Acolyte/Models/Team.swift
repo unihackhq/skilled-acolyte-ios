@@ -8,20 +8,22 @@
 
 import Foundation
 
-class Team: NSObject {
+struct Team {
     
     var id: String!
     var eventId: String!
     var name: String!
     var teamDescription: String!
-    var photoUrl: String!
-    
-    init(data: [String:Any]) {
+    var photoUrl: String?
+        
+    init(data: [String:Any]?) {
+        guard let data = data else { return }
+        
         id = data["id"] as! String
         eventId = data["eventId"] as! String
         name = data["name"] as! String
         teamDescription = data["description"] as! String
-        photoUrl = data["photoUrl"] as! String
+        photoUrl = data["photoUrl"] as? String
     }
     
     func toJSON() -> [String:Any] {

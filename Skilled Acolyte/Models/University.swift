@@ -8,13 +8,15 @@
 
 import Foundation
 
-class University: NSObject {
+struct University {
     
     var id: String!
     var name: String!
     var country: String!
     
-    init(data: [String:Any]) {
+    init(data: [String:Any]?) {
+        guard let data = data else { return }
+        
         id = data["id"] as! String
         name = data["name"] as! String
         country = data["country"] as! String

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class User: NSObject {
+struct User {
     
     var id: String!
     var firstName: String?
@@ -19,7 +19,9 @@ class User: NSObject {
     var gender: String?
     var mobile: String?
     
-    init(data: [String:Any]) {
+    init(data: [String:Any]?) {
+        guard let data = data else { return }
+        
         id = data["id"] as! String
         firstName = data["firstName"] as? String
         lastName = data["lastName"] as! String
