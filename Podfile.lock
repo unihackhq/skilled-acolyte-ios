@@ -1,0 +1,20 @@
+PODS:
+  - JWTDecode (2.1.1)
+  - SVProgressHUD (2.2.5)
+
+DEPENDENCIES:
+  - JWTDecode
+  - SVProgressHUD
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - JWTDecode
+    - SVProgressHUD
+
+SPEC CHECKSUMS:
+  JWTDecode: 83e8b381aafe27158d9f692cbdca2b12d61d460c
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+
+PODFILE CHECKSUM: cb40a1bf8510b4e8669491d159796a9af4ae1ad6
+
+COCOAPODS: 1.5.2

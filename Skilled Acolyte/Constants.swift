@@ -8,17 +8,15 @@
 
 import Foundation
 
-
-// TODO: this ain't quite right
-public struct Constants {
+struct Constants {
     
-    static let HOST_URL = "backend is not ready so this is empty for now"
+    static let HOST_URL = "http://localhost:3000/api/v1"
+    static var CurrentStudent: Student? {
+        set(student) {
+            UserDefaults.standard.set(student, forKey: "currentStudent")
+        }
+        get {
+            return UserDefaults.standard.object(forKey: "currentStudent") as? Student
+        }
+    }
 }
-
-public class MyClass: NSObject {
-    
-    public static let HOST_URL:NSString = "backend is not ready so this is empty for now"
-}
-
-//public let HOST_URL = "backend is not ready so this is empty for now"
-

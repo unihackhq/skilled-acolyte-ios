@@ -31,6 +31,8 @@
 		6571ED4F209D9B290006F868 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571ED4E209D9B290006F868 /* Student.swift */; };
 		6571ED53209D9CFB0006F868 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571ED52209D9CFB0006F868 /* Constants.swift */; };
 		658CA0E920B14A9C000ABD30 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658CA0E820B14A9C000ABD30 /* Networking.swift */; };
+		69351EE2EE82236D4E95FFD2 /* Pods_Skilled_AcolyteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE035CDBBC1C6EB03220DD9 /* Pods_Skilled_AcolyteTests.framework */; };
+		FEAE71D434973A1AEDF45F98 /* Pods_Skilled_Acolyte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCE456CC97B1002EBFF52DC6 /* Pods_Skilled_Acolyte.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1CE035CDBBC1C6EB03220DD9 /* Pods_Skilled_AcolyteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skilled_AcolyteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		285C57A720AD6A9F00C57F03 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		285C57A920AD6AC400C57F03 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
 		285C57AB20AD6ACD00C57F03 /* HomepageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +75,11 @@
 		6571ED4E209D9B290006F868 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		6571ED52209D9CFB0006F868 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		658CA0E820B14A9C000ABD30 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		91375948ACB4BC448A9E8E3F /* Pods-Skilled Acolyte.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skilled Acolyte.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skilled Acolyte/Pods-Skilled Acolyte.debug.xcconfig"; sourceTree = "<group>"; };
+		BCE456CC97B1002EBFF52DC6 /* Pods_Skilled_Acolyte.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skilled_Acolyte.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC162C8D08B7378C032617B0 /* Pods-Skilled Acolyte.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skilled Acolyte.release.xcconfig"; path = "Pods/Target Support Files/Pods-Skilled Acolyte/Pods-Skilled Acolyte.release.xcconfig"; sourceTree = "<group>"; };
+		F21C187EDDE5725A4BA6A8C8 /* Pods-Skilled AcolyteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skilled AcolyteTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skilled AcolyteTests/Pods-Skilled AcolyteTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F3BC6ADE0E0A6B239D02DEA9 /* Pods-Skilled AcolyteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skilled AcolyteTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Skilled AcolyteTests/Pods-Skilled AcolyteTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEAE71D434973A1AEDF45F98 /* Pods_Skilled_Acolyte.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,18 +95,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69351EE2EE82236D4E95FFD2 /* Pods_Skilled_AcolyteTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		510FCD31B0D4D0D26B9C7C7A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				91375948ACB4BC448A9E8E3F /* Pods-Skilled Acolyte.debug.xcconfig */,
+				EC162C8D08B7378C032617B0 /* Pods-Skilled Acolyte.release.xcconfig */,
+				F21C187EDDE5725A4BA6A8C8 /* Pods-Skilled AcolyteTests.debug.xcconfig */,
+				F3BC6ADE0E0A6B239D02DEA9 /* Pods-Skilled AcolyteTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6550A186209726F100068551 = {
 			isa = PBXGroup;
 			children = (
 				6550A191209726F100068551 /* Skilled Acolyte */,
 				6550A1A6209726F400068551 /* Skilled AcolyteTests */,
 				6550A190209726F100068551 /* Products */,
+				510FCD31B0D4D0D26B9C7C7A /* Pods */,
+				9539972B2AAB8F7B38D72F37 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -166,6 +189,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		9539972B2AAB8F7B38D72F37 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BCE456CC97B1002EBFF52DC6 /* Pods_Skilled_Acolyte.framework */,
+				1CE035CDBBC1C6EB03220DD9 /* Pods_Skilled_AcolyteTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,9 +205,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6550A1AC209726F400068551 /* Build configuration list for PBXNativeTarget "Skilled Acolyte" */;
 			buildPhases = (
+				41EBFDE17AADFA71543C070F /* [CP] Check Pods Manifest.lock */,
 				6550A18B209726F100068551 /* Sources */,
 				6550A18C209726F100068551 /* Frameworks */,
 				6550A18D209726F100068551 /* Resources */,
+				D44C20D36E73ED047772F47A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -190,9 +224,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6550A1AF209726F400068551 /* Build configuration list for PBXNativeTarget "Skilled AcolyteTests" */;
 			buildPhases = (
+				52000FB00FB7648D6C8DA631 /* [CP] Check Pods Manifest.lock */,
 				6550A19F209726F400068551 /* Sources */,
 				6550A1A0209726F400068551 /* Frameworks */,
 				6550A1A1209726F400068551 /* Resources */,
+				21B49FD0F7C87FB08A67408C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -263,6 +299,85 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		21B49FD0F7C87FB08A67408C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Skilled AcolyteTests/Pods-Skilled AcolyteTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Skilled AcolyteTests/Pods-Skilled AcolyteTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		41EBFDE17AADFA71543C070F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Skilled Acolyte-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52000FB00FB7648D6C8DA631 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Skilled AcolyteTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D44C20D36E73ED047772F47A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Skilled Acolyte/Pods-Skilled Acolyte-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Skilled Acolyte/Pods-Skilled Acolyte-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6550A18B209726F100068551 /* Sources */ = {
@@ -445,6 +560,7 @@
 		};
 		6550A1AD209726F400068551 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91375948ACB4BC448A9E8E3F /* Pods-Skilled Acolyte.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -468,6 +584,7 @@
 		};
 		6550A1AE209726F400068551 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC162C8D08B7378C032617B0 /* Pods-Skilled Acolyte.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -490,6 +607,7 @@
 		};
 		6550A1B0209726F400068551 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F21C187EDDE5725A4BA6A8C8 /* Pods-Skilled AcolyteTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -511,6 +629,7 @@
 		};
 		6550A1B1209726F400068551 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3BC6ADE0E0A6B239D02DEA9 /* Pods-Skilled AcolyteTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

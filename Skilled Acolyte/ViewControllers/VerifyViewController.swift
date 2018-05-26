@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+import JWTDecode
 
 class VerifyViewController: UIViewController {
 
@@ -14,13 +16,7 @@ class VerifyViewController: UIViewController {
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var dobLabel: UITextField!
     @IBOutlet weak var emailLabel: UITextField!
-    
     @IBOutlet weak var verifyButton: UIButton!
-    
-    
-    @IBAction func verifyDetailsButton() {
-        // send to database that you confirm your dteails
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,15 +29,43 @@ class VerifyViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func verifyStudentToken(token: String, completion: ((Student?))) {
+     
+        SVProgressHUD.show()
+        Networking.shared.verifyLoginToken(token: token) { (error, jwt) in
+            SVProgressHUD.dismiss()
+            
+            if let _ = error {
+                // TODO: handle error
+            } else if let jwt = jwt {
+                
+                // Decode the jwt using this nice library :)
+                var jwtObject:JWT? = nil
+                do {
+                    jwtObject = try decode(jwt: jwt)
+                } catch {
+                    print("Failed to decode jwt token: \(jwt)")
+                }
+                
+                // Extract student id from jwt
+                guard let studentId = jwtObject!.body["userId"] as? String else {
+                    print("Decoded jwt token but could not find userId inside: \(jwtObject!.body)")
+                    return
+                }
+                
+                // Get and store the current student
+                SVProgressHUD.show()
+                Networking.shared.getStudent(byId: studentId, completion: { (error, student) in
+                    SVProgressHUD.dismiss()
+                    
+                    if let _ = error {
+                        // TODO: handle error
+                    } else if let student = student {
+                        Constants.CurrentStudent = student
+                    }
+                })
+            }
+        }
     }
-    */
 
 }

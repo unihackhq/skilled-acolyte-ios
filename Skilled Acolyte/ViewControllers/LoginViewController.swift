@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -21,7 +22,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // call API and send confirmation email
         // TODO How does it know that you've logged in?
         
-        goToVerifyPage()
+        guard let email = emailLabel.text else {
+            print("No email supplied!")
+            return
+        }
+        
+        SVProgressHUD.show()
+        Networking.shared.login(email: email) { (error) in
+            SVProgressHUD.dismiss()
+            
+            if let error = error {
+                // TODO: handle error
+            } else {
+                self.goToVerifyPage()
+            }
+        }
     }
     
     func goToVerifyPage() {

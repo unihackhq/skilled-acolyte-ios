@@ -11,6 +11,9 @@ import Foundation
 
 class Networking: NSObject {
     
+    static let shared = Networking()
+    private override init() {}
+    
     struct Methods {
         static let GET = "GET"
         static let POST = "POST"
@@ -46,7 +49,7 @@ class Networking: NSObject {
         }
     }
     
-    func verifyLoginToken(token: String!, completion:((Error?) -> Void)?) {
+    func verifyLoginToken(token: String!, completion:((Error?, String?) -> Void)?) {
         
         request(method: Methods.POST, url: "/token", body: ["token":token], secure: false) { (error, response) in
             
@@ -57,7 +60,7 @@ class Networking: NSObject {
             
             self.handleIfError(error: error)
             if let completion = completion {
-                completion(error)
+                completion(error, self.jwtToken)
             }
         }
     }
