@@ -245,7 +245,7 @@
             </objects>
             <point key="canvasLocation" x="77.599999999999994" y="176.76161919040482"/>
         </scene>
-        <!--Homepage View Controller-->
+        <!--home-->
         <scene sceneID="Ysw-2Z-JnI">
             <objects>
                 <viewController storyboardIdentifier="HomepageViewController" id="2gF-Rv-QXS" customClass="HomepageViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
@@ -272,12 +272,88 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="eRe-ap-WEM"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="home" id="3v5-DQ-BrS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TMO-Bd-lKE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="741.60000000000002" y="176.76161919040482"/>
+            <point key="canvasLocation" x="1710" y="-541"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="t04-Hv-k5J">
+            <objects>
+                <tabBarController storyboardIdentifier="HomeTabBarController" id="w9i-CJ-dkD" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jHT-sh-gaH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="2gF-Rv-QXS" kind="relationship" relationship="viewControllers" id="JxI-Bf-8Vy"/>
+                        <segue destination="TLQ-uD-4K3" kind="relationship" relationship="viewControllers" id="CHs-nj-ugT"/>
+                        <segue destination="xLp-rk-mpR" kind="relationship" relationship="viewControllers" id="EfR-YA-QZo"/>
+                        <segue destination="1y1-RH-ccV" kind="relationship" relationship="viewControllers" id="Jjn-mN-YL8"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0z9-YO-tMJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="846" y="177"/>
+        </scene>
+        <!--ticket-->
+        <scene sceneID="7TS-8A-rgX">
+            <objects>
+                <viewController id="TLQ-uD-4K3" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="e9d-Ln-Uqn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ticket View Controller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAT-su-IsP">
+                                <rect key="frame" x="103" y="323" width="168" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Ahy-Es-Pu8"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="ticket" id="DmM-8n-ph3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Pc-bC-LRm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2433" y="-197"/>
+        </scene>
+        <!--Ticket Transfer Request View Controller-->
+        <scene sceneID="C5q-V4-ZTb">
+            <objects>
+                <viewController storyboardIdentifier="TicketTransferRequestViewController" id="lcy-Su-ltA" customClass="TicketTransferRequestViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r6k-Ec-KL8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="TYT-EY-QV1"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E4c-1d-TZg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3212" y="-196"/>
+        </scene>
+        <!--Ticket Transfer Confirmation View Controller-->
+        <scene sceneID="5c3-BQ-SNS">
+            <objects>
+                <viewController storyboardIdentifier="TicketTransferConfirmationViewController" id="HgP-6j-nA3" customClass="TicketTransferConfirmationViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3BX-Dc-gHw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Mee-ls-E1Z"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3xc-Ee-idY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3985" y="-196"/>
+        </scene>
+        <!--settings-->
         <scene sceneID="Sco-IP-4Q4">
             <objects>
                 <viewController storyboardIdentifier="SettingsViewController" id="1y1-RH-ccV" customClass="SettingsViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
@@ -304,12 +380,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="hzS-4E-MOG"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="settings" id="UOG-xo-18H"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QwK-vN-wX4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="78" y="856"/>
+            <point key="canvasLocation" x="1710" y="752"/>
         </scene>
-        <!--Team Create View Controller-->
+        <!--team-->
         <scene sceneID="GcP-Xe-oYI">
             <objects>
                 <viewController storyboardIdentifier="TeamCreateViewController" id="xLp-rk-mpR" customClass="TeamCreateViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
@@ -377,6 +454,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vs8-e3-aLT"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="team" id="9Yb-p7-RFU"/>
                     <connections>
                         <outlet property="teamCreateConfirmButton" destination="wtM-R1-J9f" id="aCK-PC-0JK"/>
                         <outlet property="teamCreateDescLabel" destination="osB-r5-Gle" id="HTV-h7-gWb"/>
@@ -387,7 +465,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="45U-GY-Dk6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="742" y="856"/>
+            <point key="canvasLocation" x="2433" y="483"/>
         </scene>
     </scenes>
     <resources>
