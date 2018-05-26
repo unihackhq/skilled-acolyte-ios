@@ -34,7 +34,13 @@ class VerifyViewController: UIViewController {
         let token = nameLabel.text!
         
         verifyStudentToken(token: token) { (student) in
-            self.goToHomePage()
+            guard let student = student else { return }
+            
+            if let firstLaunch = student.firstLaunch, firstLaunch == true {
+                self.goToOnboardingPage()
+            } else {
+                self.goToHomePage()
+            }
         }
     }
     
@@ -77,7 +83,7 @@ class VerifyViewController: UIViewController {
                     if let _ = error {
                         // TODO: handle error
                     } else if let student = student {
-                        Constants.CurrentStudent = student
+                        Configuration.CurrentStudent = student
                     }
                     
                     if let completion = completion {
@@ -90,8 +96,14 @@ class VerifyViewController: UIViewController {
     
     func goToHomePage() {
         
-        let homePage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomepageViewController")
+        let homePage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBarController")
         self.present(homePage, animated: true, completion: nil)
+    }
+    
+    func goToOnboardingPage() {
+        
+        let updateStudentDetailsPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StudentDetailsViewController")
+        self.present(updateStudentDetailsPage, animated: true, completion: nil)
     }
 
 }

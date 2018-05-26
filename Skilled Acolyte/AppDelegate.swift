@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Currently running this app for local development
-        Constants.Environment = "local"
+        Configuration.Environment = "local"
         
         return true
     }

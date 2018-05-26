@@ -90,7 +90,7 @@
                                     <constraint firstAttribute="height" constant="128" id="V35-Dk-MNl"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="lower-bound-unihack-border" translatesAutoresizingMaskIntoConstraints="NO" id="a5e-cZ-F4E">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lower-bound-unihack-border" translatesAutoresizingMaskIntoConstraints="NO" id="a5e-cZ-F4E">
                                 <rect key="frame" x="0.0" y="588" width="375" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="a5e-cZ-F4E" secondAttribute="height" multiplier="75:16" id="Vvc-zu-zeg"/>
@@ -112,7 +112,7 @@
                             <constraint firstItem="eqh-zb-iLp" firstAttribute="top" secondItem="9Nl-16-wpf" secondAttribute="bottom" constant="25" id="dFW-Q8-wph"/>
                             <constraint firstItem="0cc-P9-YH7" firstAttribute="leading" secondItem="eqh-zb-iLp" secondAttribute="leading" id="dIU-r0-G8v"/>
                             <constraint firstItem="a5e-cZ-F4E" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eVr-LN-lrH"/>
-                            <constraint firstAttribute="bottom" secondItem="a5e-cZ-F4E" secondAttribute="bottom" constant="1" id="fb0-vL-oW6"/>
+                            <constraint firstAttribute="bottom" secondItem="a5e-cZ-F4E" secondAttribute="bottom" constant="-1" id="fb0-vL-oW6"/>
                             <constraint firstItem="9Nl-16-wpf" firstAttribute="top" secondItem="0cc-P9-YH7" secondAttribute="bottom" constant="1" id="gq3-aY-iSk"/>
                             <constraint firstItem="eqh-zb-iLp" firstAttribute="trailing" secondItem="by1-oF-ONg" secondAttribute="trailing" id="iJ5-4b-5kd"/>
                             <constraint firstItem="T7y-En-dvl" firstAttribute="height" secondItem="eqh-zb-iLp" secondAttribute="height" id="in2-jD-Q2Q"/>

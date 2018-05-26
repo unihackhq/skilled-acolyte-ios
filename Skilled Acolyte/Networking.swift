@@ -425,9 +425,9 @@ class Networking: NSObject {
     // MARK: Other Tools
     
     func buildURL(with path:String!) -> URL! {
-        if Constants.Environment == "dev" {
+        if Configuration.Environment == "dev" {
             return URL(string: Constants.HOST_URL_DEV + path)!
-        } else if Constants.Environment == "local" {
+        } else if Configuration.Environment == "local" {
             return URL(string: Constants.HOST_URL_LOCAL + path)!
         } else {
             return URL(string: Constants.HOST_URL + path)!

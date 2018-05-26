@@ -22,6 +22,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        // Check if we're already logged in, then go to the home screen
+        if Configuration.CurrentStudent != nil {
+            goToHomePage()
+        }
+        
         emailLabel.text = "john123@blackhole.postmarkapp.com"
     }
     
@@ -41,20 +46,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         Networking.shared.login(email: email) { (error) in
             SVProgressHUD.dismiss()
             
-            if let error = error {
+            if let _ = error {
                 // TODO: handle error
             } else {
                 self.goToVerifyPage()
             }
         }
     }
-    
+
     func goToVerifyPage() {
         
         let verifyPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VerifyViewController")
         self.present(verifyPage, animated: true, completion: nil)
     }
-
+    
+    func goToHomePage() {
+        
+        let homePage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBarController")
+        self.present(homePage, animated: true, completion: nil)
+    }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         hintLabel.isHidden = false
         loginButton.isHidden = false
