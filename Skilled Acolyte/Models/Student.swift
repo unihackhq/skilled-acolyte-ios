@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Student {
+struct Student: Codable {
     
     var firstLaunch: Bool?
     var id: String!
@@ -58,4 +58,5 @@ struct Student {
         
         return json
     }
+
 }

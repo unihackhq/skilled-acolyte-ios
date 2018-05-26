@@ -26,7 +26,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="loh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,7 +62,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="hiddenElements" destination="BYZ-38-t0r" eventType="editingDidEnd" id="0YQ-9s-VGA"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="v75-hw-r4R"/>
                                 </connections>
                             </textField>
@@ -141,7 +140,7 @@
         <!--Verify View Controller-->
         <scene sceneID="10u-nh-c1F">
             <objects>
-                <viewController id="U2F-cD-8OC" customClass="VerifyViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VerifyViewController" id="U2F-cD-8OC" customClass="VerifyViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eos-7J-t64">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,7 +165,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="verifyDetailsButton" destination="U2F-cD-8OC" eventType="touchUpInside" id="aFZ-LL-qBi"/>
+                                    <action selector="verify" destination="U2F-cD-8OC" eventType="touchUpInside" id="hJ2-KJ-nt2"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99n-SE-aQg">
@@ -249,7 +248,7 @@
         <!--Homepage View Controller-->
         <scene sceneID="Ysw-2Z-JnI">
             <objects>
-                <viewController id="2gF-Rv-QXS" customClass="HomepageViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomepageViewController" id="2gF-Rv-QXS" customClass="HomepageViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oY2-Zc-X9X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -281,7 +280,7 @@
         <!--Settings View Controller-->
         <scene sceneID="Sco-IP-4Q4">
             <objects>
-                <viewController id="1y1-RH-ccV" customClass="SettingsViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" id="1y1-RH-ccV" customClass="SettingsViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oXf-NX-x6u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -313,7 +312,7 @@
         <!--Team Create View Controller-->
         <scene sceneID="GcP-Xe-oYI">
             <objects>
-                <viewController id="xLp-rk-mpR" customClass="TeamCreateViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamCreateViewController" id="xLp-rk-mpR" customClass="TeamCreateViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="11I-Oc-MGV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

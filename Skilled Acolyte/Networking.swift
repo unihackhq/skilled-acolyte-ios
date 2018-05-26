@@ -22,7 +22,6 @@ class Networking: NSObject {
     }
     
     let session: URLSession! = URLSession(configuration: URLSessionConfiguration.default)
-    let baseURL: String! = "http://localhost:3000"
     var jwtToken: String? {
         set(jwt) {
             UserDefaults.standard.set(jwt, forKey: "jwtToken")
@@ -37,7 +36,7 @@ class Networking: NSObject {
     
     // MARK: Unihack API requests
     // Login
-    func login(email: String!, completion:((Error?) -> Void)?) {
+    func login(email: String, completion:((Error?) -> Void)?) {
         
         let url = "/token/\(email)"
         request(method: Methods.POST, url: url, body: nil, secure: false) { (error, response) in
@@ -49,7 +48,7 @@ class Networking: NSObject {
         }
     }
     
-    func verifyLoginToken(token: String!, completion:((Error?, String?) -> Void)?) {
+    func verifyLoginToken(token: String, completion:((Error?, String?) -> Void)?) {
         
         request(method: Methods.POST, url: "/token", body: ["token":token], secure: false) { (error, response) in
             
@@ -66,7 +65,7 @@ class Networking: NSObject {
     }
     
     // Student
-    func getStudent(byId studentId: String!, completion:((Error?, Student?) -> Void)?) {
+    func getStudent(byId studentId: String, completion:((Error?, Student?) -> Void)?) {
         
         let url = "/students/\(studentId)"
         request(method: Methods.GET, url: url, body: nil, secure: true) { (error, response) in
@@ -84,7 +83,7 @@ class Networking: NSObject {
         }
     }
     
-    func getStudentTickets(byStudentId studentId: String!, completion:((Error?, [Ticket]) -> Void)?) {
+    func getStudentTickets(byStudentId studentId: String, completion:((Error?, [Ticket]) -> Void)?) {
         
         let url = "/students/\(studentId)/tickets"
         request(method: Methods.GET, url: url, body: nil, secure: true) { (error, response) in
@@ -105,7 +104,7 @@ class Networking: NSObject {
         }
     }
     
-    func getStudentEvents(byStudentId studentId: String!, completion:((Error?, [Event]) -> Void)?) {
+    func getStudentEvents(byStudentId studentId: String, completion:((Error?, [Event]) -> Void)?) {
         
         let url = "/students/\(studentId)/events"
         request(method: Methods.GET, url: url, body: nil, secure: true) { (error, response) in
@@ -126,7 +125,7 @@ class Networking: NSObject {
         }
     }
     
-    func getStudentTeams(byStudentId studentId: String!, completion:((Error?, [Team]) -> Void)?) {
+    func getStudentTeams(byStudentId studentId: String, completion:((Error?, [Team]) -> Void)?) {
         
         let url = "/students/\(studentId)/teams"
         request(method: Methods.GET, url: url, body: nil, secure: true) { (error, response) in
@@ -147,7 +146,7 @@ class Networking: NSObject {
         }
     }
     
-    func getStudentInvites(byStudentId studentId: String!, completion:((Error?, [Any]) -> Void)?) {
+    func getStudentInvites(byStudentId studentId: String, completion:((Error?, [Any]) -> Void)?) {
         
         let url = "/students/\(studentId)/invites"
         request(method: Methods.GET, url: url, body: nil, secure: true) { (error, response) in
@@ -181,7 +180,7 @@ class Networking: NSObject {
         }
     }
     
-    func updateStudent(student: Student!, completion:((Error?, Student?) -> Void)?) {
+    func updateStudent(student: Student, completion:((Error?, Student?) -> Void)?) {
         
         let url = "/students/\(student.id)"
         request(method: Methods.PUT, url: url, body: student.toJSON(), secure: true) { (error, response) in
@@ -200,7 +199,7 @@ class Networking: NSObject {
     }
     
     // Ticket
-    func getTicket(byId ticketId: String!, completion:((Error?, Ticket?) -> Void)?) {
+    func getTicket(byId ticketId: String, completion:((Error?, Ticket?) -> Void)?) {
         
         let url = "/tickets/\(ticketId)"
         request(method: Methods.GET, url: url, body: nil, secure: true) { (error, response) in
@@ -217,7 +216,7 @@ class Networking: NSObject {
         }
     }
     
-    func transferTicket(withId ticketId: String!, toEmail email:String!, completion:((Error?, Ticket?) -> Void)?) {
+    func transferTicket(withId ticketId: String, toEmail email:String!, completion:((Error?, Ticket?) -> Void)?) {
         
         let url = "/tickets/\(ticketId)/transfer"
         request(method: Methods.POST, url: url, body: ["email":email], secure: true) { (error, response) in
@@ -235,7 +234,7 @@ class Networking: NSObject {
     }
     
     // Team
-    func createTeam(team: Team!, completion:((Error?, Team?) -> Void)?) {
+    func createTeam(team: Team, completion:((Error?, Team?) -> Void)?) {
         
         request(method: Methods.GET, url: "/teams", body: team.toJSON(), secure: true) { (error, response) in
             
@@ -252,7 +251,7 @@ class Networking: NSObject {
         }
     }
     
-    func getTeam(byId teamId: String!, completion:((Error?, Team?) -> Void)?) {
+    func getTeam(byId teamId: String, completion:((Error?, Team?) -> Void)?) {
         
         let url = "/teams/\(teamId)"
         request(method: Methods.GET, url: url, body: nil, secure: true) { (error, response) in
@@ -269,7 +268,7 @@ class Networking: NSObject {
         }
     }
     
-    func getTeamInvites(byTeamId teamId: String!, completion:((Error?, [Any]?) -> Void)?) {
+    func getTeamInvites(byTeamId teamId: String, completion:((Error?, [Any]?) -> Void)?) {
         
         let url = "/teams/\(teamId)/invites"
         request(method: Methods.GET, url: url, body: nil, secure: true) { (error, response) in
@@ -283,7 +282,7 @@ class Networking: NSObject {
         }
     }
     
-    func getTeamMembers(byTeamId teamId: String!, completion:((Error?, [Student]?) -> Void)?) {
+    func getTeamMembers(byTeamId teamId: String, completion:((Error?, [Student]?) -> Void)?) {
         
         let url = "/teams/\(teamId)/members"
         request(method: Methods.GET, url: url, body: nil, secure: true) { (error, response) in
@@ -304,7 +303,7 @@ class Networking: NSObject {
         }
     }
     
-    func updateTeam(team: Team!, completion:((Error?, Team?) -> Void)?) {
+    func updateTeam(team: Team, completion:((Error?, Team?) -> Void)?) {
         
         let url = "/teams/\(team.id)"
         request(method: Methods.PUT, url: url, body: team.toJSON(), secure: true) { (error, response) in
@@ -321,7 +320,7 @@ class Networking: NSObject {
         }
     }
     
-    func inviteUserToTeam(teamId: String!, userId: String!, completion:((Error?, Any?) -> Void)?) {
+    func inviteUserToTeam(teamId: String, userId: String, completion:((Error?, Any?) -> Void)?) {
         
         let url = "/teams/\(teamId)/invites"
         request(method: Methods.POST, url: url, body: ["userId":userId], secure: true) { (error, response) in
@@ -335,7 +334,7 @@ class Networking: NSObject {
         }
     }
     
-    func acceptTeamInvite(forStudentId studentId: String!, inviteId: String!, completion:((Error?, Any?) -> Void)?) {
+    func acceptTeamInvite(forStudentId studentId: String, inviteId: String, completion:((Error?, Any?) -> Void)?) {
         
         let url = "/students/\(studentId)/invites/\(inviteId)/accept"
         request(method: Methods.POST, url: url, body: nil, secure: true) { (error, response) in
@@ -349,7 +348,7 @@ class Networking: NSObject {
         }
     }
     
-    func rejectTeamInvite(forStudentId studentId: String!, inviteId: String!, completion:((Error?, Any?) -> Void)?) {
+    func rejectTeamInvite(forStudentId studentId: String, inviteId: String, completion:((Error?, Any?) -> Void)?) {
         
         let url = "/students/\(studentId)/invites/\(inviteId)/reject"
         request(method: Methods.POST, url: url, body: nil, secure: true) { (error, response) in
@@ -363,7 +362,7 @@ class Networking: NSObject {
         }
     }
     
-    func leaveTeam(forStudentId studentId: String!, teamId: String!, completion:((Error?, Any?) -> Void)?) {
+    func leaveTeam(forStudentId studentId: String, teamId: String, completion:((Error?, Any?) -> Void)?) {
         
         let url = "/students/\(studentId)/teams/\(teamId)/reject"
         request(method: Methods.POST, url: url, body: nil, secure: true) { (error, response) in
@@ -379,7 +378,7 @@ class Networking: NSObject {
     
     // MARK: Generic HTTP requests
     
-    func request(method httpMethod:String!, url:String!, body:[String:Any]?, secure:Bool!, completion:((Error?, Any?) -> Void)?) {
+    func request(method httpMethod:String, url:String, body:[String:Any]?, secure:Bool, completion:((Error?, Any?) -> Void)?) {
         
         // Build a http request with a url, method, body, and headers
         let request = NSMutableURLRequest()
@@ -388,7 +387,7 @@ class Networking: NSObject {
         // Encode the body as json (if it exists)
         if let body = body {
             do {
-                let jsonEncode = try JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+                let jsonEncode = try JSONSerialization.data(withJSONObject: body, options: [])
                 request.httpBody = jsonEncode
             } catch {
                 print("Failed to encode json: \(error.localizedDescription)")
@@ -398,6 +397,7 @@ class Networking: NSObject {
         if secure == true, let jwt = self.jwtToken {
             request.addValue("bearer \(jwt)", forHTTPHeaderField: "Authorization")
         }
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         // Make the request (.resume() to start the request)
         session.dataTask(with: request as URLRequest) { (data, response, error) in
@@ -406,15 +406,17 @@ class Networking: NSObject {
             var jsonDecode:[String:Any]?
             if let data = data {
                 do {
-                    jsonDecode = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.init(rawValue: 0)) as? [String : Any]
+                    jsonDecode = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
                 } catch {
                     print("Failed to decode json: \(error.localizedDescription)")
                 }
             }
             
-            // Call completion if it exists
+            // Call completion on main thread if it exists
             if let completion = completion {
-                completion(error, jsonDecode)
+                DispatchQueue.main.async {
+                    completion(error, jsonDecode)
+                }
             }
             
         }.resume()
@@ -423,7 +425,7 @@ class Networking: NSObject {
     // MARK: Other Tools
     
     func buildURL(with path:String!) -> URL! {
-        return URL(string: baseURL + path)!
+        return URL(string: Constants.HOST_URL + path)!
     }
     
     func handleIfError(error:Error?) {

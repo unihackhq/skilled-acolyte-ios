@@ -29,7 +29,16 @@ class VerifyViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func verifyStudentToken(token: String, completion: ((Student?))) {
+    @IBAction func verify() {
+        
+        let token = nameLabel.text!
+        
+        verifyStudentToken(token: token) { (student) in
+            self.goToHomePage()
+        }
+    }
+    
+    func verifyStudentToken(token: String, completion: ((Student?) -> Void)?) {
      
         SVProgressHUD.show()
         Networking.shared.verifyLoginToken(token: token) { (error, jwt) in
@@ -63,9 +72,19 @@ class VerifyViewController: UIViewController {
                     } else if let student = student {
                         Constants.CurrentStudent = student
                     }
+                    
+                    if let completion = completion {
+                        completion(student)
+                    }
                 })
             }
         }
+    }
+    
+    func goToHomePage() {
+        
+        let homePage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomepageViewController")
+        self.present(homePage, animated: true, completion: nil)
     }
 
 }

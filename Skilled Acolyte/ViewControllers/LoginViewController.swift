@@ -18,9 +18,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
 
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        
+        emailLabel.text = "john123@blackhole.postmarkapp.com"
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     @IBAction func login() {
-        // call API and send confirmation email
-        // TODO How does it know that you've logged in?
         
         guard let email = emailLabel.text else {
             print("No email supplied!")
@@ -40,23 +50,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func goToVerifyPage() {
-        // prepare segue to go to verification page
+        
+        let verifyPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VerifyViewController")
+        self.present(verifyPage, animated: true, completion: nil)
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         hintLabel.isHidden = false
         loginButton.isHidden = false
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
 }

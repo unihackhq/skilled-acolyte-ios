@@ -13,10 +13,21 @@ struct Constants {
     static let HOST_URL = "http://localhost:3000/api/v1"
     static var CurrentStudent: Student? {
         set(student) {
-            UserDefaults.standard.set(student, forKey: "currentStudent")
+            if let student = student {
+                do {
+                    UserDefaults.standard.set(try? PropertyListEncoder().encode(student), forKey: "currentStudent")
+                }
+            } else {
+                UserDefaults.standard.removeObject(forKey: "currentStudent")
+            }
         }
         get {
-            return UserDefaults.standard.object(forKey: "currentStudent") as? Student
+            if let decodedData = UserDefaults.standard.value(forKey: "currentStudent") as? Data {
+                do {
+                    return try? PropertyListDecoder().decode(Student.self, from: decodedData)
+                }
+            }
+            return nil
         }
     }
 }
