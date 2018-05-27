@@ -21,7 +21,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        emailLabel.text = "john123@blackhole.postmarkapp.com"
+        emailLabel.text = "john1234@blackhole.postmarkapp.com"
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,12 +50,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         let verifyPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VerifyViewController")
         self.present(verifyPage, animated: true, completion: nil)
-    }
-    
-    func goToHomePage() {
-        
-        let homePage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBarController")
-        self.present(homePage, animated: true, completion: nil)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

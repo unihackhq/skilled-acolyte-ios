@@ -405,10 +405,10 @@ class Networking: NSObject {
         session.dataTask(with: request as URLRequest) { (data, response, error) in
 
             // Unpack data response if it exisits
-            var jsonDecode:[String:Any]?
+            var jsonDecode:Any?
             if let data = data {
                 do {
-                    jsonDecode = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
+                    jsonDecode = try JSONSerialization.jsonObject(with: data, options: [])
                 } catch {
                     print("Failed to decode json: \(error.localizedDescription)")
                 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Ticket {
+struct Ticket: Codable {
     
     var id: String = ""
     var eventbriteOrder: String = ""
@@ -24,6 +24,5 @@ struct Ticket {
         ticketType = data["ticketType"] as! String
         if let transferred = data["transferred"] as? Bool { self.transferred = transferred }
         if let cancelled = data["cancelled"] as? Bool { self.cancelled = cancelled }
-            
     }
 }

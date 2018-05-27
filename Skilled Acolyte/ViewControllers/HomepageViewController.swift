@@ -10,10 +10,33 @@ import UIKit
 
 class HomepageViewController: UIViewController {
 
+    @IBOutlet weak var lblEventName: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        guard let student = Configuration.CurrentStudent else { return }
+        
+        // Load the student's events
+        Networking.shared.getStudentEvents(byStudentId: student.id) { (error, events) in
+            
+            if let _ = error {
+                // TODO: handle error
+            } else {
+                Configuration.StudentsEvents = events
+                if events.count > 1 {
+                    // TODO: this student has more than one events. show some way for them to switch between events
+                } else if events.count == 0 {
+                    // this student has no events :(
+                    return
+                }
+                
+                let firstEvent = events.first
+                Configuration.CurrentEvent = firstEvent
+                self.lblEventName.text = firstEvent?.name
+            }
+        }
+
     }
 
     override func didReceiveMemoryWarning() {

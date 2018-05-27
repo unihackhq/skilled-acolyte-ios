@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Event {
+struct Event: Codable {
     
     var id: String = ""
     var name: String = ""

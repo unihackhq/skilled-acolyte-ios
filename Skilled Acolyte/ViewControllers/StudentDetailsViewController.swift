@@ -98,11 +98,17 @@ class StudentDetailsViewController: UIViewController {
             } else if let student = student {
                 // Save the updated student
                 Configuration.CurrentStudent = student
+                self.goToHomePage()
             }
         }
     }
     
     @IBAction func close(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func goToHomePage() {
+        let homePage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBarController")
+        self.present(homePage, animated: true, completion: nil)
     }
 }
