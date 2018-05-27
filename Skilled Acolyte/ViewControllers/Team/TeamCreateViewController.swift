@@ -27,15 +27,29 @@ class TeamCreateViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func createTeam(_ sender: Any) {
+        
+        guard let teamName = teamCreateNameLabel.text else { return }
+        guard let currentEvent = Configuration.CurrentEvent else { return }
+        
+        var newTeam = Team(data: nil)
+        newTeam.name = teamName
+        newTeam.teamDescription = " "
+        newTeam.eventId = currentEvent.id
+        
+        Networking.shared.createTeam(team: newTeam) { (error, team) in
+            
+            if let _ = error {
+                // TODO: handle error
+            } else if let team = team {
+                Configuration.CurrentTeam = team
+                self.showManageTeamPage()
+            }
+        }
     }
-    */
+    
+    func showManageTeamPage() {
+        // TODO: add navigation code here that keeps the tab bar in view
+    }
 
 }

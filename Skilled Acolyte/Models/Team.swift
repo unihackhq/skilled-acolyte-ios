@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct Team {
+struct Team: Codable {
     
     var id: String = ""
     var eventId: String = ""
     var name: String = ""
-    var teamDescription: String?
+    var teamDescription: String = ""
     var photoUrl: String?
         
     init(data: [String:Any]?) {
@@ -22,7 +22,7 @@ struct Team {
         id = data["id"] as! String
         eventId = data["eventId"] as! String
         name = data["name"] as! String
-        teamDescription = data["description"] as? String
+        teamDescription = data["description"] as! String
         photoUrl = data["photoUrl"] as? String
     }
     
@@ -33,8 +33,8 @@ struct Team {
         if id != "" { json["id"] = id }
         if eventId != "" { json["eventId"] = eventId }
         if name != "" { json["name"] = name }
+        if teamDescription != "" { json["description"] = teamDescription }
         
-        if let teamDescription = teamDescription { json["description"] = teamDescription }
         if let photoUrl = photoUrl { json["photoUrl"] = photoUrl }
         
         return json

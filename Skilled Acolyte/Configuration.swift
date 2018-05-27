@@ -116,4 +116,42 @@ struct Configuration {
             return nil
         }
     }
+    static var CurrentTeam: Team? {
+        set(currentTeam) {
+            if let currentTeam = currentTeam {
+                do {
+                    UserDefaults.standard.set(try? PropertyListEncoder().encode(currentTeam), forKey: "currentTeam")
+                }
+            } else {
+                UserDefaults.standard.removeObject(forKey: "currentTeam")
+            }
+        }
+        get {
+            if let decodedData = UserDefaults.standard.value(forKey: "currentTeam") as? Data {
+                do {
+                    return try? PropertyListDecoder().decode(Team.self, from: decodedData)
+                }
+            }
+            return nil
+        }
+    }
+    static var StudentsTeams: [Team]? {
+        set(studentsTeams) {
+            if let studentsTeams = studentsTeams {
+                do {
+                    UserDefaults.standard.set(try? PropertyListEncoder().encode(studentsTeams), forKey: "studentsTeams")
+                }
+            } else {
+                UserDefaults.standard.removeObject(forKey: "studentsTeams")
+            }
+        }
+        get {
+            if let decodedData = UserDefaults.standard.value(forKey: "studentsTeams") as? Data {
+                do {
+                    return try? PropertyListDecoder().decode([Team].self, from: decodedData)
+                }
+            }
+            return nil
+        }
+    }
 }
