@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SVProgressHUD
 
 class Networking: NSObject {
     
@@ -399,6 +399,8 @@ class Networking: NSObject {
         }
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
+        // Show a progress spinner
+        SVProgressHUD.show()
         // Make the request (.resume() to start the request)
         session.dataTask(with: request as URLRequest) { (data, response, error) in
 
@@ -415,6 +417,8 @@ class Networking: NSObject {
             // Call completion on main thread if it exists
             if let completion = completion {
                 DispatchQueue.main.async {
+                    // Hide the progress spinner
+                    SVProgressHUD.dismiss()
                     completion(error, jsonDecode)
                 }
             }

@@ -1,10 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="texgyreadventor-regular.otf">
+            <string>TeXGyreAdventor-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -13,7 +24,44 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unihack-logo-sided" translatesAutoresizingMaskIntoConstraints="NO" id="rUJ-Bj-1mV">
+                                <rect key="frame" x="56" y="195" width="112.5" height="58.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rUJ-Bj-1mV" secondAttribute="height" multiplier="160:83" id="BUW-0i-zRU"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upper-bound-unihack-border" translatesAutoresizingMaskIntoConstraints="NO" id="EkI-T1-MhI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOD-lV-BTa">
+                                <rect key="frame" x="56" y="255" width="262.5" height="25"/>
+                                <fontDescription key="fontDescription" name="TeXGyreAdventor-Regular" family="TeX Gyre Adventor" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lower-bound-unihack-border" translatesAutoresizingMaskIntoConstraints="NO" id="YtQ-8C-lNn">
+                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <viewLayoutGuide key="safeArea" id="IXg-g5-j0L"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="YtQ-8C-lNn" secondAttribute="trailing" id="Cdt-rz-grH"/>
+                            <constraint firstItem="HOD-lV-BTa" firstAttribute="leading" secondItem="rUJ-Bj-1mV" secondAttribute="leading" id="LcV-MY-cht"/>
+                            <constraint firstItem="YtQ-8C-lNn" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="NNG-TO-O8V"/>
+                            <constraint firstAttribute="bottom" secondItem="YtQ-8C-lNn" secondAttribute="bottom" id="O0W-Ea-pgQ"/>
+                            <constraint firstItem="rUJ-Bj-1mV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="175" id="QZy-Gk-aR4"/>
+                            <constraint firstItem="YtQ-8C-lNn" firstAttribute="width" secondItem="YtQ-8C-lNn" secondAttribute="height" multiplier="75:16" id="U1H-43-rld"/>
+                            <constraint firstAttribute="trailing" secondItem="EkI-T1-MhI" secondAttribute="trailing" id="YsY-eN-eYp"/>
+                            <constraint firstItem="HOD-lV-BTa" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="aCb-zq-93i"/>
+                            <constraint firstItem="rUJ-Bj-1mV" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.3" id="ba6-zX-6ea"/>
+                            <constraint firstItem="HOD-lV-BTa" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.7" id="erW-Ma-R2X"/>
+                            <constraint firstItem="EkI-T1-MhI" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="fWW-8S-COr"/>
+                            <constraint firstItem="EkI-T1-MhI" firstAttribute="width" secondItem="EkI-T1-MhI" secondAttribute="height" multiplier="375:128" id="ng9-G6-vIl"/>
+                            <constraint firstItem="HOD-lV-BTa" firstAttribute="top" secondItem="rUJ-Bj-1mV" secondAttribute="bottom" constant="1" id="sXh-hg-AaB"/>
+                            <constraint firstItem="EkI-T1-MhI" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="srz-mN-pAF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -22,4 +70,9 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="lower-bound-unihack-border" width="826" height="140"/>
+        <image name="unihack-logo-sided" width="1785" height="966"/>
+        <image name="upper-bound-unihack-border" width="826" height="183"/>
+    </resources>
 </document>

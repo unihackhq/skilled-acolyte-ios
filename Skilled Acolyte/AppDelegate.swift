@@ -20,6 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Currently running this app for local development
         Configuration.Environment = "local"
         
+        // If we're already logged in start on the home screen, otherwise login
+        var startingVC:UIViewController? = nil
+        if Configuration.CurrentStudent != nil {
+             startingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBarController")
+        } else {
+            startingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
+        }
+        window?.rootViewController = startingVC
+        
         return true
     }
 

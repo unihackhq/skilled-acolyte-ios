@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SVProgressHUD
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -21,11 +20,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        // Check if we're already logged in, then go to the home screen
-        if Configuration.CurrentStudent != nil {
-            goToHomePage()
-        }
         
         emailLabel.text = "john123@blackhole.postmarkapp.com"
     }
@@ -42,9 +36,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        SVProgressHUD.show()
         Networking.shared.login(email: email) { (error) in
-            SVProgressHUD.dismiss()
             
             if let _ = error {
                 // TODO: handle error

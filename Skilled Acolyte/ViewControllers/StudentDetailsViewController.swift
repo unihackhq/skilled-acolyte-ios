@@ -7,10 +7,12 @@
 //
 
 import UIKit
-import SVProgressHUD
 
 class StudentDetailsViewController: UIViewController {
 
+    //@IBOutlet weak var scrollingView: UIScrollView!
+    @IBOutlet weak var studentFieldsView: UIView!
+    
     @IBOutlet weak var txtFirstName: UITextField!
     @IBOutlet weak var txtLastName: UITextField!
     @IBOutlet weak var txtPreferredName: UITextField!
@@ -26,13 +28,11 @@ class StudentDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         guard let currentStudent = Configuration.CurrentStudent else { return print("Student does not exist! Logout?") }
         
         // Get the latest student details
-        SVProgressHUD.show()
         Networking.shared.getStudent(byId: currentStudent.id) { (error, student) in
-            SVProgressHUD.dismiss()
             
             if let _ = error {
                 // TODO: handle error

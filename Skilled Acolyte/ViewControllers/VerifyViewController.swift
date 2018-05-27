@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SVProgressHUD
 import JWTDecode
 
 class VerifyViewController: UIViewController {
@@ -47,9 +46,7 @@ class VerifyViewController: UIViewController {
     
     func verifyStudentToken(token: String, completion: ((Student?) -> Void)?) {
      
-        SVProgressHUD.show()
         Networking.shared.verifyLoginToken(token: token) { (error, jwt) in
-            SVProgressHUD.dismiss()
             
             if let _ = error {
                 // TODO: handle error
@@ -77,9 +74,7 @@ class VerifyViewController: UIViewController {
                 }
                 
                 // Get and store the current student
-                SVProgressHUD.show()
                 Networking.shared.getStudent(byId: studentId, completion: { (error, student) in
-                    SVProgressHUD.dismiss()
                     
                     if let _ = error {
                         // TODO: handle error
