@@ -20,29 +20,7 @@ class TicketsViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         
-        guard let student = Configuration.CurrentStudent else { return }
         
-        Networking.shared.getStudentEvents(byStudentId: student.id) { (error, events) in
-            
-            if let _ = error {
-                // TODO: handle error
-            } else {
-                Configuration.StudentsEvents = events
-                self.events = events
-                self.tableView.reloadData()
-            }
-        }
-        // Get the latest student's tickets
-        Networking.shared.getStudentTickets(byStudentId: student.id) { (error, tickets) in
-            
-            if let _ = error {
-                // TODO: handle error
-            } else {
-                Configuration.StudentsTickets = tickets
-                self.tickets = tickets
-                self.tableView.reloadData()
-            }
-        }
     }
 
     override func didReceiveMemoryWarning() {

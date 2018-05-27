@@ -448,6 +448,7 @@ Don't lose it :)</string>
                     </view>
                     <tabBarItem key="tabBarItem" title="Ticket" id="Z5Z-iq-ZgS"/>
                     <connections>
+                        <outlet property="btnShowAllTickets" destination="FjZ-IP-QBE" id="H6F-Pv-ZP5"/>
                         <outlet property="lblTicket" destination="lIt-Rf-2ZE" id="vl1-v8-X8n"/>
                     </connections>
                 </viewController>

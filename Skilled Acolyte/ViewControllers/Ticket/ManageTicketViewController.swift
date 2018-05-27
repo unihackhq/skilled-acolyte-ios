@@ -11,8 +11,7 @@ import UIKit
 class ManageTicketViewController: UIViewController {
 
     @IBOutlet weak var lblTicket: UILabel!
-    var tickets: [Ticket]! = [Ticket]()
-    var events: [Event]! = [Event]()
+    @IBOutlet weak var btnShowAllTickets: UIButton!
     var currentTicket: Ticket?
     var currentEvent: Event?
     
@@ -21,22 +20,62 @@ class ManageTicketViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        guard let student = Configuration.CurrentStudent else { return }
         
         // Check for the students current ticket, otherwise ask for a selection
         if let ticket = Configuration.CurrentTicket,
             let event = Configuration.CurrentEvent {
-            currentTicket = ticket
-            currentEvent = event
-            lblTicket.text = event.name+"\n"+ticket.ticketType
+            self.refreshTicket(ticket: ticket, event: event)
         } else {
-            // Show all tickets so the student can choose one to manage
-            showAllTicketsPage()
+            // Check the number of tickets the student actually has,
+            //  and if it's only one then populate it
+            Networking.shared.getStudentEvents(byStudentId: student.id) { (error, events) in
+                
+                if let _ = error {
+                    // TODO: handle error
+                } else {
+                    Configuration.StudentsEvents = events
+
+                    Networking.shared.getStudentTickets(byStudentId: student.id) { (error, tickets) in
+                        
+                        if let _ = error {
+                            // TODO: handle error
+                        } else {
+                            Configuration.StudentsTickets = tickets
+                            
+                            // If there's only one ticket just show it on the page
+                            if tickets.count == 1,
+                                let ticket = tickets.first,
+                                let event = events.first {
+                                self.refreshTicket(ticket: ticket, event: event)
+                            } else {
+                                // Show all tickets so the student can choose one to manage
+                                self.showAllTicketsPage()
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func refreshTicket(ticket: Ticket, event: Event) {
+        self.currentTicket = ticket
+        self.currentEvent = event
+        
+        self.lblTicket.text = self.currentEvent!.name+"\n"+self.currentTicket!.ticketType
+        
+        // Hide the all tickets button if there's only one ticket
+        if Configuration.StudentsTickets?.count == 1 {
+            btnShowAllTickets.isHidden = true
+        } else {
+            btnShowAllTickets.isHidden = false
+        }
     }
     
     func showAllTicketsPage() {
