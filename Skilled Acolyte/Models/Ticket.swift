@@ -11,6 +11,7 @@ import Foundation
 struct Ticket: Codable {
     
     var id: String = ""
+    var eventId: String = ""
     var eventbriteOrder: String = ""
     var ticketType: String = ""
     var transferred: Bool! = false
@@ -20,6 +21,7 @@ struct Ticket: Codable {
         guard let data = data else { return }
         
         id = data["id"] as! String
+        eventId = data["eventId"] as! String
         eventbriteOrder = data["eventbriteOrder"] as! String
         ticketType = data["ticketType"] as! String
         if let transferred = data["transferred"] as? Bool { self.transferred = transferred }
