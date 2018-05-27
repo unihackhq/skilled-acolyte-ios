@@ -36,7 +36,7 @@ struct User: Codable {
         
         var json = [String:Any]()
         
-        json["id"] = id
+        if id != "" { json["id"] = id }
         
         if let firstName = firstName { json["firstName"] = firstName }
         if let lastName = lastName { json["lastName"] = lastName }

@@ -45,7 +45,7 @@ struct Student: Codable {
         
         var json = [String:Any]()
         
-        json["id"] = id
+        if id != "" { json["id"] = id }
         json["user"] = user.toJSON()
         
         if let universityId = universityId { json["universityId"] = universityId }

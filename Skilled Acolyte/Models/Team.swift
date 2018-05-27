@@ -30,9 +30,9 @@ struct Team {
         
         var json = [String:Any]()
         
-        json["id"] = id
-        json["eventId"] = eventId
-        json["name"] = name
+        if id != "" { json["id"] = id }
+        if eventId != "" { json["eventId"] = eventId }
+        if name != "" { json["name"] = name }
         
         if let teamDescription = teamDescription { json["description"] = teamDescription }
         if let photoUrl = photoUrl { json["photoUrl"] = photoUrl }
