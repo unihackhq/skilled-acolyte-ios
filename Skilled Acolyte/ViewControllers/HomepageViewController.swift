@@ -8,10 +8,9 @@
 
 import UIKit
 
-class HomepageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomepageTableViewController: UITableViewController {
 
     @IBOutlet weak var lblEventName: UILabel!
-    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,20 +47,13 @@ class HomepageViewController: UIViewController, UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell?.reuseIdentifier == "ManageTicketCell" {
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ManageTicketViewController")
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
