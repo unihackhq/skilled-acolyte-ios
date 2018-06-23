@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Currently running this app for local development
-        Configuration.Environment = "local"
+        Configuration.Environment = "dev"
         
         // If we're already logged in start on the home screen, otherwise login
         var startingVC:UIViewController? = nil

@@ -21,7 +21,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        emailLabel.text = "john1234@blackhole.postmarkapp.com"
+        emailLabel.text = "test_student@blackhole.postmarkapp.com"
     }
     
     override func didReceiveMemoryWarning() {

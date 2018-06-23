@@ -44,12 +44,19 @@ class VerifyViewController: UIViewController {
         }
     }
     
+    @IBAction func dismissTextField(_ sender: UITextField) {
+        sender.resignFirstResponder()
+    }
+    
     func verifyStudentToken(token: String, completion: ((Student?) -> Void)?) {
      
         Networking.shared.verifyLoginToken(token: token) { (error, jwt) in
             
             if let _ = error {
                 // TODO: handle error
+                if let completion = completion {
+                    completion(nil)
+                }
             } else if let jwt = jwt {
                 
                 // Decode the jwt using this nice library :)
@@ -86,6 +93,15 @@ class VerifyViewController: UIViewController {
                         completion(student)
                     }
                 })
+            } else {
+                let alert = UIAlertController(title: "Whoops", message: "Your token couldn't be verified", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(alertAction)
+                self.present(alert, animated: true, completion: nil)
+                
+                if let completion = completion {
+                    completion(nil)
+                }
             }
         }
     }

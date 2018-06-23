@@ -41,7 +41,7 @@ class Networking: NSObject {
         let url = "/token/\(email)"
         request(method: Methods.POST, url: url, body: nil, secure: false) { (error, response) in
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error)
             }
@@ -57,7 +57,7 @@ class Networking: NSObject {
                 self.jwtToken = jwt
             }
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, self.jwtToken)
             }
@@ -76,7 +76,7 @@ class Networking: NSObject {
                 // TODO: Store student for current student easy access. UserDefaults?
             }
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, student)
             }
@@ -97,7 +97,7 @@ class Networking: NSObject {
                 }
             }
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, tickets)
             }
@@ -118,7 +118,7 @@ class Networking: NSObject {
                 }
             }
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, events)
             }
@@ -139,7 +139,7 @@ class Networking: NSObject {
                 }
             }
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, teams)
             }
@@ -153,7 +153,7 @@ class Networking: NSObject {
             
             // TODO: figure out the response and model
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, [])
             }
@@ -173,7 +173,7 @@ class Networking: NSObject {
                 }
             }
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, students)
             }
@@ -186,12 +186,12 @@ class Networking: NSObject {
         request(method: Methods.PUT, url: url, body: student.toJSON(), secure: true) { (error, response) in
             
             var updatedStudent: Student?
-            if let response = response as? [String:Any] {
+            
+            if !self.handleIfError(error: error, response: response),
+                let response = response as? [String:Any] {
                 updatedStudent = Student(data: response)
                 // TODO: Store updated student for current student easy access. UserDefaults?
             }
-            
-            self.handleIfError(error: error)
             if let completion = completion {
                 completion(error, updatedStudent)
             }
@@ -209,7 +209,7 @@ class Networking: NSObject {
                 ticket = Ticket(data: response)
             }
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, ticket)
             }
@@ -226,7 +226,7 @@ class Networking: NSObject {
                 ticket = Ticket(data: response)
             }
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, ticket)
             }
@@ -244,7 +244,7 @@ class Networking: NSObject {
                 team = Team(data: jsonTeam)
             }
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, team)
             }
@@ -261,7 +261,7 @@ class Networking: NSObject {
                 team = Team(data: response)
             }
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, team)
             }
@@ -275,7 +275,7 @@ class Networking: NSObject {
             
             // TODO: figure out the response and model
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, [])
             }
@@ -296,7 +296,7 @@ class Networking: NSObject {
                 }
             }
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, students)
             }
@@ -313,7 +313,7 @@ class Networking: NSObject {
                 updatedTeam = Team(data: response)
             }
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, updatedTeam)
             }
@@ -327,7 +327,7 @@ class Networking: NSObject {
             
             // TODO: figure out the response
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, nil)
             }
@@ -341,7 +341,7 @@ class Networking: NSObject {
             
             // TODO: figure out the response
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, nil)
             }
@@ -355,7 +355,7 @@ class Networking: NSObject {
             
             // TODO: figure out the response
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, nil)
             }
@@ -369,7 +369,7 @@ class Networking: NSObject {
             
             // TODO: figure out the response
             
-            self.handleIfError(error: error)
+            self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, nil)
             }
@@ -414,12 +414,23 @@ class Networking: NSObject {
                 }
             }
             
+            var newError = error
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                newError = NSError(domain: "UnihackDomain", code: httpResponse.statusCode, userInfo: jsonDecode as? [String:Any])
+            }
+            
             // Call completion on main thread if it exists
             if let completion = completion {
                 DispatchQueue.main.async {
                     // Hide the progress spinner
                     SVProgressHUD.dismiss()
-                    completion(error, jsonDecode)
+                    if let newError = newError {
+                        completion(newError, nil)
+                    } else if let error = error {
+                        completion(error, nil)
+                    } else {
+                        completion(nil, jsonDecode)
+                    }
                 }
             }
             
@@ -433,14 +444,25 @@ class Networking: NSObject {
             return URL(string: Constants.HOST_URL_DEV + path)!
         } else if Configuration.Environment == "local" {
             return URL(string: Constants.HOST_URL_LOCAL + path)!
+        } else if Configuration.Environment == "local-wifi" {
+            return URL(string: Constants.HOST_URL_LOCAL_WIFI + path)!
         } else {
             return URL(string: Constants.HOST_URL + path)!
         }
         
     }
     
-    func handleIfError(error:Error?) {
-        guard let error = error else { return }
-        print("Encountered error: \(error)")
+    @discardableResult func handleIfError(error:Error?, response:Any?) -> Bool {
+        // Check for a formal error, or at least a non 200 http response
+        if let error = error {
+            print("Encountered error: \(error)")
+            return true
+        } else if let response = response as? [String:Any],
+            let statusCode = response["statusCode"] as? String,
+            statusCode != "200" {
+            print("Encountered non-OK 200 response: \(response)")
+            return true
+        }
+        return false
     }
 }
