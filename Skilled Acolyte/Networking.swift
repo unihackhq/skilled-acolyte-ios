@@ -190,7 +190,8 @@ class Networking: NSObject {
             if !self.handleIfError(error: error, response: response),
                 let response = response as? [String:Any] {
                 updatedStudent = Student(data: response)
-                // TODO: Store updated student for current student easy access. UserDefaults?
+                // Save the current student to disk
+                Configuration.CurrentStudent = updatedStudent
             }
             if let completion = completion {
                 completion(error, updatedStudent)
