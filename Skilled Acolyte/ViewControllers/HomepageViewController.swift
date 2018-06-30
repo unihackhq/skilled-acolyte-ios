@@ -54,7 +54,7 @@ class HomepageTableViewController: UITableViewController {
     
     @IBAction func btnSettingsTapped() {
         
-        let settingsPage = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "SettingsViewController")
+        let settingsPage = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "SettingsNavigationController")
         self.present(settingsPage, animated: true, completion: nil)
     }
     

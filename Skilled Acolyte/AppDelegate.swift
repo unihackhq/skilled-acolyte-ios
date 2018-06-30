@@ -23,9 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If we're already logged in start on the home screen, otherwise login
         var startingVC:UIViewController? = nil
         if Configuration.CurrentStudent != nil {
-             startingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBarController")
+             startingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationController")
         } else {
-            startingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
+            startingVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
         }
         window?.rootViewController = startingVC
         

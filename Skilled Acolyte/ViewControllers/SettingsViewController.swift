@@ -8,12 +8,26 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var tableView: UITableView!
+    var tableViewData: [[String]]! = [[String]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableViewData = [
+            [
+                "User"
+            ],
+            [
+                "Notifications"
+            ],
+            [
+                "Team",
+                "Events"
+            ]
+        ]
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +35,84 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func btnCloseTapped() {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
 
+    func userTapped() {
+        
+    }
+    
+    func notificationsTapped() {
+        
+    }
+    
+    func teamTapped() {
+        
+    }
+    
+    func eventsTapped() {
+        
+        let eventsPage = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "EventsViewController")
+        navigationController?.pushViewController(eventsPage, animated: true)
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return tableViewData.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableViewData[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cellData = tableViewData[indexPath.section][indexPath.row]
+        let reuseId = "Settings:"+cellData
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseId)
+        
+        if cell == nil {
+            if cellData == "User" {
+                cell = UITableViewCell(style: .subtitle, reuseIdentifier: reuseId)
+            } else {
+                cell = UITableViewCell(style: .default, reuseIdentifier: reuseId)
+            }
+        }
+        
+        if cellData == "User" {
+            guard let student = Configuration.CurrentStudent?.user else {
+                cell!.textLabel?.text = "Student not found"
+                return cell!
+            }
+            
+            let first = student.firstName ?? ""
+            let last = student.lastName ?? ""
+            
+            cell!.textLabel?.text = first+" "+last
+            cell!.detailTextLabel?.text = student.email
+        } else {
+            cell?.textLabel?.text = cellData
+        }
+        
+        return cell!
+    }
+    
+    // MARK: - UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let cell = tableView.cellForRow(at: indexPath)
+        if cell?.reuseIdentifier == "Settings:User" {
+            userTapped()
+        } else if cell?.reuseIdentifier == "Settings:Notifications" {
+            notificationsTapped()
+        } else if cell?.reuseIdentifier == "Settings:Team" {
+            teamTapped()
+        } else if cell?.reuseIdentifier == "Settings:Events" {
+            eventsTapped()
+        }
+    }
 }
