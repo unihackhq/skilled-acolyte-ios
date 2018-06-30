@@ -143,7 +143,7 @@
         <scene sceneID="oW7-p1-Gcj">
             <objects>
                 <tableViewController id="mwI-kd-bxh" customClass="HomepageTableViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VQg-rs-jW6">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VQg-rs-jW6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -163,13 +163,19 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHY-38-esO">
-                                                    <rect key="frame" x="329" y="27" width="29" height="29"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHY-38-esO">
+                                                    <rect key="frame" x="329" y="27" width="30" height="30"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="29" id="0Y1-3Q-6dV"/>
+                                                        <constraint firstAttribute="width" constant="30" id="0Y1-3Q-6dV"/>
                                                         <constraint firstAttribute="width" secondItem="yHY-38-esO" secondAttribute="height" multiplier="1:1" id="KNV-Qr-DhW"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.cornerRadius" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="btnSettingsTapped" destination="mwI-kd-bxh" eventType="touchUpInside" id="FuH-zy-Hld"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -383,7 +389,11 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Home" id="lGb-HD-HEF"/>
                     <connections>
+                        <outlet property="btnSettings" destination="yHY-38-esO" id="qTV-Mp-W1R"/>
                         <outlet property="lblEventName" destination="boy-2R-eue" id="sVB-UO-Teo"/>
+                        <outlet property="lblNextTechTalk" destination="vkh-Rq-uzx" id="Imt-bi-xoB"/>
+                        <outlet property="lblNextUp" destination="mAq-gT-zJP" id="TsW-Zt-dwx"/>
+                        <outlet property="lblToDo" destination="van-Lp-8W3" id="Fe3-X8-cJ3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v7A-hI-Zcc" userLabel="First Responder" sceneMemberID="firstResponder"/>
