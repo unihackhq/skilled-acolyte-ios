@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P1D-kg-6sg">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Rubik-Light.ttf">
+            <string>Rubik-Light</string>
+        </array>
+        <array key="Rubik-Regular.ttf">
+            <string>Rubik-Regular</string>
+        </array>
+        <array key="texgyreadventor-regular.otf">
+            <string>TeXGyreAdventor-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="4bO-fF-4Ae">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="P1D-kg-6sg" customClass="LoginViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lbL-tV-fF6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZn-ZB-Mu8">
+                                <rect key="frame" x="56" y="367" width="262.5" height="30"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.7725490196" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik" pointSize="16"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="login" destination="P1D-kg-6sg" eventType="touchUpInside" id="nsz-si-kkc"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zPS-xH-xDu">
+                                <rect key="frame" x="56" y="329" width="262.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ZbC-fi-K25"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="P1D-kg-6sg" id="Sh2-Cu-e2S"/>
+                                </connections>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unihack-logo-sided" translatesAutoresizingMaskIntoConstraints="NO" id="jZn-BI-yQP">
+                                <rect key="frame" x="56" y="195" width="112.5" height="58.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jZn-BI-yQP" secondAttribute="height" multiplier="160:83" id="w1p-Ve-Paf"/>
+                                </constraints>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make sure to enter the same email you have in Eventbrite." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmf-6O-d0g">
+                                <rect key="frame" x="56" y="405" width="262.5" height="26.5"/>
+                                <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the Imagination Hackathon." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaB-jI-KAv">
+                                <rect key="frame" x="56" y="254.5" width="262.5" height="49.5"/>
+                                <fontDescription key="fontDescription" name="TeXGyreAdventor-Regular" family="TeX Gyre Adventor" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upper-bound-unihack-border" translatesAutoresizingMaskIntoConstraints="NO" id="WFq-XA-eQa">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WFq-XA-eQa" secondAttribute="height" multiplier="375:128" id="8n9-Cf-sVc"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lower-bound-unihack-border" translatesAutoresizingMaskIntoConstraints="NO" id="zW0-oY-MN8">
+                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zW0-oY-MN8" secondAttribute="height" multiplier="75:16" id="ixy-er-g22"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="XyE-dX-6FO"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="iZn-ZB-Mu8" firstAttribute="trailing" secondItem="zPS-xH-xDu" secondAttribute="trailing" id="5Am-dd-HmJ"/>
+                            <constraint firstItem="YaB-jI-KAv" firstAttribute="top" secondItem="jZn-BI-yQP" secondAttribute="bottom" constant="1" id="6UO-Ns-Ru2"/>
+                            <constraint firstItem="gmf-6O-d0g" firstAttribute="trailing" secondItem="iZn-ZB-Mu8" secondAttribute="trailing" id="7U2-oW-kBo"/>
+                            <constraint firstItem="WFq-XA-eQa" firstAttribute="leading" secondItem="L8j-h5-IlV" secondAttribute="leading" id="9v4-VU-1XS"/>
+                            <constraint firstItem="gmf-6O-d0g" firstAttribute="leading" secondItem="iZn-ZB-Mu8" secondAttribute="leading" id="A4n-Rh-Zl5"/>
+                            <constraint firstItem="zPS-xH-xDu" firstAttribute="trailing" secondItem="gmf-6O-d0g" secondAttribute="trailing" id="Eju-gs-RYG"/>
+                            <constraint firstItem="zPS-xH-xDu" firstAttribute="centerX" secondItem="L8j-h5-IlV" secondAttribute="centerX" id="Fsc-8l-MUa"/>
+                            <constraint firstItem="iZn-ZB-Mu8" firstAttribute="leading" secondItem="zPS-xH-xDu" secondAttribute="leading" id="Hj2-F6-JfK"/>
+                            <constraint firstAttribute="trailing" secondItem="zW0-oY-MN8" secondAttribute="trailing" id="IaB-16-Loi"/>
+                            <constraint firstAttribute="top" secondItem="WFq-XA-eQa" secondAttribute="top" id="LFa-3t-63u"/>
+                            <constraint firstItem="zPS-xH-xDu" firstAttribute="top" secondItem="YaB-jI-KAv" secondAttribute="bottom" constant="25" id="NUX-D6-otS"/>
+                            <constraint firstItem="YaB-jI-KAv" firstAttribute="leading" secondItem="jZn-BI-yQP" secondAttribute="leading" id="SV1-Gh-c1B"/>
+                            <constraint firstItem="zPS-xH-xDu" firstAttribute="leading" secondItem="gmf-6O-d0g" secondAttribute="leading" id="UKh-wK-pfe"/>
+                            <constraint firstAttribute="bottom" secondItem="zW0-oY-MN8" secondAttribute="bottom" id="am8-TZ-bsS"/>
+                            <constraint firstItem="jZn-BI-yQP" firstAttribute="top" secondItem="L8j-h5-IlV" secondAttribute="top" constant="175" id="d4q-Tr-I2v"/>
+                            <constraint firstItem="jZn-BI-yQP" firstAttribute="leading" secondItem="zPS-xH-xDu" secondAttribute="leading" id="eWS-1a-lR7"/>
+                            <constraint firstItem="zW0-oY-MN8" firstAttribute="leading" secondItem="lbL-tV-fF6" secondAttribute="leading" id="hPU-p0-epK"/>
+                            <constraint firstItem="YaB-jI-KAv" firstAttribute="trailing" secondItem="zPS-xH-xDu" secondAttribute="trailing" id="i9L-XC-f2N"/>
+                            <constraint firstItem="jZn-BI-yQP" firstAttribute="width" secondItem="lbL-tV-fF6" secondAttribute="width" multiplier="0.3" id="mTV-7b-Lfy"/>
+                            <constraint firstItem="iZn-ZB-Mu8" firstAttribute="top" secondItem="zPS-xH-xDu" secondAttribute="bottom" constant="8" id="p6T-95-hiC"/>
+                            <constraint firstItem="zPS-xH-xDu" firstAttribute="width" secondItem="lbL-tV-fF6" secondAttribute="width" multiplier="0.7" id="rAe-Aj-sSf"/>
+                            <constraint firstItem="gmf-6O-d0g" firstAttribute="top" secondItem="iZn-ZB-Mu8" secondAttribute="bottom" constant="8" id="rRk-wq-lkd"/>
+                            <constraint firstItem="WFq-XA-eQa" firstAttribute="trailing" secondItem="L8j-h5-IlV" secondAttribute="trailing" id="sAc-7R-x0i"/>
+                            <constraint firstItem="iZn-ZB-Mu8" firstAttribute="height" secondItem="zPS-xH-xDu" secondAttribute="height" id="tY2-WS-BLp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="L8j-h5-IlV"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailLabel" destination="zPS-xH-xDu" id="z2C-7m-yYY"/>
+                        <outlet property="hintLabel" destination="gmf-6O-d0g" id="gIz-U4-YYY"/>
+                        <outlet property="loginButton" destination="iZn-ZB-Mu8" id="uBb-2C-y4z"/>
+                        <outlet property="logoView" destination="jZn-BI-yQP" id="RYo-wP-w4k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6R4-hb-0CU" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1260" y="177"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="lower-bound-unihack-border" width="826" height="140"/>
+        <image name="unihack-logo-sided" width="1785" height="966"/>
+        <image name="upper-bound-unihack-border" width="826" height="183"/>
+    </resources>
+</document>

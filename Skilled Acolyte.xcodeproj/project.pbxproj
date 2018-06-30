@@ -17,6 +17,8 @@
 		285C57B620AD6AF900C57F03 /* TeamManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285C57B520AD6AF900C57F03 /* TeamManageViewController.swift */; };
 		285C57B820AD6AFF00C57F03 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285C57B720AD6AFF00C57F03 /* FAQViewController.swift */; };
 		285C57BB20B070C300C57F03 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 285C57B920B051C800C57F03 /* fonts */; };
+		6537CD6420E7A56300EF0E5F /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6537CD6220E7A56200EF0E5F /* Onboarding.storyboard */; };
+		6537CD6720E7A5C600EF0E5F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6537CD6520E7A5C600EF0E5F /* Settings.storyboard */; };
 		6550A193209726F100068551 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6550A192209726F100068551 /* AppDelegate.swift */; };
 		6550A198209726F100068551 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6550A196209726F100068551 /* Main.storyboard */; };
 		6550A19A209726F400068551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6550A199209726F400068551 /* Assets.xcassets */; };
@@ -60,6 +62,8 @@
 		285C57B520AD6AF900C57F03 /* TeamManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManageViewController.swift; sourceTree = "<group>"; };
 		285C57B720AD6AFF00C57F03 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		285C57B920B051C800C57F03 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		6537CD6320E7A56300EF0E5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
+		6537CD6620E7A5C600EF0E5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		6550A18F209726F100068551 /* Skilled Acolyte.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Skilled Acolyte.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6550A192209726F100068551 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6550A197209726F100068551 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 				6571ED42209D932D0006F868 /* ViewControllers */,
 				6571ED43209D933A0006F868 /* Models */,
 				6550A196209726F100068551 /* Main.storyboard */,
+				6537CD6220E7A56200EF0E5F /* Onboarding.storyboard */,
+				6537CD6520E7A5C600EF0E5F /* Settings.storyboard */,
 				285C57B920B051C800C57F03 /* fonts */,
 				6550A199209726F400068551 /* Assets.xcassets */,
 				6550A19B209726F400068551 /* LaunchScreen.storyboard */,
@@ -318,7 +324,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				285C57BB20B070C300C57F03 /* fonts in Resources */,
+				6537CD6420E7A56300EF0E5F /* Onboarding.storyboard in Resources */,
 				6550A19D209726F400068551 /* LaunchScreen.storyboard in Resources */,
+				6537CD6720E7A5C600EF0E5F /* Settings.storyboard in Resources */,
 				6550A19A209726F400068551 /* Assets.xcassets in Resources */,
 				6550A198209726F100068551 /* Main.storyboard in Resources */,
 			);
@@ -465,6 +473,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6537CD6220E7A56200EF0E5F /* Onboarding.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6537CD6320E7A56300EF0E5F /* Base */,
+			);
+			name = Onboarding.storyboard;
+			sourceTree = "<group>";
+		};
+		6537CD6520E7A5C600EF0E5F /* Settings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6537CD6620E7A5C600EF0E5F /* Base */,
+			);
+			name = Settings.storyboard;
+			sourceTree = "<group>";
+		};
 		6550A196209726F100068551 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
