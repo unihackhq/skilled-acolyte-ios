@@ -11,16 +11,33 @@ import UIKit
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var logoView: UIImageView!
+    @IBOutlet weak var titleView: UILabel!
     @IBOutlet weak var emailLabel: UITextField!
     @IBOutlet weak var hintLabel: UILabel!
     
     @IBOutlet weak var loginButton: UIButton!
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.logoView.isHidden = false
+        self.titleView.isHidden = false
+        self.hintLabel.isHidden = false
+        self.emailLabel.isHidden = false
+        self.loginButton.isHidden = false
+        UIView.animate(withDuration: 1.5, animations: {
+            self.logoView.alpha = 1.0
+            self.titleView.alpha = 1.0
+            self.hintLabel.alpha = 1.0
+            self.emailLabel.alpha = 1.0
+            self.loginButton.alpha = 1.0
+        })
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+
         emailLabel.text = "test_student@blackhole.postmarkapp.com"
     }
     
@@ -52,9 +69,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.present(verifyPage, animated: true, completion: nil)
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        hintLabel.isHidden = false
-        loginButton.isHidden = false
-    }
 
 }

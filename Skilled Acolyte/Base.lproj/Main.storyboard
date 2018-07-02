@@ -12,6 +12,17 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Rubik-Medium.ttf">
+            <string>Rubik-Medium</string>
+        </array>
+        <array key="Rubik-Regular.ttf">
+            <string>Rubik-Regular</string>
+        </array>
+        <array key="texgyreadventor-bold.otf">
+            <string>TeXGyreAdventor-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="8Pv-cO-XD4">
@@ -158,8 +169,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boy-2R-eue">
-                                                    <rect key="frame" x="16" y="70.5" width="343" height="33.5"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                                    <rect key="frame" x="16" y="68" width="343" height="36"/>
+                                                    <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik" pointSize="30"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -199,12 +210,12 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap here to enable push notifications to receive alerts about the event" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBM-lA-Iwg">
                                                             <rect key="frame" x="28" y="12" width="287" height="75"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="17"/>
+                                                            <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="IBM-lA-Iwg" firstAttribute="top" secondItem="4fG-Wv-0Ij" secondAttribute="top" constant="12" id="7UV-9x-mry"/>
                                                         <constraint firstAttribute="bottom" secondItem="IBM-lA-Iwg" secondAttribute="bottom" constant="12" id="7jc-HT-Wo4"/>
@@ -236,10 +247,10 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vcp-6M-OHv">
                                                     <rect key="frame" x="16" y="8" width="343" height="99"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Next On The Schedule&gt;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAq-gT-zJP">
-                                                            <rect key="frame" x="32" y="29" width="279" height="58"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                                            <nil key="textColor"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Next On The Schedule&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAq-gT-zJP">
+                                                            <rect key="frame" x="16" y="29" width="311" height="58"/>
+                                                            <fontDescription key="fontDescription" name="TeXGyreAdventor-Bold" family="TeX Gyre Adventor" pointSize="14"/>
+                                                            <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Up" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vu-am-WCW">
@@ -247,17 +258,17 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="InW-ej-Zhg"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="17"/>
+                                                            <color key="textColor" red="0.15686274509803921" green="0.18823529411764706" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstItem="mAq-gT-zJP" firstAttribute="leading" secondItem="vcp-6M-OHv" secondAttribute="leading" constant="32" id="Bpt-1D-GN2"/>
                                                         <constraint firstAttribute="trailing" secondItem="8Vu-am-WCW" secondAttribute="trailing" constant="16" id="H2p-Fi-W1S"/>
+                                                        <constraint firstItem="mAq-gT-zJP" firstAttribute="trailing" secondItem="8Vu-am-WCW" secondAttribute="trailing" id="Seq-Vs-W8k"/>
                                                         <constraint firstItem="8Vu-am-WCW" firstAttribute="top" secondItem="vcp-6M-OHv" secondAttribute="top" constant="12" id="VCb-pz-Ixr"/>
-                                                        <constraint firstAttribute="trailing" secondItem="mAq-gT-zJP" secondAttribute="trailing" constant="32" id="b4c-MG-hqw"/>
+                                                        <constraint firstItem="mAq-gT-zJP" firstAttribute="leading" secondItem="8Vu-am-WCW" secondAttribute="leading" id="WsX-gm-k07"/>
                                                         <constraint firstItem="mAq-gT-zJP" firstAttribute="top" secondItem="8Vu-am-WCW" secondAttribute="bottom" id="o9E-TN-Aqa"/>
                                                         <constraint firstItem="8Vu-am-WCW" firstAttribute="leading" secondItem="vcp-6M-OHv" secondAttribute="leading" constant="16" id="qvd-1D-J4r"/>
                                                         <constraint firstAttribute="bottom" secondItem="mAq-gT-zJP" secondAttribute="bottom" constant="12" id="wTj-Zv-pwQ"/>
@@ -287,10 +298,10 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRZ-AV-Guu">
                                                     <rect key="frame" x="16" y="8" width="343" height="99"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Next Tech Talk&gt;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkh-Rq-uzx">
-                                                            <rect key="frame" x="32" y="29" width="279" height="58"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                                            <nil key="textColor"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Next Tech Talk&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkh-Rq-uzx">
+                                                            <rect key="frame" x="16" y="29" width="311" height="58"/>
+                                                            <fontDescription key="fontDescription" name="TeXGyreAdventor-Bold" family="TeX Gyre Adventor" pointSize="14"/>
+                                                            <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tech Talks" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VB8-uI-Hzd">
@@ -298,19 +309,19 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="5y6-RX-R2z"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="17"/>
+                                                            <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="VB8-uI-Hzd" firstAttribute="leading" secondItem="hRZ-AV-Guu" secondAttribute="leading" constant="16" id="11U-3u-QjR"/>
                                                         <constraint firstAttribute="bottom" secondItem="vkh-Rq-uzx" secondAttribute="bottom" constant="12" id="99l-0L-Baf"/>
-                                                        <constraint firstItem="vkh-Rq-uzx" firstAttribute="leading" secondItem="hRZ-AV-Guu" secondAttribute="leading" constant="32" id="ChM-3S-m0D"/>
+                                                        <constraint firstItem="vkh-Rq-uzx" firstAttribute="leading" secondItem="VB8-uI-Hzd" secondAttribute="leading" id="BoW-pB-EET"/>
+                                                        <constraint firstItem="vkh-Rq-uzx" firstAttribute="trailing" secondItem="VB8-uI-Hzd" secondAttribute="trailing" id="OLf-7B-Xoh"/>
                                                         <constraint firstItem="vkh-Rq-uzx" firstAttribute="top" secondItem="VB8-uI-Hzd" secondAttribute="bottom" id="gYJ-Ok-COn"/>
                                                         <constraint firstItem="VB8-uI-Hzd" firstAttribute="top" secondItem="hRZ-AV-Guu" secondAttribute="top" constant="12" id="nyQ-gJ-wiz"/>
-                                                        <constraint firstAttribute="trailing" secondItem="vkh-Rq-uzx" secondAttribute="trailing" constant="32" id="oCJ-SB-yU9"/>
                                                         <constraint firstAttribute="trailing" secondItem="VB8-uI-Hzd" secondAttribute="trailing" constant="16" id="woP-dY-b9v"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -338,10 +349,10 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hXo-hM-06i">
                                                     <rect key="frame" x="16" y="8" width="343" height="99"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Make a team, get members,  submit a project&gt;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="van-Lp-8W3">
-                                                            <rect key="frame" x="32" y="29" width="279" height="58"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                                            <nil key="textColor"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Make a team, get members,  submit a project&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="van-Lp-8W3">
+                                                            <rect key="frame" x="16" y="29" width="311" height="58"/>
+                                                            <fontDescription key="fontDescription" name="TeXGyreAdventor-Bold" family="TeX Gyre Adventor" pointSize="14"/>
+                                                            <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Do" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMP-6W-rVr">
@@ -349,20 +360,20 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="9zq-4R-xQi"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="17"/>
+                                                            <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89411764705882357" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="van-Lp-8W3" secondAttribute="bottom" constant="12" id="0xF-f5-rTb"/>
                                                         <constraint firstItem="uMP-6W-rVr" firstAttribute="leading" secondItem="hXo-hM-06i" secondAttribute="leading" constant="16" id="DK0-DI-PA1"/>
-                                                        <constraint firstAttribute="trailing" secondItem="van-Lp-8W3" secondAttribute="trailing" constant="32" id="Pko-NA-XGh"/>
+                                                        <constraint firstItem="van-Lp-8W3" firstAttribute="leading" secondItem="uMP-6W-rVr" secondAttribute="leading" id="FGk-hD-CWh"/>
                                                         <constraint firstAttribute="trailing" secondItem="uMP-6W-rVr" secondAttribute="trailing" constant="16" id="Q9P-cH-ztY"/>
+                                                        <constraint firstItem="van-Lp-8W3" firstAttribute="trailing" secondItem="uMP-6W-rVr" secondAttribute="trailing" id="QQg-xQ-3cO"/>
                                                         <constraint firstItem="uMP-6W-rVr" firstAttribute="top" secondItem="hXo-hM-06i" secondAttribute="top" constant="12" id="Teh-6S-hof"/>
                                                         <constraint firstItem="van-Lp-8W3" firstAttribute="top" secondItem="uMP-6W-rVr" secondAttribute="bottom" id="XA9-Dk-TKu"/>
-                                                        <constraint firstItem="van-Lp-8W3" firstAttribute="leading" secondItem="hXo-hM-06i" secondAttribute="leading" constant="32" id="i4B-wx-WAo"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.roundedCorner">
@@ -430,13 +441,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSi-uf-YRW">
-                                <rect key="frame" x="16" y="70" width="343" height="33.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <rect key="frame" x="16" y="70" width="343" height="36"/>
+                                <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i6t-vp-a71">
-                                <rect key="frame" x="0.0" y="123.5" width="375" height="494.5"/>
+                                <rect key="frame" x="0.0" y="126" width="375" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -467,13 +478,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfV-BV-PxA">
-                                <rect key="frame" x="16" y="70" width="343" height="33.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <rect key="frame" x="16" y="70" width="343" height="36"/>
+                                <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p5b-Lb-Ixo">
-                                <rect key="frame" x="0.0" y="123.5" width="375" height="494.5"/>
+                                <rect key="frame" x="0.0" y="126" width="375" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoItemCell" rowHeight="150" id="rxw-ma-D4U">
@@ -501,13 +512,12 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLr-78-mXx">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLr-78-mXx">
                                                     <rect key="frame" x="15" y="45.5" width="345" height="57.5"/>
                                                     <string key="text">Content - line 1
 line 2
 line 3
-line 4
-line 5</string>
+line 4..</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -576,8 +586,8 @@ line 5</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVr-YU-o8F">
-                                <rect key="frame" x="16" y="70" width="343" height="33.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <rect key="frame" x="16" y="70" width="343" height="36"/>
+                                <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -589,7 +599,7 @@ line 5</string>
                                 </state>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="D04-A6-PzQ">
-                                <rect key="frame" x="16" y="111.5" width="343" height="555.5"/>
+                                <rect key="frame" x="16" y="114" width="343" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -599,13 +609,13 @@ line 5</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xKh-Kd-Ehh" firstAttribute="top" secondItem="yso-dk-HAe" secondAttribute="top" id="6Mz-vc-MJw"/>
-                            <constraint firstItem="yso-dk-HAe" firstAttribute="trailing" secondItem="D04-A6-PzQ" secondAttribute="trailing" constant="16" id="GOY-CK-G6e"/>
-                            <constraint firstItem="D04-A6-PzQ" firstAttribute="leading" secondItem="yso-dk-HAe" secondAttribute="leading" constant="16" id="Mit-vb-CKC"/>
                             <constraint firstItem="xKh-Kd-Ehh" firstAttribute="leading" secondItem="yso-dk-HAe" secondAttribute="leading" constant="16" id="QF2-d5-1zc"/>
                             <constraint firstItem="gVr-YU-o8F" firstAttribute="leading" secondItem="yso-dk-HAe" secondAttribute="leading" constant="16" id="Qpf-xm-EHr"/>
+                            <constraint firstItem="D04-A6-PzQ" firstAttribute="leading" secondItem="gVr-YU-o8F" secondAttribute="leading" id="Sqs-rr-QCO"/>
                             <constraint firstItem="gVr-YU-o8F" firstAttribute="top" secondItem="yso-dk-HAe" secondAttribute="top" constant="50" id="W4H-iA-jgI"/>
                             <constraint firstItem="D04-A6-PzQ" firstAttribute="bottom" secondItem="rFz-ch-fYi" secondAttribute="bottomMargin" id="fcD-YL-xie"/>
                             <constraint firstItem="yso-dk-HAe" firstAttribute="trailing" secondItem="gVr-YU-o8F" secondAttribute="trailing" constant="16" id="kFN-Bq-kf1"/>
+                            <constraint firstItem="D04-A6-PzQ" firstAttribute="trailing" secondItem="gVr-YU-o8F" secondAttribute="trailing" id="tAg-k4-QiJ"/>
                             <constraint firstItem="D04-A6-PzQ" firstAttribute="top" secondItem="gVr-YU-o8F" secondAttribute="bottom" constant="8" id="xA4-6h-HRd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yso-dk-HAe"/>
@@ -624,7 +634,7 @@ line 5</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g4W-0s-BG1">
-                                <rect key="frame" x="0.0" y="123.5" width="375" height="494.5"/>
+                                <rect key="frame" x="0.0" y="126" width="375" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleItemCell" rowHeight="50" id="HE6-P7-WNz">
@@ -638,8 +648,8 @@ line 5</string>
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBy-76-f57">
-                                <rect key="frame" x="16" y="70" width="343" height="33.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <rect key="frame" x="16" y="70" width="343" height="36"/>
+                                <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
