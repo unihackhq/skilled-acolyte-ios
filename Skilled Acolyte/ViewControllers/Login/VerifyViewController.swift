@@ -109,7 +109,7 @@ class VerifyViewController: UIViewController {
     func goToHomePage() {
         
         let homePage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBarController")
-        self.present(homePage, animated: true, completion: nil)
+        self.view.window?.rootViewController = homePage
     }
     
     func goToOnboardingPage() {

@@ -182,7 +182,10 @@
                                                         <constraint firstAttribute="width" secondItem="yHY-38-esO" secondAttribute="height" multiplier="1:1" id="KNV-Qr-DhW"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.cornerRadius" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="clipToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="btnSettingsTapped" destination="mwI-kd-bxh" eventType="touchUpInside" id="FuH-zy-Hld"/>

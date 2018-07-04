@@ -26,6 +26,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             [
                 "Team",
                 "Events"
+            ],
+            [
+                "Sign Out"
             ]
         ]
     }
@@ -55,6 +58,17 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let eventsPage = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "EventsViewController")
         navigationController?.pushViewController(eventsPage, animated: true)
+    }
+    
+    func signOutTapped() {
+        
+        Configuration.CurrentStudent = nil
+        Configuration.CurrentTeam = nil
+        Configuration.CurrentEvent = nil
+        Configuration.CurrentTicket = nil
+        
+        let signInPage = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
+        self.view.window?.rootViewController = signInPage
     }
     
     // MARK: - UITableViewDataSource
@@ -113,6 +127,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             teamTapped()
         } else if cell?.reuseIdentifier == "Settings:Events" {
             eventsTapped()
+        } else if cell?.reuseIdentifier == "Settings:Sign Out" {
+            signOutTapped()
         }
     }
 }
