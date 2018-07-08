@@ -26,6 +26,8 @@ class HomepageTableViewController: UITableViewController {
         
         guard let student = Configuration.CurrentStudent else { return }
         
+        refreshSettingsButtonForStudent(student)
+        
         // Load the student's events
         Networking.shared.getStudentEvents(byStudentId: student.id) { (error, events) in
             
@@ -51,6 +53,36 @@ class HomepageTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func refreshSettingsButtonForStudent(_ student: Student) {
+        // Default to letters. This will be removed if an image is loaded
+        let firstName = student.user.firstName ?? ""
+        let lastName = student.user.lastName ?? ""
+        let firstLetters = String(describing:firstName.first!) + String(describing:lastName.first!)
+        btnSettings.setTitle(firstLetters, for: .normal)
+        
+        // Try to load in an image
+        if let imgUrl = student.photoUrl {
+            // Download photo and set on button
+            guard let data = try? Data(contentsOf: URL(string:imgUrl)!) else { return }
+            let image = UIImage(data: data)
+            btnSettings.setImage(image, for: .normal)
+            btnSettings.setTitle("", for: .normal)
+        }
+    }
+    
+    func registerPushNotifications() {
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+                guard settings.authorizationStatus == .authorized else { return }
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        } else {
+            // Fallback on iOS 9 and earlier versions
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert], categories: nil))
+            UIApplication.shared.registerForRemoteNotifications()
+        }
     }
     
     @IBAction func btnSettingsTapped() {
@@ -91,19 +123,6 @@ class HomepageTableViewController: UITableViewController {
 //    func toDoTapped() {
 //
 //    }
-    
-    func registerPushNotifications() {
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-                guard settings.authorizationStatus == .authorized else { return }
-                UIApplication.shared.registerForRemoteNotifications()
-            }
-        } else {
-            // Fallback on iOS 9 and earlier versions
-            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert], categories: nil))
-            UIApplication.shared.registerForRemoteNotifications()
-        }
-    }
     
     // MARK: - UITableViewDelegate
     
