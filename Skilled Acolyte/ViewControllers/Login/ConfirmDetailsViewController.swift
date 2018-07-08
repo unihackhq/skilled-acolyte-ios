@@ -29,12 +29,12 @@ class ConfirmDetailsViewController: UIViewController, UITableViewDataSource, Con
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var tableView: UITableView!
     private var tableViewData: [String]!
-    private var confirmingStudent: Student!
-    private var confirmingStep: Int!
+    private var confirmingStudent: Student! = Configuration.CurrentStudent
+    private var confirmingStep: Int! = 1
         
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         switch confirmingStep {
         case 1:

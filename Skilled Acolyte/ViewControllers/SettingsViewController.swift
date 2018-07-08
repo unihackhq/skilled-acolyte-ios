@@ -44,6 +44,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
 
     func userTapped() {
         
+        let eventsPage = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "ConfirmDetailsViewController")
+        navigationController?.pushViewController(eventsPage, animated: true)
     }
     
     func notificationsTapped() {

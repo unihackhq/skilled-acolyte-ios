@@ -66,7 +66,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func goToVerifyPage() {
         
         let verifyVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "ConfirmDetailsViewController") as! ConfirmDetailsViewController
-        verifyVC.populateWithConfirmingStudent(Configuration.CurrentStudent!, confirmingStep: 1)
         let navController = UINavigationController(rootViewController: verifyVC)
         navController.navigationBar.isHidden = true
         view.window?.rootViewController = navController
