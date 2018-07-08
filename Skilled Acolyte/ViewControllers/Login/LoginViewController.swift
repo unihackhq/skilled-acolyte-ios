@@ -65,8 +65,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     func goToVerifyPage() {
         
-        let verifyPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VerifyViewController")
-        self.present(verifyPage, animated: true, completion: nil)
+        let verifyVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "ConfirmDetailsViewController") as! ConfirmDetailsViewController
+        verifyVC.populateWithConfirmingStudent(Configuration.CurrentStudent!, confirmingStep: 1)
+        let navController = UINavigationController(rootViewController: verifyVC)
+        navController.navigationBar.isHidden = true
+        view.window?.rootViewController = navController
     }
     
 

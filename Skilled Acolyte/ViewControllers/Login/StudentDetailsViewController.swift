@@ -49,9 +49,6 @@ class StudentDetailsViewController: UIViewController {
                 if let mobile = student.user.mobile { self.txtMobile.text = mobile }
                 if let degree = student.degree { self.txtDegree.text = degree }
                 if let studyLevel = student.studyLevel { self.txtStudyLevel.text = studyLevel }
-                if let dietaryReq = student.dietaryReq { self.txtDietaryReq.text = dietaryReq }
-                if let medicalReq = student.medicalReq { self.txtMedicalReq.text = medicalReq }
-                if let shirtSize = student.shirtSize { self.txtTShirtSize.text = shirtSize }
             }
         }
     }
@@ -87,9 +84,6 @@ class StudentDetailsViewController: UIViewController {
         updatedStudent.user.mobile = mobile
         updatedStudent.degree = txtDegree.text
         updatedStudent.studyLevel = txtStudyLevel.text
-        updatedStudent.dietaryReq = txtDietaryReq.text
-        updatedStudent.medicalReq = txtMedicalReq.text
-        updatedStudent.shirtSize = txtTShirtSize.text
         
         // Update the student on the server
         Networking.shared.updateStudent(student: updatedStudent) { (error, student) in

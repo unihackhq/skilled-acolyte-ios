@@ -24,8 +24,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 "Notifications"
             ],
             [
-                "Team",
-                "Events"
+                "My Team",
+                "My Events"
             ],
             [
                 "Sign Out"
@@ -123,9 +123,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             userTapped()
         } else if cell?.reuseIdentifier == "Settings:Notifications" {
             notificationsTapped()
-        } else if cell?.reuseIdentifier == "Settings:Team" {
+        } else if cell?.reuseIdentifier == "Settings:My Team" {
             teamTapped()
-        } else if cell?.reuseIdentifier == "Settings:Events" {
+        } else if cell?.reuseIdentifier == "Settings:My Events" {
             eventsTapped()
         } else if cell?.reuseIdentifier == "Settings:Sign Out" {
             signOutTapped()
