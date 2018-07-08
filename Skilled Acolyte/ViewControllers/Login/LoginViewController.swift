@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        emailLabel.text = "test_student@blackhole.postmarkapp.com"
+        emailLabel.text = "bob@unihack.net"
     }
     
     override func didReceiveMemoryWarning() {
@@ -65,10 +65,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     func goToVerifyPage() {
         
-        let verifyVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "ConfirmDetailsViewController") as! ConfirmDetailsViewController
-        let navController = UINavigationController(rootViewController: verifyVC)
-        navController.navigationBar.isHidden = true
-        view.window?.rootViewController = navController
+        let verifyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VerifyViewController")
+        view.window?.rootViewController = verifyVC
     }
     
 

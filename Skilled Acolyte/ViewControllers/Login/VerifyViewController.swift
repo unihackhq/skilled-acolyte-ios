@@ -114,8 +114,10 @@ class VerifyViewController: UIViewController {
     
     func goToOnboardingPage() {
         
-        let updateStudentDetailsPage = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StudentDetailsViewController")
-        self.present(updateStudentDetailsPage, animated: true, completion: nil)
+        let verifyVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "ConfirmDetailsViewController") as! ConfirmDetailsViewController
+        let navController = UINavigationController(rootViewController: verifyVC)
+        navController.navigationBar.isHidden = true
+        view.window?.rootViewController = navController
     }
 
 }
