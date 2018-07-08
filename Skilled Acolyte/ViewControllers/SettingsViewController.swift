@@ -54,6 +54,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func teamTapped() {
         
+        let eventsPage = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "CreateTeamViewController")
+        navigationController?.pushViewController(eventsPage, animated: true)
     }
     
     func eventsTapped() {

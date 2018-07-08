@@ -15,7 +15,9 @@ struct Team: Codable {
     var name: String = ""
     var teamDescription: String = ""
     var photoUrl: String?
-        
+    
+    init() {}
+    
     init(data: [String:Any]?) {
         guard let data = data else { return }
         

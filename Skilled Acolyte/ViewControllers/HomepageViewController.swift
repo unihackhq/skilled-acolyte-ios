@@ -68,6 +68,8 @@ class HomepageTableViewController: UITableViewController {
             guard let data = try? Data(contentsOf: URL(string:imgUrl)!) else { return }
             let image = UIImage(data: data)
             btnSettings.setImage(image, for: .normal)
+            btnSettings.clipsToBounds = true
+            btnSettings.imageView?.contentMode = .scaleAspectFill
             btnSettings.setTitle("", for: .normal)
         }
     }
