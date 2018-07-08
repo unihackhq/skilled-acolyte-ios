@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class HomepageTableViewController: UITableViewController {
 
@@ -60,19 +61,49 @@ class HomepageTableViewController: UITableViewController {
     
     func enablePushNotificationsTapped() {
         // TODO: register for push notifications
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+                guard granted else {
+                    print("Failed to grant push notifications")
+                    if let error = error {
+                        print(error)
+                    }
+                    return
+                }
+                
+                // Granted!
+                self.registerPushNotifications()
+            }
+        } else {
+            // Fallback on iOS 9 and earlier versions
+            self.registerPushNotifications()
+        }
     }
     
-//    func nextUpTapped() {
-//
-//    }
-//
-//    func techTalksTapped() {
-//
-//    }
-//
+    func nextUpTapped() {
+
+    }
+
+    func techTalksTapped() {
+
+    }
+
 //    func toDoTapped() {
 //
 //    }
+    
+    func registerPushNotifications() {
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+                guard settings.authorizationStatus == .authorized else { return }
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        } else {
+            // Fallback on iOS 9 and earlier versions
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert], categories: nil))
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+    }
     
     // MARK: - UITableViewDelegate
     
@@ -82,12 +113,12 @@ class HomepageTableViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath)
         if cell?.reuseIdentifier == "EnablePushNotificationsCell" {
             enablePushNotificationsTapped()
+        } else if cell?.reuseIdentifier == "NextUpCell" {
+            nextUpTapped()
+        } else if cell?.reuseIdentifier == "NextTechTalkCell" {
+            techTalksTapped()
         }
-//        else if cell?.reuseIdentifier == "NextUpCell" {
-//            nextUpTapped()
-//        } else if cell?.reuseIdentifier == "NextTechTalkCell" {
-//            techTalksTapped()
-//        } else if cell?.reuseIdentifier == "HackathonToDoCell" {
+//        else if cell?.reuseIdentifier == "HackathonToDoCell" {
 //            toDoTapped()
 //        }
     }
