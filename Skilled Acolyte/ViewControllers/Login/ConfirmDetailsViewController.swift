@@ -117,7 +117,7 @@ class ConfirmDetailsViewController: UIViewController, UITableViewDataSource, Con
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ConfirmDetailCell") as! ConfirmDetailTableViewCell
         let studentDetail = tableViewData[indexPath.row]
-        cell.populateWith(confirmingDetail: studentDetail, forStudent: confirmingStudent, delegate: self)
+        cell.populateWith(confirmingDetail: studentDetail, student: confirmingStudent, delegate: self)
         
         return cell
     }
@@ -130,5 +130,48 @@ class ConfirmDetailsViewController: UIViewController, UITableViewDataSource, Con
     
     func confirmDetailBackTapped() {
         btnBackTapped()
+    }
+    
+    func confirmDetailUpdated(value: String, for confirmingDetail: String) {
+        
+        switch confirmingDetail {
+        case ConfirmDetail.FirstName:
+            confirmingStudent.user.firstName = value
+            break
+        case ConfirmDetail.LastName:
+            confirmingStudent.user.lastName = value
+            break
+        case ConfirmDetail.PreferredName:
+            if let firstName = confirmingStudent.user.firstName,
+                value == "" {
+                confirmingStudent.user.preferredName = firstName
+            } else {
+                confirmingStudent.user.preferredName = value
+            }
+            break
+        case ConfirmDetail.DateOfBirth:
+            // TODO: extract date
+            break
+        case ConfirmDetail.Gender:
+            confirmingStudent.user.gender = value
+            break
+        case ConfirmDetail.Email:
+            confirmingStudent.user.email = value
+            break
+        case ConfirmDetail.MobileNumber:
+            confirmingStudent.user.mobile = value
+            break
+        case ConfirmDetail.EducationalInstitution:
+            // TODO: sort out university id. drop down?
+            break
+        case ConfirmDetail.Course:
+            confirmingStudent.degree = value
+            break
+        case ConfirmDetail.YearLevel:
+            confirmingStudent.studyLevel = value
+            break
+        default:
+            print("Error: Couldn't find detail to confirm: \(confirmingDetail) : \(value)")
+        }
     }
 }

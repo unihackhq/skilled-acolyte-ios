@@ -11,14 +11,14 @@ import UIKit
 protocol ConfirmDetailTableViewCellDelegate: class {
     func confirmDetailNextTapped()
     func confirmDetailBackTapped()
+    func confirmDetailUpdated(value: String, for confirmingDetail: String)
 }
 
-class ConfirmDetailTableViewCell: UITableViewCell, UITextViewDelegate {
+class ConfirmDetailTableViewCell: UITableViewCell {
 
     @IBOutlet weak private var detailName: UILabel!
     @IBOutlet weak private var detailValue: UITextField!
     weak private var delegate: ConfirmDetailTableViewCellDelegate?
-    private var student: Student!
     private var confirmingDetail: String!
     
     override func awakeFromNib() {
@@ -57,9 +57,8 @@ class ConfirmDetailTableViewCell: UITableViewCell, UITextViewDelegate {
         // Configure the view for the selected state
     }
 
-    func populateWith(confirmingDetail: String, forStudent student: Student, delegate: ConfirmDetailTableViewCellDelegate!) {
+    func populateWith(confirmingDetail: String, student: Student, delegate: ConfirmDetailTableViewCellDelegate!) {
         
-        self.student = student
         self.confirmingDetail = confirmingDetail
         self.delegate = delegate
         detailName.text = confirmingDetail
@@ -85,6 +84,7 @@ class ConfirmDetailTableViewCell: UITableViewCell, UITextViewDelegate {
         case ConfirmDetail.Email:
             detailValue.text = student.user.email ?? ""
             detailValue.keyboardType = .emailAddress
+            detailValue.autocapitalizationType = .none
             break
         case ConfirmDetail.MobileNumber:
             detailValue.text = student.user.mobile ?? ""
@@ -122,50 +122,12 @@ class ConfirmDetailTableViewCell: UITableViewCell, UITextViewDelegate {
         }
     }
     
-    // MARK: - UITextViewDelegate
-    
-    func textViewDidChange(_ textView: UITextView) {
+    @IBAction func textFieldDidType() {
         
-        let text = textView.text ?? ""
+        let text = detailValue.text ?? ""
         
-        switch self.confirmingDetail {
-        case ConfirmDetail.FirstName:
-            student.user.firstName = text
-            break
-        case ConfirmDetail.LastName:
-            student.user.lastName = text
-            break
-        case ConfirmDetail.PreferredName:
-            if let firstName = student.user.firstName,
-                text == "" {
-                student.user.preferredName = firstName
-            } else {
-                student.user.preferredName = text
-            }
-            break
-        case ConfirmDetail.DateOfBirth:
-// TODO: extract date
-            break
-        case ConfirmDetail.Gender:
-            student.user.gender = text
-            break
-        case ConfirmDetail.Email:
-            student.user.email = text
-            break
-        case ConfirmDetail.MobileNumber:
-            student.user.mobile = text
-            break
-        case ConfirmDetail.EducationalInstitution:
-// TODO: sort out university id. drop down?
-            break
-        case ConfirmDetail.Course:
-            student.degree = text
-            break
-        case ConfirmDetail.YearLevel:
-            student.studyLevel = text
-            break
-        default:
-            print("Error: Couldn't find detail to confirm: \(confirmingDetail) : \(text)")
+        if let delegate = delegate {
+            delegate.confirmDetailUpdated(value: text, for: confirmingDetail)
         }
     }
 }

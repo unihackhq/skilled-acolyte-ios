@@ -26,8 +26,6 @@ class HomepageTableViewController: UITableViewController {
         
         guard let student = Configuration.CurrentStudent else { return }
         
-        refreshSettingsButtonForStudent(student)
-        
         // Load the student's events
         Networking.shared.getStudentEvents(byStudentId: student.id) { (error, events) in
             
@@ -50,6 +48,12 @@ class HomepageTableViewController: UITableViewController {
 
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        
+        guard let student = Configuration.CurrentStudent else { return }
+        refreshSettingsButtonForStudent(student)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

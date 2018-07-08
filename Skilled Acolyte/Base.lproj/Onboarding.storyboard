@@ -163,9 +163,10 @@ Line 2</string>
                                                     <rect key="frame" x="157" y="11" width="202" height="38"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                                     <connections>
                                                         <action selector="hideKeyboardForTextField:" destination="mWt-U5-GJF" eventType="editingDidEndOnExit" id="BJG-cp-zuw"/>
+                                                        <action selector="textFieldDidType" destination="mWt-U5-GJF" eventType="editingChanged" id="TbL-4N-ORj"/>
                                                         <outlet property="delegate" destination="mWt-U5-GJF" id="vWp-Zb-oga"/>
                                                     </connections>
                                                 </textField>
