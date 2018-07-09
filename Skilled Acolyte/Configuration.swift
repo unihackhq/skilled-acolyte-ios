@@ -140,18 +140,18 @@ struct Configuration {
             return nil
         }
     }
-    static var StudentsTeams: [Team]? {
-        set(studentsTeams) {
-            if let studentsTeams = studentsTeams {
+    static var StudentTeams: [Team]? {
+        set(studentTeams) {
+            if let studentTeams = studentTeams {
                 do {
-                    UserDefaults.standard.set(try? PropertyListEncoder().encode(studentsTeams), forKey: "studentsTeams")
+                    UserDefaults.standard.set(try? PropertyListEncoder().encode(studentTeams), forKey: "studentTeams")
                 }
             } else {
-                UserDefaults.standard.removeObject(forKey: "studentsTeams")
+                UserDefaults.standard.removeObject(forKey: "studentTeams")
             }
         }
         get {
-            if let decodedData = UserDefaults.standard.value(forKey: "studentsTeams") as? Data {
+            if let decodedData = UserDefaults.standard.value(forKey: "studentTeams") as? Data {
                 do {
                     return try? PropertyListDecoder().decode([Team].self, from: decodedData)
                 }
