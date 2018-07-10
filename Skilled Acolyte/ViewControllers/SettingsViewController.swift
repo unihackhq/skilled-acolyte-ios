@@ -44,24 +44,26 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
 
     func userTapped() {
         
-        let eventsPage = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "ConfirmDetailsViewController")
-        navigationController?.pushViewController(eventsPage, animated: true)
+        let userDetailsVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "ConfirmDetailsViewController")
+        navigationController?.pushViewController(userDetailsVC, animated: true)
     }
     
     func notificationsTapped() {
         
+        let notificationsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "NotificationsViewController")
+        navigationController?.pushViewController(notificationsVC, animated: true)
     }
     
     func teamTapped() {
         
-        let eventsPage = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "CreateTeamViewController")
-        navigationController?.pushViewController(eventsPage, animated: true)
+        let eventsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "CreateTeamViewController")
+        navigationController?.pushViewController(eventsVC, animated: true)
     }
     
     func eventsTapped() {
         
-        let eventsPage = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "EventsViewController")
-        navigationController?.pushViewController(eventsPage, animated: true)
+        let eventsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "EventsViewController")
+        navigationController?.pushViewController(eventsVC, animated: true)
     }
     
     func signOutTapped() {
@@ -71,8 +73,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         Configuration.CurrentEvent = nil
         Configuration.CurrentTicket = nil
         
-        let signInPage = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
-        self.view.window?.rootViewController = signInPage
+        let signInVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
+        self.view.window?.rootViewController = signInVC
     }
     
     // MARK: - UITableViewDataSource
