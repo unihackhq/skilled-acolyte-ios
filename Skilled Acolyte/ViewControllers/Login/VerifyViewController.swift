@@ -52,8 +52,12 @@ class VerifyViewController: UIViewController {
      
         Networking.shared.verifyLoginToken(token: token) { (error, jwt) in
             
-            if let _ = error {
-                // TODO: handle error
+            if let error = error {
+                // TODO: better handle error
+                let alert = UIAlertController(title: "Verify Login Error", message: "\(error)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
                 if let completion = completion {
                     completion(nil)
                 }
@@ -83,8 +87,11 @@ class VerifyViewController: UIViewController {
                 // Get and store the current student
                 Networking.shared.getStudent(byId: studentId, completion: { (error, student) in
                     
-                    if let _ = error {
-                        // TODO: handle error
+                    if let error = error {
+                        // TODO: betterhandle error
+                        let alert = UIAlertController(title: "Student Error", message: "\(error)", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
                     } else if let student = student {
                         Configuration.CurrentStudent = student
                     }
@@ -94,7 +101,7 @@ class VerifyViewController: UIViewController {
                     }
                 })
             } else {
-                let alert = UIAlertController(title: "Whoops", message: "Your token couldn't be verified", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Whoops", message: "Your token couldn't be verified. Unfortunately we also had an unknown error", preferredStyle: .alert)
                 let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(alertAction)
                 self.present(alert, animated: true, completion: nil)

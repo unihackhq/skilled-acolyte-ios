@@ -29,8 +29,11 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
     func populate(withNewTeam newTeam: Team) {
         self.newTeam = newTeam
         Networking.shared.getAllStudents { (error, student) in
-            if let _ = error {
-                // TODO: handle error
+            if let error = error {
+                // TODO: better handle error
+                let alert = UIAlertController(title: "Student Error", message: "\(error)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             } else {
                 self.allStudent = student
                 self.tableView.reloadData()

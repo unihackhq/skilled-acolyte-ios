@@ -84,8 +84,7 @@ class ConfirmDetailsViewController: UIViewController, UITableViewDataSource, Con
             // Finish
             Networking.shared.updateStudent(student: confirmingStudent) { (error, student) in
                 if let error = error {
-                    // sorry you couldn't be updated.
-                    let alert = UIAlertController(title: "Error updating details", message: "Sorry but your details couldn't be updated.", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Error Updating Details", message: "Sorry but your details couldn't be updated.\n\(error)", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (alert) in
                         let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationController")
                         self.view.window?.rootViewController = homeVC

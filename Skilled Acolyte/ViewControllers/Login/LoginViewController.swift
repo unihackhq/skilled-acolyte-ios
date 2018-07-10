@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        emailLabel.text = "bob@unihack.net"
+//        emailLabel.text = "bob@unihack.net"
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,8 +55,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         Networking.shared.login(email: email) { (error) in
             
-            if let _ = error {
-                // TODO: handle error
+            if let error = error {
+                // TODO: better handle error
+                let alert = UIAlertController(title: "Login Error", message: "\(error)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             } else {
                 self.goToVerifyPage()
             }
@@ -68,6 +71,4 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let verifyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VerifyViewController")
         view.window?.rootViewController = verifyVC
     }
-    
-
 }

@@ -62,7 +62,10 @@ class ConfirmDetailTableViewCell: UITableViewCell {
         self.confirmingDetail = confirmingDetail
         self.delegate = delegate
         detailName.text = confirmingDetail
+        // Reset default values
         detailValue.text = ""
+        detailValue.isEnabled = true
+        detailValue.alpha = 1
         
         switch confirmingDetail {
         case ConfirmDetail.FirstName:
@@ -92,6 +95,8 @@ class ConfirmDetailTableViewCell: UITableViewCell {
             break
         case ConfirmDetail.EducationalInstitution:
 // TODO: extract from uni id
+            detailValue.isEnabled = false
+            detailValue.alpha = 0.5
             break
         case ConfirmDetail.Course:
             detailValue.text = student.degree ?? ""

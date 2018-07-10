@@ -18,8 +18,16 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         
         guard let student = Configuration.CurrentStudent else { return }
         Networking.shared.getStudentEvents(byStudentId: student.id) { (error, events) in
-            self.events = events
-            self.tableView.reloadData()
+            
+            if let error = error {
+                // TODO: better handle error
+                let alert = UIAlertController(title: "Event Error", message: "\(error)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.events = events
+                self.tableView.reloadData()
+            }
         }
     }
 

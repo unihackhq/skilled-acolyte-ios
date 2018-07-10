@@ -39,8 +39,11 @@ class TeamCreateViewController: UIViewController {
         
         Networking.shared.createTeam(team: newTeam) { (error, team) in
             
-            if let _ = error {
-                // TODO: handle error
+            if let error = error {
+                // TODO: better handle error
+                let alert = UIAlertController(title: "Team Error", message: "\(error)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             } else if let team = team {
                 Configuration.CurrentTeam = team
                 self.showManageTeamPage()
