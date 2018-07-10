@@ -24,15 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var startingVC:UIViewController? = nil
         if Configuration.CurrentStudent != nil {
              startingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationController")
-            
-//            // temp
-//            let otherVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "ConfirmDetailsViewController") as! ConfirmDetailsViewController
-//            otherVC.populateWithConfirmingStudent(Configuration.CurrentStudent!, confirmingStep: 1)
-//            let navController = UINavigationController(rootViewController: otherVC)
-//            navController.navigationBar.isHidden = true
-//            window?.rootViewController = navController
-//            return true
-            
         } else {
             startingVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
         }

@@ -19,6 +19,8 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        btnFinish.alpha = 0.5
+        btnFinish.isEnabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,7 +44,34 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     @IBAction func btnFinishTapped() {
-        // TODO:
+        
+        Networking.shared.createTeam(team: newTeam) { (error, team) in
+            
+            if let error = error {
+                // TODO: better handle error
+                let alert = UIAlertController(title: "Create Team Error", message: "\(error)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else if let team = team {
+                for student in self.invites {
+                    Networking.shared.inviteUserToTeam(teamId: team.id, userId: student.user.id, completion: { (error, something) in
+                        if let error = error {
+                            // TODO: better handle error
+                            let alert = UIAlertController(title: "Team Invite Error", message: "\(error)", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        } else {
+                            let alert = UIAlertController(title: "Congrats :)", message: "You made a team. Unfortunately the next part of the app hasn't been built yet, so instead here's a uniforn 🦄", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Return to home", style: .default, handler: { (action) in
+                                let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationController")
+                                self.view.window?.rootViewController = homeVC
+                            }))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    })
+                }
+            }
+        }
     }
     
     @IBAction func btnBackTapped() {

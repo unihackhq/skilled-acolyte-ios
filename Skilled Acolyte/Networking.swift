@@ -243,6 +243,7 @@ class Networking: NSObject {
             if let response = response as? [String:Any],
                 let jsonTeam = response["team"] as? [String:Any] {
                 team = Team(data: jsonTeam)
+                Configuration.CurrentTeam = team
             }
             
             self.handleIfError(error: error, response: response)
