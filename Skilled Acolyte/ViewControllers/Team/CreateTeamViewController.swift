@@ -63,7 +63,8 @@ class CreateTeamViewController: UIViewController {
     
     @IBAction func btnNextTapped() {
         
-        let inviteMembersVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "InviteToTeamViewController")
+        let inviteMembersVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "InviteToTeamViewController") as! InviteToTeamViewController
+        inviteMembersVC.populate(withNewTeam: newTeam)
         navigationController?.pushViewController(inviteMembersVC, animated: true)
     }
     

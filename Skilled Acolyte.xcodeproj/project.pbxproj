@@ -30,6 +30,8 @@
 		6550A19A209726F400068551 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6550A199209726F400068551 /* Assets.xcassets */; };
 		6550A19D209726F400068551 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6550A19B209726F400068551 /* LaunchScreen.storyboard */; };
 		6550A1A8209726F400068551 /* Skilled_AcolyteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6550A1A7209726F400068551 /* Skilled_AcolyteTests.swift */; };
+		6557588F20F4A6FC00050463 /* InviteToTeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557588E20F4A6FC00050463 /* InviteToTeamTableViewCell.swift */; };
+		6557589120F4B01100050463 /* FindNewTeamMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557589020F4B01100050463 /* FindNewTeamMemberViewController.swift */; };
 		65626F6320B841F5000AA4D0 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65626F6220B841F5000AA4D0 /* Event.swift */; };
 		6571ED45209D935C0006F868 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571ED44209D935C0006F868 /* User.swift */; };
 		6571ED47209D96750006F868 /* University.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571ED46209D96750006F868 /* University.swift */; };
@@ -86,6 +88,8 @@
 		6550A1A3209726F400068551 /* Skilled AcolyteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Skilled AcolyteTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6550A1A7209726F400068551 /* Skilled_AcolyteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skilled_AcolyteTests.swift; sourceTree = "<group>"; };
 		6550A1A9209726F400068551 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6557588E20F4A6FC00050463 /* InviteToTeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteToTeamTableViewCell.swift; sourceTree = "<group>"; };
+		6557589020F4B01100050463 /* FindNewTeamMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindNewTeamMemberViewController.swift; sourceTree = "<group>"; };
 		65626F6220B841F5000AA4D0 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6571ED44209D935C0006F868 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6571ED46209D96750006F868 /* University.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = University.swift; sourceTree = "<group>"; };
@@ -165,7 +169,6 @@
 				6571ED52209D9CFB0006F868 /* Constants.swift */,
 				65975C2A20B98AA200AC3C72 /* Configuration.swift */,
 				6571ED42209D932D0006F868 /* ViewControllers */,
-				6571ED43209D933A0006F868 /* Models */,
 				6550A196209726F100068551 /* Main.storyboard */,
 				6537CD6220E7A56200EF0E5F /* Onboarding.storyboard */,
 				6537CD6520E7A5C600EF0E5F /* Settings.storyboard */,
@@ -192,6 +195,7 @@
 				65975C2C20BA70E800AC3C72 /* Login */,
 				65975C2D20BA710D00AC3C72 /* Ticket */,
 				65975C2E20BA711500AC3C72 /* Team */,
+				6571ED43209D933A0006F868 /* Models */,
 				285C57AB20AD6ACD00C57F03 /* HomepageViewController.swift */,
 				285C57AD20AD6AD500C57F03 /* SettingsViewController.swift */,
 				6537CD6820E7D2B600EF0E5F /* EventsViewController.swift */,
@@ -244,6 +248,8 @@
 				285C57B520AD6AF900C57F03 /* TeamManageViewController.swift */,
 				6539321120F2400A00F409BA /* CreateTeamViewController.swift */,
 				6539321320F2402200F409BA /* InviteToTeamViewController.swift */,
+				6557588E20F4A6FC00050463 /* InviteToTeamTableViewCell.swift */,
+				6557589020F4B01100050463 /* FindNewTeamMemberViewController.swift */,
 			);
 			path = Team;
 			sourceTree = "<group>";
@@ -464,11 +470,13 @@
 				6571ED4D209D9AAC0006F868 /* Team.swift in Sources */,
 				6571ED47209D96750006F868 /* University.swift in Sources */,
 				65626F6320B841F5000AA4D0 /* Event.swift in Sources */,
+				6557589120F4B01100050463 /* FindNewTeamMemberViewController.swift in Sources */,
 				65975C2B20B98AA200AC3C72 /* Configuration.swift in Sources */,
 				6571ED49209D96C20006F868 /* Ticket.swift in Sources */,
 				6537CD6920E7D2B600EF0E5F /* EventsViewController.swift in Sources */,
 				6550A193209726F100068551 /* AppDelegate.swift in Sources */,
 				65975C2920B9895100AC3C72 /* StudentDetailsViewController.swift in Sources */,
+				6557588F20F4A6FC00050463 /* InviteToTeamTableViewCell.swift in Sources */,
 				6571ED4F209D9B290006F868 /* Student.swift in Sources */,
 				285C57AE20AD6AD500C57F03 /* SettingsViewController.swift in Sources */,
 				285C57B820AD6AFF00C57F03 /* FAQViewController.swift in Sources */,
