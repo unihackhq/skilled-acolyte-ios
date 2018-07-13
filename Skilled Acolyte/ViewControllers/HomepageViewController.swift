@@ -9,8 +9,9 @@
 import UIKit
 import UserNotifications
 
-class HomepageTableViewController: UITableViewController {
+class HomepageTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblEventName: UILabel!
     @IBOutlet weak var btnSettings: UIButton!
     
@@ -18,11 +19,20 @@ class HomepageTableViewController: UITableViewController {
     @IBOutlet weak var lblNextTechTalk: UILabel!
     @IBOutlet weak var lblToDo: UILabel!
     
+    var tableViewData: [String]! = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableViewData = [
+            "EnablePushNotificationsCell",
+            "NextUpCell",
+            "NextTechTalkCell",
+            "HackathonToDoCell"
+        ]
         
         guard let student = Configuration.CurrentStudent else { return }
         
@@ -82,15 +92,27 @@ class HomepageTableViewController: UITableViewController {
     }
     
     func registerPushNotifications() {
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-                guard settings.authorizationStatus == .authorized else { return }
+        DispatchQueue.main.async {
+            if #available(iOS 10.0, *) {
+                UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+                    guard settings.authorizationStatus == .authorized else { return }
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            } else {
+                // Fallback on iOS 9 and earlier versions
+                UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert], categories: nil))
                 UIApplication.shared.registerForRemoteNotifications()
             }
-        } else {
-            // Fallback on iOS 9 and earlier versions
-            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert], categories: nil))
-            UIApplication.shared.registerForRemoteNotifications()
+        }
+    }
+    
+    func removeCell(withData data: String) {
+        
+        if let indexToRemove = tableViewData.lastIndex(of: data) {
+            tableViewData.remove(at: indexToRemove)
+            DispatchQueue.main.async {
+                self.tableView.deleteRows(at: [IndexPath(row: indexToRemove, section: 0)], with: .automatic)
+            }
         }
     }
     
@@ -101,14 +123,20 @@ class HomepageTableViewController: UITableViewController {
     }
     
     func enablePushNotificationsTapped() {
-        // TODO: register for push notifications
+
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+                // Remove this cell since it is request once only
+                self.removeCell(withData: "EnablePushNotificationsCell")
+                
                 guard granted else {
                     print("Failed to grant push notifications")
                     if let error = error {
                         print(error)
                     }
+                    let alert = UIAlertController(title: "Denied", message: "You can enable push notifications from the Settings app later", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                     return
                 }
                 
@@ -118,6 +146,9 @@ class HomepageTableViewController: UITableViewController {
         } else {
             // Fallback on iOS 9 and earlier versions
             self.registerPushNotifications()
+            
+            // Remove this cell since it is request once only
+            self.removeCell(withData: "EnablePushNotificationsCell")
         }
     }
     
@@ -129,13 +160,25 @@ class HomepageTableViewController: UITableViewController {
 
     }
 
-//    func toDoTapped() {
-//
-//    }
+    func toDoTapped() {
+
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableViewData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let resuseId = tableViewData[indexPath.row]
+        return tableView.dequeueReusableCell(withIdentifier: resuseId)!
+    }
     
     // MARK: - UITableViewDelegate
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let cell = tableView.cellForRow(at: indexPath)
@@ -145,9 +188,8 @@ class HomepageTableViewController: UITableViewController {
             nextUpTapped()
         } else if cell?.reuseIdentifier == "NextTechTalkCell" {
             techTalksTapped()
+        } else if cell?.reuseIdentifier == "HackathonToDoCell" {
+            toDoTapped()
         }
-//        else if cell?.reuseIdentifier == "HackathonToDoCell" {
-//            toDoTapped()
-//        }
     }
 }
