@@ -61,8 +61,8 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(alert, animated: true, completion: nil)
                         } else {
-                            let alert = UIAlertController(title: "Congrats :)", message: "You made a team. Unfortunately the next part of the app hasn't been built yet, so instead here's a unicorn 🦄", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "Return to home", style: .default, handler: { (action) in
+                            let alert = UIAlertController(title: "Invitations Sent", message: "You made a team. Now all you have to do is win. Good luck! 🦄", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
                                 let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationController")
                                 self.view.window?.rootViewController = homeVC
                             }))

@@ -45,6 +45,8 @@
 		65975C3220BA785300AC3C72 /* ManageTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65975C3120BA785300AC3C72 /* ManageTicketViewController.swift */; };
 		65E7377820F999C400D605E2 /* JoinTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7377720F999C400D605E2 /* JoinTeamViewController.swift */; };
 		65E7377A20F999E200D605E2 /* JoinTeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7377920F999E200D605E2 /* JoinTeamTableViewCell.swift */; };
+		65E7377C20F9BA2A00D605E2 /* LeaveTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7377B20F9BA2A00D605E2 /* LeaveTeamViewController.swift */; };
+		65E7377E20F9BC2F00D605E2 /* TeamMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E7377D20F9BC2F00D605E2 /* TeamMemberTableViewCell.swift */; };
 		65E98D5220F4D0AC00CF78BD /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E98D5120F4D0AC00CF78BD /* NotificationsViewController.swift */; };
 		69351EE2EE82236D4E95FFD2 /* Pods_Skilled_AcolyteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE035CDBBC1C6EB03220DD9 /* Pods_Skilled_AcolyteTests.framework */; };
 		FEAE71D434973A1AEDF45F98 /* Pods_Skilled_Acolyte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCE456CC97B1002EBFF52DC6 /* Pods_Skilled_Acolyte.framework */; };
@@ -105,6 +107,8 @@
 		65975C3120BA785300AC3C72 /* ManageTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageTicketViewController.swift; sourceTree = "<group>"; };
 		65E7377720F999C400D605E2 /* JoinTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinTeamViewController.swift; sourceTree = "<group>"; };
 		65E7377920F999E200D605E2 /* JoinTeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinTeamTableViewCell.swift; sourceTree = "<group>"; };
+		65E7377B20F9BA2A00D605E2 /* LeaveTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveTeamViewController.swift; sourceTree = "<group>"; };
+		65E7377D20F9BC2F00D605E2 /* TeamMemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberTableViewCell.swift; sourceTree = "<group>"; };
 		65E98D5120F4D0AC00CF78BD /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		91375948ACB4BC448A9E8E3F /* Pods-Skilled Acolyte.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Skilled Acolyte.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Skilled Acolyte/Pods-Skilled Acolyte.debug.xcconfig"; sourceTree = "<group>"; };
 		BCE456CC97B1002EBFF52DC6 /* Pods_Skilled_Acolyte.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Skilled_Acolyte.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,6 +260,8 @@
 				6539321320F2402200F409BA /* InviteToTeamViewController.swift */,
 				6557588E20F4A6FC00050463 /* InviteToTeamTableViewCell.swift */,
 				6557589020F4B01100050463 /* FindNewTeamMemberViewController.swift */,
+				65E7377B20F9BA2A00D605E2 /* LeaveTeamViewController.swift */,
+				65E7377D20F9BC2F00D605E2 /* TeamMemberTableViewCell.swift */,
 			);
 			path = Team;
 			sourceTree = "<group>";
@@ -479,6 +485,7 @@
 				6571ED47209D96750006F868 /* University.swift in Sources */,
 				65626F6320B841F5000AA4D0 /* Event.swift in Sources */,
 				6557589120F4B01100050463 /* FindNewTeamMemberViewController.swift in Sources */,
+				65E7377C20F9BA2A00D605E2 /* LeaveTeamViewController.swift in Sources */,
 				65975C2B20B98AA200AC3C72 /* Configuration.swift in Sources */,
 				6571ED49209D96C20006F868 /* Ticket.swift in Sources */,
 				6537CD6920E7D2B600EF0E5F /* EventsViewController.swift in Sources */,
@@ -495,6 +502,7 @@
 				6539321420F2402200F409BA /* InviteToTeamViewController.swift in Sources */,
 				285C57B420AD6AF300C57F03 /* TeamCreateViewController.swift in Sources */,
 				6539321220F2400A00F409BA /* CreateTeamViewController.swift in Sources */,
+				65E7377E20F9BC2F00D605E2 /* TeamMemberTableViewCell.swift in Sources */,
 				6531699B20F1BBA000144B2E /* ConfirmDetailsViewController.swift in Sources */,
 				6571ED53209D9CFB0006F868 /* Constants.swift in Sources */,
 				285C57A820AD6A9F00C57F03 /* LoginViewController.swift in Sources */,

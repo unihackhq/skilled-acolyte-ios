@@ -83,8 +83,8 @@ class JoinTeamViewController: UIViewController, UITableViewDataSource, JoinTeamT
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             } else {
-                // TODO: show my team page
-                self.navigationController?.popViewController(animated: true)
+                Configuration.CurrentTeam = team
+                self.navigationController?.popToRootViewController(animated: true)
             }
         }
     }

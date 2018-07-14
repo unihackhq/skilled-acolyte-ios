@@ -58,7 +58,6 @@ class HomepageTableViewController: UIViewController, UITableViewDataSource, UITa
                 self.lblEventName.text = firstEvent?.name
             }
         }
-
     }
 
     override func viewWillAppear(_ animated: Bool) {

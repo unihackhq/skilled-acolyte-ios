@@ -60,9 +60,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             let findTeamVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "JoinTeamViewController")
             navigationController?.pushViewController(findTeamVC, animated: true)
         } else {
-            // TODO: show team page
-            let findTeamVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "JoinTeamViewController")
-            navigationController?.pushViewController(findTeamVC, animated: true)
+            let leaveTeamVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "LeaveTeamViewController")
+            navigationController?.pushViewController(leaveTeamVC, animated: true)
         }
     }
     
