@@ -33,8 +33,9 @@ class SwitchEventTableViewCell: UITableViewCell {
         } else {
             eventSubtitle.text = ""
         }
-        if let logoUrl = event.logoUrl {
-            // TODO: download and use logoUrl
+        
+        if let image = event.downloadPhoto() {
+            eventImage.image = image
         } else {
             eventImage.image = nil
         }

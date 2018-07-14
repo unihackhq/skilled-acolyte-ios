@@ -9,7 +9,7 @@
 import UIKit
 import UserNotifications
 
-class HomepageTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomepageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblEventName: UILabel!
@@ -74,21 +74,16 @@ class HomepageTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func refreshSettingsButtonForStudent(_ student: Student) {
-        // Default to letters. This will be removed if an image is loaded
-        let firstName = student.user.firstName ?? ""
-        let lastName = student.user.lastName ?? ""
-        let firstLetters = String(describing:firstName.first!) + String(describing:lastName.first!)
-        btnSettings.setTitle(firstLetters, for: .normal)
         
         // Try to load in an image
-        if let imgUrl = student.photoUrl {
-            // Download photo and set on button
-            guard let data = try? Data(contentsOf: URL(string:imgUrl)!) else { return }
-            let image = UIImage(data: data)
+        if let image = student.downloadPhoto() {
             btnSettings.setImage(image, for: .normal)
-            btnSettings.clipsToBounds = true
             btnSettings.imageView?.contentMode = .scaleAspectFill
             btnSettings.setTitle("", for: .normal)
+        } else {
+            // Otherwise use the initials in it's place
+            let initials = student.initials()
+            btnSettings.setTitle(initials, for: .normal)
         }
     }
     

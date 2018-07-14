@@ -6,7 +6,7 @@
 //  Copyright © 2018 UNIHACK Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Event: Codable {
     
@@ -25,5 +25,15 @@ struct Event: Codable {
         // Optional things
         location = data["location"] as? String
         logoUrl = data["logoUrl"] as? String
+    }
+    
+    func downloadPhoto() -> UIImage? {
+        // Try to load in an image
+        if let imgUrl = logoUrl {
+            guard let data = try? Data(contentsOf: URL(string:imgUrl)!) else { return nil }
+            return UIImage(data: data)
+        } else {
+            return nil
+        }
     }
 }

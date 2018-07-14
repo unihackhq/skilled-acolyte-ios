@@ -101,7 +101,7 @@
         <!--Home-->
         <scene sceneID="Kef-SN-wdo">
             <objects>
-                <viewController id="S4w-KP-JFb" userLabel="Home" customClass="HomepageTableViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="S4w-KP-JFb" userLabel="Home" customClass="HomepageViewController" customModule="Skilled_Acolyte" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MWd-qz-qNJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -328,6 +328,7 @@
                                         <integer key="value" value="18"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="btnSettingsTapped" destination="S4w-KP-JFb" eventType="touchUpInside" id="NM3-EV-wGG"/>

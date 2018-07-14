@@ -11,6 +11,7 @@ import UIKit
 class TeamMemberTableViewCell: UITableViewCell {
 
     @IBOutlet weak var studentPhoto: UIImageView!
+    @IBOutlet weak var studentInitials: UILabel!
     @IBOutlet weak var studentName: UILabel!
     
     override func awakeFromNib() {
@@ -28,6 +29,11 @@ class TeamMemberTableViewCell: UITableViewCell {
         
         studentName.text = student.fullName()
         
-        // TODO: download image or use initials as icon
+        if let image = student.downloadPhoto() {
+            studentPhoto.image = image
+            studentInitials.text = ""
+        } else if let initials = student.initials() {
+            studentInitials.text = initials
+        }
     }
 }

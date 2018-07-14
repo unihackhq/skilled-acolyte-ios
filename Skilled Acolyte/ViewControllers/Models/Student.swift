@@ -6,7 +6,7 @@
 //  Copyright © 2018 UNIHACK Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Student: Codable {
     
@@ -35,7 +35,7 @@ struct Student: Codable {
         photoUrl = data["photoUrl"] as? String
     }
     
-    func basicName() -> String! {
+    func shortName() -> String! {
         if let preferred = user.preferredName {
             return preferred
         } else if let first = user.firstName {
@@ -48,6 +48,32 @@ struct Student: Codable {
         let first = (user.firstName != nil) ? (user.firstName!+" ") : ""
         let last = user.lastName ?? ""
         return first + last
+    }
+    
+    func initials() -> String! {
+        
+        let firstName = user.firstName ?? ""
+        let lastName = user.lastName ?? ""
+        let initials = String(describing:firstName.first!) + String(describing:lastName.first!)
+        if initials != "" {
+            return initials
+        }
+        
+        if let prefName = user.preferredName {
+            return String(describing:prefName.first!)
+        }
+        
+        return ""
+    }
+    
+    func downloadPhoto() -> UIImage? {
+        // Try to load in an image
+        if let imgUrl = photoUrl {
+            guard let data = try? Data(contentsOf: URL(string:imgUrl)!) else { return nil }
+            return UIImage(data: data)
+        } else {
+            return nil
+        }
     }
     
     func toJSON() -> [String:Any] {
