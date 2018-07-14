@@ -52,7 +52,7 @@ class CreateTeamViewController: UIViewController {
                 // If successful, set the image, remove the text, and save the url
                 self.btnTeamIcon.setImage(image, for: .normal)
                 self.btnTeamIcon.setAttributedTitle(NSAttributedString(), for: .normal)
-                self.btnTeamIcon.clipsToBounds = true
+//                self.btnTeamIcon.clipsToBounds = true
                 self.btnTeamIcon.imageView?.contentMode = .scaleAspectFill
                 self.newTeam.photoUrl = urlText
                 

@@ -206,6 +206,73 @@ Line 2</string>
                                             <outlet property="detailValue" destination="dXs-gd-yJx" id="Vue-wV-2uj"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConfirmImageDetailCell" rowHeight="60" id="YL8-qR-kc6" customClass="ConfirmDetailTableViewCell" customModule="Skilled_Acolyte" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YL8-qR-kc6" id="VZQ-Bt-IcS">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyH-d3-2rQ">
+                                                    <rect key="frame" x="23" y="7" width="110" height="46"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="110" id="NeM-9w-3mg"/>
+                                                    </constraints>
+                                                    <string key="text">Detail Name
+Line 2</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EOa-V3-4nY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
+                                                    <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="0.5" id="upj-fi-ElD"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wbr-Ve-Wne">
+                                                    <rect key="frame" x="0.0" y="59.5" width="375" height="0.5"/>
+                                                    <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="0.5" id="k9V-JT-W66"/>
+                                                    </constraints>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0FF-ac-B6v">
+                                                    <rect key="frame" x="319" y="10" width="40" height="40"/>
+                                                    <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="Cwf-oZ-XQY"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="EOa-V3-4nY" secondAttribute="trailing" id="11R-s9-GYk"/>
+                                                <constraint firstAttribute="bottom" secondItem="Wbr-Ve-Wne" secondAttribute="bottom" id="1Ht-ob-2Hc"/>
+                                                <constraint firstAttribute="trailing" secondItem="0FF-ac-B6v" secondAttribute="trailing" constant="16" id="Do5-PX-PtY"/>
+                                                <constraint firstItem="EOa-V3-4nY" firstAttribute="leading" secondItem="VZQ-Bt-IcS" secondAttribute="leading" id="GgJ-FD-nhp"/>
+                                                <constraint firstItem="0FF-ac-B6v" firstAttribute="width" secondItem="0FF-ac-B6v" secondAttribute="height" multiplier="1:1" id="JCo-IU-soO"/>
+                                                <constraint firstItem="0FF-ac-B6v" firstAttribute="centerY" secondItem="CyH-d3-2rQ" secondAttribute="centerY" id="U8T-zK-ErG"/>
+                                                <constraint firstItem="CyH-d3-2rQ" firstAttribute="top" secondItem="VZQ-Bt-IcS" secondAttribute="topMargin" constant="-4" id="XwS-bI-MHM"/>
+                                                <constraint firstItem="CyH-d3-2rQ" firstAttribute="leading" secondItem="VZQ-Bt-IcS" secondAttribute="leadingMargin" constant="8" id="aph-6K-sef"/>
+                                                <constraint firstAttribute="trailing" secondItem="Wbr-Ve-Wne" secondAttribute="trailing" id="gaX-aj-HG5"/>
+                                                <constraint firstItem="Wbr-Ve-Wne" firstAttribute="leading" secondItem="VZQ-Bt-IcS" secondAttribute="leading" id="kju-f3-QNZ"/>
+                                                <constraint firstItem="EOa-V3-4nY" firstAttribute="top" secondItem="VZQ-Bt-IcS" secondAttribute="top" id="qvP-F9-Fck"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="CyH-d3-2rQ" secondAttribute="bottom" constant="-4" id="vFo-AK-deL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="detailName" destination="CyH-d3-2rQ" id="0kE-ba-Tac"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="MHe-lB-PQm" id="ySh-ot-XW0"/>

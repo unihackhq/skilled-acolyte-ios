@@ -799,6 +799,7 @@ photo</string>
                                         <integer key="value" value="65"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="btnTeamIconTapped" destination="GYp-lw-Ef4" eventType="touchUpInside" id="HyE-y6-wXE"/>

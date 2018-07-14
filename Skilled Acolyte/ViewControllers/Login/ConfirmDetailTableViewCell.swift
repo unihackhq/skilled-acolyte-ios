@@ -68,6 +68,10 @@ class ConfirmDetailTableViewCell: UITableViewCell {
         detailValue.alpha = 1
         
         switch confirmingDetail {
+        case ConfirmDetail.ProfilePhoto:
+            detailValue.text = student.photoUrl ?? ""
+            detailValue.placeholder = "Photo URL"
+            break
         case ConfirmDetail.FirstName:
             detailValue.text = student.user.firstName ?? ""
             break
@@ -79,7 +83,11 @@ class ConfirmDetailTableViewCell: UITableViewCell {
             detailValue.placeholder = student.user.firstName ?? ""
             break
         case ConfirmDetail.DateOfBirth:
-// TODO: extract date
+// TODO: extract date correctly
+            detailValue.text = student.user.dateOfBirth ?? ""
+            detailValue.placeholder = "YYYY-MM-DD"
+            detailValue.isEnabled = false
+            detailValue.alpha = 0.5
             break
         case ConfirmDetail.Gender:
             detailValue.text = student.user.gender ?? ""
@@ -95,6 +103,7 @@ class ConfirmDetailTableViewCell: UITableViewCell {
             break
         case ConfirmDetail.EducationalInstitution:
 // TODO: extract from uni id
+            detailValue.text = student.universityId ?? ""
             detailValue.isEnabled = false
             detailValue.alpha = 0.5
             break

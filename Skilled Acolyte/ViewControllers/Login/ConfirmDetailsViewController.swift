@@ -9,6 +9,7 @@
 import UIKit
 
 struct ConfirmDetail {
+    static var ProfilePhoto = "Profile Photo"
     static var FirstName = "First Name"
     static var LastName = "Last Name"
     static var PreferredName = "Preferred Name"
@@ -40,6 +41,7 @@ class ConfirmDetailsViewController: UIViewController, UITableViewDataSource, Con
         case 1:
             confirmDetailTitle.text = "Confirm Personal Details"
             tableViewData = [
+                ConfirmDetail.ProfilePhoto,
                 ConfirmDetail.FirstName,
                 ConfirmDetail.LastName,
                 ConfirmDetail.PreferredName,
@@ -134,6 +136,8 @@ class ConfirmDetailsViewController: UIViewController, UITableViewDataSource, Con
     func confirmDetailUpdated(value: String, for confirmingDetail: String) {
         
         switch confirmingDetail {
+        case ConfirmDetail.ProfilePhoto:
+            confirmingStudent.photoUrl = value
         case ConfirmDetail.FirstName:
             confirmingStudent.user.firstName = value
             break
