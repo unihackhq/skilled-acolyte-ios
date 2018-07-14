@@ -107,16 +107,13 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         if cellData == "User" {
-            guard let student = Configuration.CurrentStudent?.user else {
+            guard let student = Configuration.CurrentStudent else {
                 cell!.textLabel?.text = "Student not found"
                 return cell!
             }
             
-            let first = student.firstName ?? ""
-            let last = student.lastName ?? ""
-            
-            cell!.textLabel?.text = first+" "+last
-            cell!.detailTextLabel?.text = student.email
+            cell!.textLabel?.text = student.fullName()
+            cell!.detailTextLabel?.text = student.user.email
         } else {
             cell?.textLabel?.text = cellData
         }

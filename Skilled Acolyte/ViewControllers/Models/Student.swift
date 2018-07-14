@@ -45,25 +45,28 @@ struct Student: Codable {
     }
     
     func fullName() -> String! {
-        let first = (user.firstName != nil) ? (user.firstName!+" ") : ""
+        let first = (user.firstName != nil) ? (user.firstName!+" ") : (user.preferredName != nil ? user.preferredName!+" " : "")
         let last = user.lastName ?? ""
         return first + last
     }
     
     func initials() -> String! {
         
-        let firstName = user.firstName ?? ""
-        let lastName = user.lastName ?? ""
-        let initials = String(describing:firstName.first!) + String(describing:lastName.first!)
-        if initials != "" {
-            return initials
+        // Safely and optionally extract the first char of the first/last name
+        var initials = ""
+        if let firstName = user.firstName,
+            let first = firstName.first {
+            initials += String(describing:first)
+        } else if let prefName = user.preferredName,
+            let prefInitial = prefName.first {
+            initials += String(describing:prefInitial)
+        }
+        if let lastName = user.lastName,
+            let last = lastName.first {
+            initials += String(describing:last)
         }
         
-        if let prefName = user.preferredName {
-            return String(describing:prefName.first!)
-        }
-        
-        return ""
+        return initials
     }
     
     func downloadPhoto() -> UIImage? {

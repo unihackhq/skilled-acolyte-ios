@@ -48,16 +48,33 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
                 Configuration.StudentsEvents = events
                 if events.count > 1 {
                     // TODO: this student has more than one events. show some way for them to switch between events
-                } else if events.count == 0 {
-                    // this student has no events :(
-                    return
                 }
                 
-                let firstEvent = events.first
+                guard let firstEvent = events.first else { return }
                 Configuration.CurrentEvent = firstEvent
-                self.lblEventName.text = firstEvent?.name
+                self.lblEventName.text = firstEvent.name
+                
+                // Download and match up any teams the student has
+                Networking.shared.getStudentTeams(byStudentId: student.id) { (error, teams) in
+                    
+                    if let error = error {
+                        let alert = UIAlertController(title: "Team Error", message: "\(error)", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    } else {
+                        Configuration.StudentTeams = teams
+                        for team in teams {
+                            if team.eventId == firstEvent.id {
+                                Configuration.CurrentTeam = team
+                                break
+                            }
+                        }
+                    }
+                }
             }
         }
+        
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
