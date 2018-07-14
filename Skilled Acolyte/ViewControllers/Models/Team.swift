@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Team: Codable {
+struct Team: Codable, Equatable {
     
     var id: String = ""
     var eventId: String = ""
@@ -68,5 +68,9 @@ struct Team: Codable {
         json["invited"] = inviteData
         
         return json
+    }
+    
+    static func == (left: Team, right: Team) -> Bool {
+        return left.id == right.id
     }
 }

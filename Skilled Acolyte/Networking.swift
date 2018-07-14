@@ -134,7 +134,7 @@ class Networking: NSObject {
             if let response = response as? [[String:Any]] {
                 // Loop through and build teams out of the response
                 for jsonTeam in response {
-                    let team = Team(data: jsonTeam) // TODO: make sure the response actually matches the Team model
+                    let team = Team(data: jsonTeam)
                     teams.append(team)
                 }
             }
@@ -146,12 +146,19 @@ class Networking: NSObject {
         }
     }
     
-    func getStudentInvites(byStudentId studentId: String, completion:((Error?, [Any]) -> Void)?) {
+    func getStudentInvites(byStudentId studentId: String, completion:((Error?, [Team]) -> Void)?) {
         
         let url = "/students/\(studentId)/invites"
         request(method: Methods.GET, url: url, body: nil, secure: true) { (error, response) in
             
-            // TODO: figure out the response and model
+            var teams: [Team] = [Team]()
+            if let response = response as? [[String:Any]] {
+                // Loop through and build teams out of the response
+                for jsonTeam in response {
+                    let team = Team(data: jsonTeam)
+                    teams.append(team)
+                }
+            }
             
             self.handleIfError(error: error, response: response)
             if let completion = completion {

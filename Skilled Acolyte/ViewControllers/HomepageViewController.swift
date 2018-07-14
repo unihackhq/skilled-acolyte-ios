@@ -65,6 +65,8 @@ class HomepageTableViewController: UIViewController, UITableViewDataSource, UITa
         
         guard let student = Configuration.CurrentStudent else { return }
         refreshSettingsButtonForStudent(student)
+        
+        checkPushNotificationStatus()
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,16 +94,28 @@ class HomepageTableViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func registerPushNotifications() {
-        DispatchQueue.main.async {
-            if #available(iOS 10.0, *) {
-                UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-                    guard settings.authorizationStatus == .authorized else { return }
+        
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+                guard settings.authorizationStatus == .authorized else { return }
+                DispatchQueue.main.async {
                     UIApplication.shared.registerForRemoteNotifications()
                 }
-            } else {
-                // Fallback on iOS 9 and earlier versions
+            }
+        } else {
+            // Fallback on iOS 9 and earlier versions
+            DispatchQueue.main.async {
                 UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert], categories: nil))
                 UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+    
+    func checkPushNotificationStatus() {
+        
+        DispatchQueue.main.async {
+            if UIApplication.shared.isRegisteredForRemoteNotifications {
+                self.removeCell(withData: "EnablePushNotificationsCell")
             }
         }
     }

@@ -56,8 +56,14 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func teamTapped() {
         
-        let eventsVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "CreateTeamViewController")
-        navigationController?.pushViewController(eventsVC, animated: true)
+        if Configuration.CurrentTeam == nil {
+            let findTeamVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "JoinTeamViewController")
+            navigationController?.pushViewController(findTeamVC, animated: true)
+        } else {
+            // TODO: show team page
+            let findTeamVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "JoinTeamViewController")
+            navigationController?.pushViewController(findTeamVC, animated: true)
+        }
     }
     
     func eventsTapped() {

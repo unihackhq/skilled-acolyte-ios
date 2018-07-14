@@ -11,7 +11,7 @@ import UIKit
 class JoinTeamViewController: UIViewController, UITableViewDataSource, JoinTeamTableViewCellDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    var teamInvitations: [Any]!
+    var teamInvitations: [Team]! = [Team]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,14 +20,37 @@ class JoinTeamViewController: UIViewController, UITableViewDataSource, JoinTeamT
         
         Networking.shared.getStudentInvites(byStudentId: student.id) { (error, teamInvitations) in
             
-            // TODO: handle error
+            // TODO: better handle error
             if let error = error {
-                
+                let alert = UIAlertController(title: "Invite Error", message: "\(error)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             } else {
                 self.teamInvitations = teamInvitations
                 self.tableView.reloadData()
             }
         }
+    }
+    
+    func removeCell(withTeam team: Team) {
+        
+        if let indexToRemove = teamInvitations.lastIndex(of: team) {
+            teamInvitations.remove(at: indexToRemove)
+            DispatchQueue.main.async {
+                self.tableView.deleteRows(at: [IndexPath(row: indexToRemove, section: 0)], with: .automatic)
+            }
+        }
+    }
+    
+    @IBAction func btnBackTapped() {
+    
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func btnCreateTeam() {
+        
+        let createTeamVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "CreateTeamViewController")
+        navigationController?.pushViewController(createTeamVC, animated: true)
     }
     
     // MARK: - UITableViewDataSource
@@ -41,7 +64,7 @@ class JoinTeamViewController: UIViewController, UITableViewDataSource, JoinTeamT
         
         let teamInvitation = teamInvitations[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "") as! JoinTeamTableViewCell
-        cell.populate(withTeam: teamInvitation as! Team, delegate: self)
+        cell.populate(withTeam: teamInvitation, delegate: self)
         
         return cell
     }
@@ -54,10 +77,14 @@ class JoinTeamViewController: UIViewController, UITableViewDataSource, JoinTeamT
         
         Networking.shared.acceptTeamInvite(forStudentId: student.id, teamId: team.id) { (error) in
         
+            // TODO: better handle error
             if let error = error {
-                
+                let alert = UIAlertController(title: "Accept Invite Error", message: "\(error)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             } else {
-                // Close screen and show new team page
+                // TODO: show my team page
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
@@ -68,10 +95,14 @@ class JoinTeamViewController: UIViewController, UITableViewDataSource, JoinTeamT
         
         Networking.shared.rejectTeamInvite(forStudentId: student.id, teamId: team.id) { (error) in
             
+            // TODO: better handle error
             if let error = error {
-                
+                let alert = UIAlertController(title: "Reject Invite Error", message: "\(error)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             } else {
                 // Delete this request and refresh the tableview
+                self.removeCell(withTeam: team)
             }
         }
     }
