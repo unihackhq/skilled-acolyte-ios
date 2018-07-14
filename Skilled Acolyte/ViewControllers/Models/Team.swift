@@ -13,8 +13,12 @@ struct Team: Codable {
     var id: String = ""
     var eventId: String = ""
     var name: String = ""
-    var teamDescription: String = ""
+    var shortDescription: String = ""
+    var longDescription: String?
+    var devpostLink: String?
     var photoUrl: String?
+    var members: [Student] = [Student]()
+    var pendingInvitations: [Student] = [Student]()
     
     init() {}
     
@@ -24,8 +28,18 @@ struct Team: Codable {
         id = data["id"] as! String
         eventId = data["eventId"] as! String
         name = data["name"] as! String
-        teamDescription = data["description"] as! String
+        shortDescription = data["shortDescription"] as! String
+        longDescription = data["longDescription"] as? String
+        devpostLink = data["devpostLink"] as? String
         photoUrl = data["photoUrl"] as? String
+        for memberData in (data["members"] as! [[String:Any]]) {
+            let member = Student(data: memberData)
+            members.append(member)
+        }
+        for inviteData in (data["invited"] as! [[String:Any]]) {
+            let invite = Student(data: inviteData)
+            pendingInvitations.append(invite)
+        }
     }
     
     func toJSON() -> [String:Any] {
@@ -35,9 +49,23 @@ struct Team: Codable {
         if id != "" { json["id"] = id }
         if eventId != "" { json["eventId"] = eventId }
         if name != "" { json["name"] = name }
-        if teamDescription != "" { json["description"] = teamDescription }
+        if shortDescription != "" { json["shortDescription"] = shortDescription }
         
+        if let longDescription = longDescription { json["longDescription"] = longDescription }
+        if let devpostLink = devpostLink { json["devpostLink"] = devpostLink }
         if let photoUrl = photoUrl { json["photoUrl"] = photoUrl }
+        
+        var memberData = [[String:Any]]()
+        for member in members {
+            memberData.append(member.toJSON())
+        }
+        json["members"] = memberData
+        
+        var inviteData = [[String:Any]]()
+        for invite in pendingInvitations {
+            inviteData.append(invite.toJSON())
+        }
+        json["invited"] = inviteData
         
         return json
     }

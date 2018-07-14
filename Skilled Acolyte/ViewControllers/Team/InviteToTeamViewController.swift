@@ -19,8 +19,8 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        btnFinish.alpha = 0.5
-        btnFinish.isEnabled = false
+//        btnFinish.alpha = 0.5
+//        btnFinish.isEnabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,7 +54,7 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
                 self.present(alert, animated: true, completion: nil)
             } else if let team = team {
                 for student in self.invites {
-                    Networking.shared.inviteUserToTeam(teamId: team.id, userId: student.user.id, completion: { (error, something) in
+                    Networking.shared.inviteUserToTeam(teamId: team.id, userId: student.user.id, completion: { (error) in
                         if let error = error {
                             // TODO: better handle error
                             let alert = UIAlertController(title: "Team Invite Error", message: "\(error)", preferredStyle: .alert)
@@ -115,10 +115,10 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
                 self.invites.remove(at: indexPath.row)
                 self.tableView.reloadRows(at: [indexPath], with: .automatic)
                 
-                if self.invites.count < 4 {
-                    self.btnFinish.alpha = 0.5
-                    self.btnFinish.isEnabled = false
-                }
+//                if self.invites.count < 4 {
+//                    self.btnFinish.alpha = 0.5
+//                    self.btnFinish.isEnabled = false
+//                }
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         } else if cell?.reuseIdentifier == "FindNewTeamMemberCell" {
@@ -135,9 +135,9 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
         invites.append(student)
         tableView.reloadRows(at: [IndexPath.init(row: invites.count, section: 0)], with: .automatic)
         
-        if invites.count >= 4 {
-            btnFinish.alpha = 1
-            btnFinish.isEnabled = true
-        }
+//        if invites.count >= 4 {
+//            btnFinish.alpha = 1
+//            btnFinish.isEnabled = true
+//        }
     }
 }

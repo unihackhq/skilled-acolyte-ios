@@ -270,12 +270,19 @@ class Networking: NSObject {
         }
     }
     
-    func getTeamInvites(byTeamId teamId: String, completion:((Error?, [Any]?) -> Void)?) {
+    func getTeamInvites(byTeamId teamId: String, completion:((Error?, [Team]?) -> Void)?) {
         
         let url = "/teams/\(teamId)/invites"
         request(method: Methods.GET, url: url, body: nil, secure: true) { (error, response) in
             
-            // TODO: figure out the response and model
+            var teams: [Team] = [Team]()
+            if let response = response as? [[String:Any]] {
+                // Loop through and build teams out of the response
+                for jsonTeam in response {
+                    let team = Team(data: jsonTeam)
+                    teams.append(team)
+                }
+            }
             
             self.handleIfError(error: error, response: response)
             if let completion = completion {
@@ -322,58 +329,50 @@ class Networking: NSObject {
         }
     }
     
-    func inviteUserToTeam(teamId: String, userId: String, completion:((Error?, Any?) -> Void)?) {
+    func inviteUserToTeam(teamId: String, userId: String, completion:((Error?) -> Void)?) {
         
         let url = "/teams/\(teamId)/invites"
         request(method: Methods.POST, url: url, body: ["userId":userId], secure: true) { (error, response) in
             
-            // TODO: figure out the response
-            
             self.handleIfError(error: error, response: response)
             if let completion = completion {
-                completion(error, nil)
+                completion(error)
             }
         }
     }
     
-    func acceptTeamInvite(forStudentId studentId: String, inviteId: String, completion:((Error?, Any?) -> Void)?) {
+    func acceptTeamInvite(forStudentId studentId: String, teamId: String, completion:((Error?) -> Void)?) {
         
-        let url = "/students/\(studentId)/invites/\(inviteId)/accept"
+        let url = "/students/\(studentId)/invites/\(teamId)/accept"
         request(method: Methods.POST, url: url, body: nil, secure: true) { (error, response) in
             
-            // TODO: figure out the response
-            
             self.handleIfError(error: error, response: response)
             if let completion = completion {
-                completion(error, nil)
+                completion(error)
             }
         }
     }
     
-    func rejectTeamInvite(forStudentId studentId: String, inviteId: String, completion:((Error?, Any?) -> Void)?) {
+    func rejectTeamInvite(forStudentId studentId: String, teamId: String, completion:((Error?) -> Void)?) {
         
-        let url = "/students/\(studentId)/invites/\(inviteId)/reject"
+        let url = "/students/\(studentId)/invites/\(teamId)/reject"
         request(method: Methods.POST, url: url, body: nil, secure: true) { (error, response) in
             
-            // TODO: figure out the response
-            
             self.handleIfError(error: error, response: response)
             if let completion = completion {
-                completion(error, nil)
+                completion(error)
             }
         }
     }
     
-    func leaveTeam(forStudentId studentId: String, teamId: String, completion:((Error?, Any?) -> Void)?) {
+    func leaveTeam(forStudentId studentId: String, teamId: String, completion:((Error?) -> Void)?) {
         
         let url = "/students/\(studentId)/teams/\(teamId)/reject"
         request(method: Methods.POST, url: url, body: nil, secure: true) { (error, response) in
             
-            // TODO: figure out the response
-            
             self.handleIfError(error: error, response: response)
             if let completion = completion {
-                completion(error, nil)
+                completion(error)
             }
         }
     }

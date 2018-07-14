@@ -35,6 +35,21 @@ struct Student: Codable {
         photoUrl = data["photoUrl"] as? String
     }
     
+    func basicName() -> String! {
+        if let preferred = user.preferredName {
+            return preferred
+        } else if let first = user.firstName {
+            return first
+        }
+        return ""
+    }
+    
+    func fullName() -> String! {
+        let first = (user.firstName != nil) ? (user.firstName!+" ") : ""
+        let last = user.lastName ?? ""
+        return first + last
+    }
+    
     func toJSON() -> [String:Any] {
         
         var json = [String:Any]()
@@ -49,5 +64,4 @@ struct Student: Codable {
         
         return json
     }
-
 }

@@ -1,3 +1,5 @@
+// UNUSED
+
 //
 //  TeamCreateViewController.swift
 //  Skilled Acolyte
@@ -34,7 +36,7 @@ class TeamCreateViewController: UIViewController {
         
         var newTeam = Team(data: nil)
         newTeam.name = teamName
-        newTeam.teamDescription = " "
+        newTeam.shortDescription = " "
         newTeam.eventId = currentEvent.id
         
         Networking.shared.createTeam(team: newTeam) { (error, team) in
