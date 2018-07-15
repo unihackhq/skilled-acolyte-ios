@@ -16,7 +16,11 @@ struct Student: Codable {
     var user: User = User(data: nil)
     var studyLevel: String?
     var degree: String?
-    var photoUrl: String?
+    var photoUrl: String? {
+        didSet {
+            UserDefaults.standard.removeObject(forKey: id+"-photo")
+        }
+    }
     
     init(data: [String:Any]?) {
         guard let data = data else { return }
@@ -69,11 +73,19 @@ struct Student: Codable {
         return initials
     }
     
-    func downloadPhoto() -> UIImage? {
-        // Try to load in an image
+    @discardableResult func downloadPhoto() -> UIImage? {
+        
+        // Look for a cached image
+        if let cachedImageData = UserDefaults.standard.object(forKey: id+"-photo") as? Data {
+            return UIImage(data: cachedImageData)
+        }
+
+        // Otherwise try to load in an image
         if let imgUrl = photoUrl {
             guard let data = try? Data(contentsOf: URL(string:imgUrl)!) else { return nil }
-            return UIImage(data: data)
+            guard let image = UIImage(data: data) else { return nil }
+            UserDefaults.standard.set(data, forKey: id+"-photo")
+            return image
         } else {
             return nil
         }

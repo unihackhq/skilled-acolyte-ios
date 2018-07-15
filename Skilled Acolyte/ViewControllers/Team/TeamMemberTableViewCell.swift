@@ -33,6 +33,7 @@ class TeamMemberTableViewCell: UITableViewCell {
             studentPhoto.image = image
             studentInitials.text = ""
         } else if let initials = student.initials() {
+            studentPhoto.image = nil
             studentInitials.text = initials
         }
     }

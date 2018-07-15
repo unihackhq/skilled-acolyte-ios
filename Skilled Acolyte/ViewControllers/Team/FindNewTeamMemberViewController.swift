@@ -18,6 +18,7 @@ class FindNewTeamMemberViewController: UIViewController, UITableViewDataSource, 
     @IBOutlet weak var searchBar: UISearchBar!
     weak private var delegate: FindNewTeamMemberViewControllerDelegate?
     var students:[Student]! = [Student]()
+    var filteredStudents:[Student]! = [Student]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,7 @@ class FindNewTeamMemberViewController: UIViewController, UITableViewDataSource, 
     
     func populate(withStudents students:[Student], delegate: FindNewTeamMemberViewControllerDelegate) {
         self.students = students
+        self.filteredStudents = students
         self.delegate = delegate
     }
     
@@ -43,14 +45,14 @@ class FindNewTeamMemberViewController: UIViewController, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return students.count
+        return filteredStudents.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Retrieve an invite if there is one in range
-        let cell = tableView.dequeueReusableCell(withIdentifier: "InviteToTeamCell") as! InviteToTeamTableViewCell
-        cell.populateWith(student: students[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TeamMemberCell") as! TeamMemberTableViewCell
+        cell.fpopulate(withStudent: filteredStudents[indexPath.row])
         return cell
     }
     
@@ -60,17 +62,27 @@ class FindNewTeamMemberViewController: UIViewController, UITableViewDataSource, 
         tableView.deselectRow(at: indexPath, animated: true)
         
         if let delegate = delegate {
-            delegate.findNewTeamMemberSelected(student: students[indexPath.row])
+            delegate.findNewTeamMemberSelected(student: filteredStudents[indexPath.row])
         }
         navigationController?.popViewController(animated: true)
     }
     
     // MARK: - UISearchBarDelegate
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchBar.text == "" {
+            filteredStudents = students
+        } else {
+            filteredStudents = students.filter({ (student) -> Bool in
+                return (student.fullName().range(of: searchBar.text!) != nil)
+            })
+        }
+        
+        tableView.reloadData()
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
         searchBar.resignFirstResponder()
-        
-        // TODO: filter results
     }
 }

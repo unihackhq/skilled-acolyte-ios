@@ -105,8 +105,8 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
         
         // Retrieve an invite if there is one in range
         if indexPath.row < invites.count {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "InviteToTeamCell") as! InviteToTeamTableViewCell
-            cell.populateWith(student: invites[indexPath.row])
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TeamMemberCell") as! TeamMemberTableViewCell
+            cell.populate(withStudent: invites[indexPath.row])
             return cell
         } else {
             return tableView.dequeueReusableCell(withIdentifier: "FindNewTeamMemberCell")!
