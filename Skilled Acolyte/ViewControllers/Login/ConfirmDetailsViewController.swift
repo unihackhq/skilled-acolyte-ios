@@ -39,7 +39,7 @@ class ConfirmDetailsViewController: UIViewController, UITableViewDataSource, Con
         // Do any additional setup after loading the view.
         switch confirmingStep {
         case 1:
-            confirmDetailTitle.text = "Confirm Personal Details"
+            confirmDetailTitle.text = "Personal Details"
             tableViewData = [
                 ConfirmDetail.ProfilePhoto,
                 ConfirmDetail.FirstName,
@@ -50,14 +50,14 @@ class ConfirmDetailsViewController: UIViewController, UITableViewDataSource, Con
             ]
             break
         case 2:
-            confirmDetailTitle.text = "Confirm Contact Details"
+            confirmDetailTitle.text = "Contact Information"
             tableViewData = [
                 ConfirmDetail.Email,
                 ConfirmDetail.MobileNumber
             ]
             break
         case 3:
-            confirmDetailTitle.text = "Confirm Study Details"
+            confirmDetailTitle.text = "Study Information"
             tableViewData = [
                 ConfirmDetail.EducationalInstitution,
                 ConfirmDetail.Course,

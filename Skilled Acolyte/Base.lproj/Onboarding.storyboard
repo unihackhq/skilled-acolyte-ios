@@ -138,7 +138,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y5v-a3-Vmg" customClass="TPKeyboardAvoidingTableView">
-                                <rect key="frame" x="0.0" y="191.5" width="375" height="367.5"/>
+                                <rect key="frame" x="0.0" y="184.5" width="375" height="374.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConfirmDetailCell" rowHeight="60" id="mWt-U5-GJF" customClass="ConfirmDetailTableViewCell" customModule="Skilled_Acolyte" customModuleProvider="target">
@@ -279,8 +279,8 @@ Line 2</string>
                                     <outlet property="delegate" destination="MHe-lB-PQm" id="V9I-aL-fKz"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Some Kind Of Details" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsT-Ou-ixn">
-                                <rect key="frame" x="16" y="70" width="343" height="71.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsT-Ou-ixn">
+                                <rect key="frame" x="16" y="70" width="343" height="36"/>
                                 <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -323,28 +323,37 @@ Line 2</string>
                                     <action selector="btnBackTapped" destination="MHe-lB-PQm" eventType="touchUpInside" id="cBH-NO-fxC"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPT-tN-BnW">
+                                <rect key="frame" x="16" y="114" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="hPT-tN-BnW" firstAttribute="leading" secondItem="0Vf-0V-dnE" secondAttribute="leading" constant="16" id="08r-Sn-Pv3"/>
+                            <constraint firstItem="0Vf-0V-dnE" firstAttribute="trailing" secondItem="hPT-tN-BnW" secondAttribute="trailing" constant="16" id="6bm-KG-wFq"/>
+                            <constraint firstItem="y5v-a3-Vmg" firstAttribute="top" secondItem="hPT-tN-BnW" secondAttribute="bottom" constant="50" id="7Ig-Na-zj8"/>
                             <constraint firstItem="y5v-a3-Vmg" firstAttribute="leading" secondItem="0Vf-0V-dnE" secondAttribute="leading" id="9eK-W4-js4"/>
                             <constraint firstItem="0Vf-0V-dnE" firstAttribute="trailing" secondItem="qsT-Ou-ixn" secondAttribute="trailing" constant="16" id="AVp-uP-y65"/>
                             <constraint firstItem="BgY-hp-7cq" firstAttribute="leading" secondItem="0Vf-0V-dnE" secondAttribute="leading" constant="16" id="El4-bx-mKv"/>
                             <constraint firstItem="0Vf-0V-dnE" firstAttribute="trailing" secondItem="BgY-hp-7cq" secondAttribute="trailing" constant="16" id="ONK-6e-wBo"/>
                             <constraint firstItem="qsT-Ou-ixn" firstAttribute="leading" secondItem="0Vf-0V-dnE" secondAttribute="leading" constant="16" id="ONi-TG-ay2"/>
-                            <constraint firstItem="y5v-a3-Vmg" firstAttribute="top" secondItem="qsT-Ou-ixn" secondAttribute="bottom" constant="50" id="PuG-Uk-TDi"/>
                             <constraint firstItem="0Vf-0V-dnE" firstAttribute="trailing" secondItem="T6r-7e-ya6" secondAttribute="trailing" constant="16" id="RbB-OT-XUI"/>
+                            <constraint firstItem="qsT-Ou-ixn" firstAttribute="top" secondItem="0Vf-0V-dnE" secondAttribute="top" constant="50" id="SR7-JO-BT5"/>
                             <constraint firstItem="T6r-7e-ya6" firstAttribute="top" secondItem="BgY-hp-7cq" secondAttribute="bottom" constant="8" id="YXH-1c-8kP"/>
+                            <constraint firstItem="hPT-tN-BnW" firstAttribute="top" secondItem="qsT-Ou-ixn" secondAttribute="bottom" constant="8" id="ZeI-d4-BY1"/>
                             <constraint firstItem="T6r-7e-ya6" firstAttribute="leading" secondItem="0Vf-0V-dnE" secondAttribute="leading" constant="16" id="bk3-Ba-qup"/>
                             <constraint firstItem="y5v-a3-Vmg" firstAttribute="trailing" secondItem="0Vf-0V-dnE" secondAttribute="trailing" id="fJ3-fk-kjF"/>
                             <constraint firstItem="0Vf-0V-dnE" firstAttribute="bottom" secondItem="T6r-7e-ya6" secondAttribute="bottom" constant="20" id="nxg-X4-uPy"/>
                             <constraint firstItem="BgY-hp-7cq" firstAttribute="top" secondItem="y5v-a3-Vmg" secondAttribute="bottom" id="p1b-OX-2rm"/>
-                            <constraint firstItem="qsT-Ou-ixn" firstAttribute="top" secondItem="0Vf-0V-dnE" secondAttribute="top" constant="50" id="qXi-LZ-gNF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0Vf-0V-dnE"/>
                     </view>
                     <connections>
                         <outlet property="btnNext" destination="BgY-hp-7cq" id="gUd-F0-Mw0"/>
-                        <outlet property="confirmDetailTitle" destination="qsT-Ou-ixn" id="IVz-xp-55n"/>
+                        <outlet property="confirmDetailTitle" destination="hPT-tN-BnW" id="xfA-I4-MC7"/>
                         <outlet property="tableView" destination="y5v-a3-Vmg" id="Kk2-tA-emR"/>
                     </connections>
                 </viewController>

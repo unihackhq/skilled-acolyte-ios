@@ -52,7 +52,7 @@ class FindNewTeamMemberViewController: UIViewController, UITableViewDataSource, 
         
         // Retrieve an invite if there is one in range
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamMemberCell") as! TeamMemberTableViewCell
-        cell.fpopulate(withStudent: filteredStudents[indexPath.row])
+        cell.populate(withStudent: filteredStudents[indexPath.row])
         return cell
     }
     
