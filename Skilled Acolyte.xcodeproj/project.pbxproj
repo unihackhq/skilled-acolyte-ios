@@ -13,8 +13,6 @@
 		285C57AE20AD6AD500C57F03 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285C57AD20AD6AD500C57F03 /* SettingsViewController.swift */; };
 		285C57B020AD6AE800C57F03 /* TicketTransferRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285C57AF20AD6AE800C57F03 /* TicketTransferRequestViewController.swift */; };
 		285C57B220AD6AED00C57F03 /* TicketTransferConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285C57B120AD6AED00C57F03 /* TicketTransferConfirmationViewController.swift */; };
-		285C57B420AD6AF300C57F03 /* TeamCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285C57B320AD6AF300C57F03 /* TeamCreateViewController.swift */; };
-		285C57B620AD6AF900C57F03 /* TeamManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285C57B520AD6AF900C57F03 /* TeamManageViewController.swift */; };
 		285C57B820AD6AFF00C57F03 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285C57B720AD6AFF00C57F03 /* FAQViewController.swift */; };
 		285C57BB20B070C300C57F03 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 285C57B920B051C800C57F03 /* fonts */; };
 		6531699B20F1BBA000144B2E /* ConfirmDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531699A20F1BBA000144B2E /* ConfirmDetailsViewController.swift */; };
@@ -71,8 +69,6 @@
 		285C57AD20AD6AD500C57F03 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		285C57AF20AD6AE800C57F03 /* TicketTransferRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTransferRequestViewController.swift; sourceTree = "<group>"; };
 		285C57B120AD6AED00C57F03 /* TicketTransferConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTransferConfirmationViewController.swift; sourceTree = "<group>"; };
-		285C57B320AD6AF300C57F03 /* TeamCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCreateViewController.swift; sourceTree = "<group>"; };
-		285C57B520AD6AF900C57F03 /* TeamManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManageViewController.swift; sourceTree = "<group>"; };
 		285C57B720AD6AFF00C57F03 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		285C57B920B051C800C57F03 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		6531699720F1AFEB00144B2E /* Skilled Acolyte.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Skilled Acolyte.entitlements"; sourceTree = "<group>"; };
@@ -179,8 +175,8 @@
 				6571ED52209D9CFB0006F868 /* Constants.swift */,
 				65975C2A20B98AA200AC3C72 /* Configuration.swift */,
 				6571ED42209D932D0006F868 /* ViewControllers */,
-				6550A196209726F100068551 /* Main.storyboard */,
 				6537CD6220E7A56200EF0E5F /* Onboarding.storyboard */,
+				6550A196209726F100068551 /* Main.storyboard */,
 				6537CD6520E7A5C600EF0E5F /* Settings.storyboard */,
 				285C57B920B051C800C57F03 /* fonts */,
 				6550A199209726F400068551 /* Assets.xcassets */,
@@ -255,8 +251,6 @@
 		65975C2E20BA711500AC3C72 /* Team */ = {
 			isa = PBXGroup;
 			children = (
-				285C57B320AD6AF300C57F03 /* TeamCreateViewController.swift */,
-				285C57B520AD6AF900C57F03 /* TeamManageViewController.swift */,
 				65E7377720F999C400D605E2 /* JoinTeamViewController.swift */,
 				65E7377920F999E200D605E2 /* JoinTeamTableViewCell.swift */,
 				6539321120F2400A00F409BA /* CreateTeamViewController.swift */,
@@ -483,7 +477,6 @@
 				658CA0E920B14A9C000ABD30 /* Networking.swift in Sources */,
 				65975C3020BA713000AC3C72 /* TicketsViewController.swift in Sources */,
 				65E98D5220F4D0AC00CF78BD /* NotificationsViewController.swift in Sources */,
-				285C57B620AD6AF900C57F03 /* TeamManageViewController.swift in Sources */,
 				65E7377820F999C400D605E2 /* JoinTeamViewController.swift in Sources */,
 				6531699D20F1BEF200144B2E /* ConfirmImageDetailTableViewCell.swift in Sources */,
 				285C57AC20AD6ACD00C57F03 /* HomepageViewController.swift in Sources */,
@@ -507,7 +500,6 @@
 				285C57AA20AD6AC400C57F03 /* VerifyViewController.swift in Sources */,
 				285C57B020AD6AE800C57F03 /* TicketTransferRequestViewController.swift in Sources */,
 				6539321420F2402200F409BA /* InviteToTeamViewController.swift in Sources */,
-				285C57B420AD6AF300C57F03 /* TeamCreateViewController.swift in Sources */,
 				6539321220F2400A00F409BA /* CreateTeamViewController.swift in Sources */,
 				65E7377E20F9BC2F00D605E2 /* TeamMemberTableViewCell.swift in Sources */,
 				65BF4E6F20FA206200C9B40D /* ConfirmDetailTableViewCell.swift in Sources */,

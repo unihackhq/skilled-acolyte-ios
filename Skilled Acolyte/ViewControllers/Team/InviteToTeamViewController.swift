@@ -18,9 +18,6 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        btnFinish.alpha = 0.5
-//        btnFinish.isEnabled = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -93,12 +90,15 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // Maxiumum team size is 6, so only show the 'add' cell when there are fewer students
-        if invites.count < 6 {
-            return invites.count+1
-        } else {
-            return invites.count
-        }
+//        // Maxiumum team size is 6, so only show the 'add' cell when there are fewer students
+//        if invites.count < 6 {
+//            return invites.count+1
+//        } else {
+//            return invites.count
+//        }
+        
+        // You can invite any number, but only 6 can accept invitations
+        return invites.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -122,17 +122,30 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
         if cell?.reuseIdentifier == "InviteToTeamCell" {
             
             // Ask the user if they want to remove this invitation
-            let alert = UIAlertController(title: "Remove Invite", message: "Are you sure you want to remove this invitation", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Remove Invite", message: "Are you sure you want to remove this invitation?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "Remove", style: .destructive, handler: { (action) in
                 self.invites.remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
             }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
         } else if cell?.reuseIdentifier == "FindNewTeamMemberCell" {
+            // Filter the list from current members and sent invitations
+            let filteredEventAttendees = eventAttendees.filter({ (filterStudent) -> Bool in
+                if filterStudent == Configuration.CurrentStudent {
+                    return false
+                }
+                for invited in invites {
+                    if filterStudent == invited {
+                        return false
+                    }
+                }
+                return true
+            })
             
             // Present a tableview of all students available to invite to the team
             let findNewTeamMemberVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "FindNewTeamMemberViewController") as! FindNewTeamMemberViewController
-            findNewTeamMemberVC.populate(withStudents: eventAttendees, delegate: self)
+            findNewTeamMemberVC.populate(withStudents: filteredEventAttendees, delegate: self)
             navigationController?.pushViewController(findNewTeamMemberVC, animated: true)
         }
     }
@@ -142,10 +155,5 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
     func findNewTeamMemberSelected(student: Student) {
         invites.append(student)
         tableView.reloadData()
-        
-//        if invites.count >= 4 {
-//            btnFinish.alpha = 1
-//            btnFinish.isEnabled = true
-//        }
     }
 }

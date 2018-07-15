@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Student: Codable {
+struct Student: Codable, Equatable {
     
     var firstLaunch: Bool?
     var id: String = ""
@@ -104,5 +104,9 @@ struct Student: Codable {
         if let photoUrl = photoUrl { json["photoUrl"] = photoUrl }
         
         return json
+    }
+    
+    static func == (left: Student, right: Student) -> Bool {
+        return left.id == right.id
     }
 }

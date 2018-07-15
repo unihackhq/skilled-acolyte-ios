@@ -107,7 +107,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="115" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rOU-1n-vtS">
-                                <rect key="frame" x="0.0" y="156" width="375" height="462"/>
+                                <rect key="frame" x="0.0" y="136" width="375" height="482"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EnablePushNotificationsCell" rowHeight="115" id="5YH-kB-NGW">
@@ -338,7 +338,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rOU-1n-vtS" firstAttribute="trailing" secondItem="7cF-Ll-JRj" secondAttribute="trailing" id="AKP-HN-hx5"/>
-                            <constraint firstItem="rOU-1n-vtS" firstAttribute="top" secondItem="8C9-2K-aIk" secondAttribute="bottom" constant="50" id="DRd-5F-bFN"/>
+                            <constraint firstItem="rOU-1n-vtS" firstAttribute="top" secondItem="8C9-2K-aIk" secondAttribute="bottom" constant="30" id="DRd-5F-bFN"/>
                             <constraint firstItem="rOU-1n-vtS" firstAttribute="leading" secondItem="7cF-Ll-JRj" secondAttribute="leading" id="Qd4-ec-YLg"/>
                             <constraint firstItem="8C9-2K-aIk" firstAttribute="top" secondItem="7cF-Ll-JRj" secondAttribute="top" constant="50" id="TbA-Yq-GFk"/>
                             <constraint firstItem="8C9-2K-aIk" firstAttribute="leading" secondItem="7cF-Ll-JRj" secondAttribute="leading" constant="16" id="Tv1-eH-MBZ"/>
@@ -396,7 +396,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i6t-vp-a71">
-                                <rect key="frame" x="0.0" y="156" width="375" height="462"/>
+                                <rect key="frame" x="0.0" y="136" width="375" height="482"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -407,7 +407,7 @@
                             <constraint firstItem="i6t-vp-a71" firstAttribute="leading" secondItem="DnY-K3-Bfk" secondAttribute="leading" id="QDs-wV-z37"/>
                             <constraint firstItem="cSi-uf-YRW" firstAttribute="leading" secondItem="DnY-K3-Bfk" secondAttribute="leading" constant="16" id="U2M-MD-H5O"/>
                             <constraint firstItem="i6t-vp-a71" firstAttribute="trailing" secondItem="DnY-K3-Bfk" secondAttribute="trailing" id="WOr-Ic-UlG"/>
-                            <constraint firstItem="i6t-vp-a71" firstAttribute="top" secondItem="cSi-uf-YRW" secondAttribute="bottom" constant="50" id="WW8-yd-WM9"/>
+                            <constraint firstItem="i6t-vp-a71" firstAttribute="top" secondItem="cSi-uf-YRW" secondAttribute="bottom" constant="30" id="WW8-yd-WM9"/>
                             <constraint firstItem="DnY-K3-Bfk" firstAttribute="bottom" secondItem="i6t-vp-a71" secondAttribute="bottom" id="jxT-h1-kbd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DnY-K3-Bfk"/>
@@ -433,7 +433,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p5b-Lb-Ixo">
-                                <rect key="frame" x="0.0" y="156" width="375" height="462"/>
+                                <rect key="frame" x="0.0" y="136" width="375" height="482"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoItemCell" rowHeight="150" id="rxw-ma-D4U">
@@ -515,7 +515,7 @@ line 4..</string>
                             <constraint firstItem="p5b-Lb-Ixo" firstAttribute="leading" secondItem="a7Z-Ee-tut" secondAttribute="leading" id="V7z-yd-yuC"/>
                             <constraint firstItem="tfV-BV-PxA" firstAttribute="leading" secondItem="a7Z-Ee-tut" secondAttribute="leading" constant="16" id="deI-j1-47b"/>
                             <constraint firstItem="tfV-BV-PxA" firstAttribute="top" secondItem="a7Z-Ee-tut" secondAttribute="top" constant="50" id="gLy-AD-swV"/>
-                            <constraint firstItem="p5b-Lb-Ixo" firstAttribute="top" secondItem="tfV-BV-PxA" secondAttribute="bottom" constant="50" id="oK5-it-T5y"/>
+                            <constraint firstItem="p5b-Lb-Ixo" firstAttribute="top" secondItem="tfV-BV-PxA" secondAttribute="bottom" constant="30" id="oK5-it-T5y"/>
                             <constraint firstItem="p5b-Lb-Ixo" firstAttribute="trailing" secondItem="a7Z-Ee-tut" secondAttribute="trailing" id="pQH-QJ-b5x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="a7Z-Ee-tut"/>
@@ -548,7 +548,7 @@ line 4..</string>
                                 </state>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="D04-A6-PzQ">
-                                <rect key="frame" x="16" y="184.5" width="343" height="482.5"/>
+                                <rect key="frame" x="16" y="164.5" width="343" height="502.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -568,7 +568,7 @@ line 4..</string>
                             <constraint firstItem="7uX-Ia-JVX" firstAttribute="leading" secondItem="yso-dk-HAe" secondAttribute="leading" constant="16" id="Nmp-ag-d9P"/>
                             <constraint firstItem="gVr-YU-o8F" firstAttribute="leading" secondItem="yso-dk-HAe" secondAttribute="leading" constant="16" id="Qpf-xm-EHr"/>
                             <constraint firstItem="D04-A6-PzQ" firstAttribute="leading" secondItem="gVr-YU-o8F" secondAttribute="leading" id="Sqs-rr-QCO"/>
-                            <constraint firstItem="D04-A6-PzQ" firstAttribute="top" secondItem="7uX-Ia-JVX" secondAttribute="bottom" constant="50" id="TI3-qZ-Ov9"/>
+                            <constraint firstItem="D04-A6-PzQ" firstAttribute="top" secondItem="7uX-Ia-JVX" secondAttribute="bottom" constant="30" id="TI3-qZ-Ov9"/>
                             <constraint firstItem="gVr-YU-o8F" firstAttribute="top" secondItem="yso-dk-HAe" secondAttribute="top" constant="50" id="W4H-iA-jgI"/>
                             <constraint firstItem="D04-A6-PzQ" firstAttribute="bottom" secondItem="rFz-ch-fYi" secondAttribute="bottomMargin" id="fcD-YL-xie"/>
                             <constraint firstItem="yso-dk-HAe" firstAttribute="trailing" secondItem="gVr-YU-o8F" secondAttribute="trailing" constant="16" id="kFN-Bq-kf1"/>
@@ -592,7 +592,7 @@ line 4..</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="g4W-0s-BG1">
-                                <rect key="frame" x="0.0" y="156" width="375" height="462"/>
+                                <rect key="frame" x="0.0" y="136" width="375" height="482"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleItemCell" rowHeight="50" id="HE6-P7-WNz">
@@ -620,7 +620,7 @@ line 4..</string>
                             <constraint firstItem="g4W-0s-BG1" firstAttribute="bottom" secondItem="rx9-SV-xuZ" secondAttribute="bottom" id="Eqy-r5-LcZ"/>
                             <constraint firstItem="VBy-76-f57" firstAttribute="leading" secondItem="rx9-SV-xuZ" secondAttribute="leading" constant="16" id="NCg-AD-m9L"/>
                             <constraint firstItem="g4W-0s-BG1" firstAttribute="trailing" secondItem="rx9-SV-xuZ" secondAttribute="trailing" id="trc-ab-o3K"/>
-                            <constraint firstItem="g4W-0s-BG1" firstAttribute="top" secondItem="VBy-76-f57" secondAttribute="bottom" constant="50" id="u3g-xX-iPR"/>
+                            <constraint firstItem="g4W-0s-BG1" firstAttribute="top" secondItem="VBy-76-f57" secondAttribute="bottom" constant="30" id="u3g-xX-iPR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rx9-SV-xuZ"/>
                     </view>

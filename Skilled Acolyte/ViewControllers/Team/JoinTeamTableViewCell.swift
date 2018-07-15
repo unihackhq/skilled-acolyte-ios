@@ -51,6 +51,13 @@ class JoinTeamTableViewCell: UITableViewCell {
         
         firstThreeMembers.text = first3
         secondThreeMembers.text = second3
+        
+        // Disable joining this team when it is full
+        if team.members.count < 6 {
+            alpha = 1
+        } else {
+            alpha = 0.5
+        }
     }
     
     @IBAction func acceptInviteTapped() {

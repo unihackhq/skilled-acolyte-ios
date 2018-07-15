@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     var tableViewData: [[String]]! = [[String]]()
@@ -31,6 +31,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 "Sign Out"
             ]
         ]
+        
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -138,5 +140,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         } else if cell?.reuseIdentifier == "Settings:Sign Out" {
             signOutTapped()
         }
+    }
+
+    // MARK: - UIGestureRecognizerDelegate
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        // Enables the navigation swipe back feature
+        return true
     }
 }

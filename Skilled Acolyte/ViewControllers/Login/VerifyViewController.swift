@@ -101,7 +101,7 @@ class VerifyViewController: UIViewController {
                     }
                 })
             } else {
-                let alert = UIAlertController(title: "Whoops", message: "Your token couldn't be verified. Unfortunately we also had an unknown error", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Unknown Error", message: "Your token couldn't be verified. Unfortunately we also had an unknown error. Please hassle tech team", preferredStyle: .alert)
                 let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(alertAction)
                 self.present(alert, animated: true, completion: nil)

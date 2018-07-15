@@ -42,7 +42,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DqN-pz-njS">
-                                <rect key="frame" x="0.0" y="153.5" width="375" height="513.5"/>
+                                <rect key="frame" x="0.0" y="133.5" width="375" height="533.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <sections/>
                                 <connections>
@@ -70,7 +70,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nun-WJ-axc" firstAttribute="top" secondItem="LMT-a3-TiG" secondAttribute="top" constant="16" id="3QV-mO-3Jb"/>
-                            <constraint firstItem="DqN-pz-njS" firstAttribute="top" secondItem="Rej-is-vBD" secondAttribute="bottom" constant="50" id="6iu-3U-r2l"/>
+                            <constraint firstItem="DqN-pz-njS" firstAttribute="top" secondItem="Rej-is-vBD" secondAttribute="bottom" constant="30" id="6iu-3U-r2l"/>
                             <constraint firstItem="DqN-pz-njS" firstAttribute="leading" secondItem="LMT-a3-TiG" secondAttribute="leading" id="H5F-eA-I9e"/>
                             <constraint firstItem="LMT-a3-TiG" firstAttribute="trailing" secondItem="nun-WJ-axc" secondAttribute="trailing" constant="16" id="Z2W-Xx-sF3"/>
                             <constraint firstItem="Rej-is-vBD" firstAttribute="leading" secondItem="LMT-a3-TiG" secondAttribute="leading" constant="16" id="d6Q-4o-MDQ"/>
@@ -100,7 +100,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="coF-BX-3dJ">
-                                <rect key="frame" x="0.0" y="183" width="375" height="484"/>
+                                <rect key="frame" x="0.0" y="163" width="375" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchEventCell" rowHeight="79" id="yYf-Xg-1Gz" customClass="SwitchEventTableViewCell" customModule="Skilled_Acolyte" customModuleProvider="target">
@@ -192,7 +192,7 @@
                             <constraint firstItem="17Z-AI-VqJ" firstAttribute="trailing" secondItem="6mk-kX-pdQ" secondAttribute="trailing" constant="16" id="nbg-7F-LBW"/>
                             <constraint firstItem="6mk-kX-pdQ" firstAttribute="top" secondItem="17Z-AI-VqJ" secondAttribute="top" constant="50" id="tZq-N6-K8I"/>
                             <constraint firstItem="qkB-EE-X33" firstAttribute="top" secondItem="17Z-AI-VqJ" secondAttribute="top" constant="16" id="ws1-dm-3eX"/>
-                            <constraint firstItem="coF-BX-3dJ" firstAttribute="top" secondItem="5HQ-9Q-vCu" secondAttribute="bottom" constant="50" id="yFD-mo-3wW"/>
+                            <constraint firstItem="coF-BX-3dJ" firstAttribute="top" secondItem="5HQ-9Q-vCu" secondAttribute="bottom" constant="30" id="yFD-mo-3wW"/>
                             <constraint firstItem="5HQ-9Q-vCu" firstAttribute="top" secondItem="6mk-kX-pdQ" secondAttribute="bottom" constant="8" id="yhH-4c-dX1"/>
                             <constraint firstItem="coF-BX-3dJ" firstAttribute="leading" secondItem="17Z-AI-VqJ" secondAttribute="leading" id="zti-Zb-Dc9"/>
                             <constraint firstItem="17Z-AI-VqJ" firstAttribute="trailing" secondItem="qkB-EE-X33" secondAttribute="trailing" constant="16" id="zyV-3B-1SD"/>
@@ -390,7 +390,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="kIc-bo-puy">
-                                <rect key="frame" x="0.0" y="182" width="375" height="485"/>
+                                <rect key="frame" x="0.0" y="162" width="375" height="505"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TeamMemberCell" rowHeight="50" id="ppg-Bq-PQu" customClass="TeamMemberTableViewCell" customModule="Skilled_Acolyte" customModuleProvider="target">
@@ -525,7 +525,7 @@
                             <constraint firstItem="7p8-AP-sEV" firstAttribute="trailing" secondItem="hRO-NM-o0T" secondAttribute="trailing" constant="16" id="Jec-gf-Aqo"/>
                             <constraint firstItem="cwn-vN-kZG" firstAttribute="leading" secondItem="7p8-AP-sEV" secondAttribute="leading" constant="16" id="Mt2-uu-659"/>
                             <constraint firstItem="kIc-bo-puy" firstAttribute="trailing" secondItem="7p8-AP-sEV" secondAttribute="trailing" id="QVB-SB-QsG"/>
-                            <constraint firstItem="kIc-bo-puy" firstAttribute="top" secondItem="cwn-vN-kZG" secondAttribute="bottom" constant="50" id="VFp-aE-G3R"/>
+                            <constraint firstItem="kIc-bo-puy" firstAttribute="top" secondItem="cwn-vN-kZG" secondAttribute="bottom" constant="30" id="VFp-aE-G3R"/>
                             <constraint firstItem="hRO-NM-o0T" firstAttribute="leading" secondItem="7p8-AP-sEV" secondAttribute="leading" constant="16" id="Zka-5J-xmD"/>
                             <constraint firstItem="7p8-AP-sEV" firstAttribute="trailing" secondItem="qw1-ea-rVy" secondAttribute="trailing" constant="16" id="bmQ-IX-B8Y"/>
                             <constraint firstItem="kIc-bo-puy" firstAttribute="leading" secondItem="7p8-AP-sEV" secondAttribute="leading" id="ff3-rf-BkI"/>
@@ -560,7 +560,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="165" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="scB-XY-6p7">
-                                <rect key="frame" x="0.0" y="202.5" width="375" height="464.5"/>
+                                <rect key="frame" x="0.0" y="182.5" width="375" height="484.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="JoinTeamCell" id="PwZ-N2-EeD" customClass="JoinTeamTableViewCell" customModule="Skilled_Acolyte" customModuleProvider="target">
@@ -736,7 +736,7 @@ Hugo Müller-Downing</string>
                             <constraint firstItem="scB-XY-6p7" firstAttribute="leading" secondItem="5xE-Ik-dCs" secondAttribute="leading" id="g5i-8Q-JDU"/>
                             <constraint firstItem="5xE-Ik-dCs" firstAttribute="trailing" secondItem="UcZ-xa-NYd" secondAttribute="trailing" constant="16" id="j0Z-vT-2cY"/>
                             <constraint firstItem="XC4-gJ-YMw" firstAttribute="top" secondItem="JxT-4g-I6H" secondAttribute="bottom" constant="8" id="mFC-gC-Wn3"/>
-                            <constraint firstItem="scB-XY-6p7" firstAttribute="top" secondItem="XC4-gJ-YMw" secondAttribute="bottom" constant="50" id="uGh-ui-bjz"/>
+                            <constraint firstItem="scB-XY-6p7" firstAttribute="top" secondItem="XC4-gJ-YMw" secondAttribute="bottom" constant="30" id="uGh-ui-bjz"/>
                             <constraint firstItem="scB-XY-6p7" firstAttribute="trailing" secondItem="5xE-Ik-dCs" secondAttribute="trailing" id="x80-Et-tHS"/>
                             <constraint firstItem="N6R-Kf-l29" firstAttribute="centerY" secondItem="JxT-4g-I6H" secondAttribute="centerY" id="xA2-T6-CPp"/>
                         </constraints>
@@ -1001,7 +1001,7 @@ photo</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u3B-qb-ggr">
-                                <rect key="frame" x="0.0" y="182.5" width="375" height="484.5"/>
+                                <rect key="frame" x="0.0" y="162.5" width="375" height="504.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TeamMemberCell" rowHeight="50" id="W9M-Xk-fIc" customClass="TeamMemberTableViewCell" customModule="Skilled_Acolyte" customModuleProvider="target">
@@ -1121,7 +1121,7 @@ photo</string>
                             <constraint firstItem="HXX-mo-4eS" firstAttribute="trailing" secondItem="k81-gy-3L2" secondAttribute="trailing" constant="16" id="g81-CA-ArW"/>
                             <constraint firstItem="BmT-8d-xwP" firstAttribute="leading" secondItem="HXX-mo-4eS" secondAttribute="leading" constant="16" id="i0A-hp-8mg"/>
                             <constraint firstItem="nSA-zd-chU" firstAttribute="leading" secondItem="HXX-mo-4eS" secondAttribute="leading" constant="16" id="lVh-Wf-g5j"/>
-                            <constraint firstItem="u3B-qb-ggr" firstAttribute="top" secondItem="BmT-8d-xwP" secondAttribute="bottom" constant="50" id="soS-IW-g3E"/>
+                            <constraint firstItem="u3B-qb-ggr" firstAttribute="top" secondItem="BmT-8d-xwP" secondAttribute="bottom" constant="30" id="soS-IW-g3E"/>
                             <constraint firstItem="k81-gy-3L2" firstAttribute="top" secondItem="HXX-mo-4eS" secondAttribute="top" constant="16" id="uj3-uO-fV7"/>
                             <constraint firstItem="HXX-mo-4eS" firstAttribute="trailing" secondItem="nSA-zd-chU" secondAttribute="trailing" constant="16" id="xAN-wn-o7m"/>
                         </constraints>

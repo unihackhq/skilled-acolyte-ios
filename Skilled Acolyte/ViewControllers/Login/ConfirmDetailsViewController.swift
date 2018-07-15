@@ -24,7 +24,7 @@ struct ConfirmDetail {
     static var YearLevel = "Year Level"
 }
 
-class ConfirmDetailsViewController: UIViewController, UITableViewDataSource, ConfirmDetailTableViewCellDelegate {
+class ConfirmDetailsViewController: UIViewController, UITableViewDataSource, UIGestureRecognizerDelegate, ConfirmDetailTableViewCellDelegate {
 
     @IBOutlet weak var confirmDetailTitle: UILabel!
     @IBOutlet weak var btnNext: UIButton!
@@ -36,7 +36,6 @@ class ConfirmDetailsViewController: UIViewController, UITableViewDataSource, Con
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         switch confirmingStep {
         case 1:
             confirmDetailTitle.text = "Personal Details"
@@ -67,6 +66,10 @@ class ConfirmDetailsViewController: UIViewController, UITableViewDataSource, Con
             break
         default:
             print("Error: Went too far confirming student details. Step: \(confirmingStep!)")
+        }
+        
+        if view.window?.rootViewController == self {
+            navigationController?.interactivePopGestureRecognizer?.delegate = self
         }
     }
 
@@ -176,5 +179,12 @@ class ConfirmDetailsViewController: UIViewController, UITableViewDataSource, Con
         default:
             print("Error: Couldn't find detail to confirm: \(confirmingDetail) : \(value)")
         }
+    }
+    
+    // MARK: - UIGestureRecognizerDelegate
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        // Enables the navigation swipe back feature
+        return true
     }
 }
