@@ -7,18 +7,20 @@
 //
 
 import UIKit
+import PushNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let pushNotifications = PushNotifications.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         // Currently running this app for local development
         Configuration.Environment = "dev"
+        
         
         // If we're already logged in start on the home screen, otherwise login
         var startingVC:UIViewController? = nil
@@ -27,9 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             startingVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
         }
-        
-        
         window?.rootViewController = startingVC
+        
+        
+        // Register for notifications
+        self.pushNotifications.start(instanceId: "57148181-1dd1-4b6d-9779-aec284a39473")
         
         return true
     }
@@ -59,11 +63,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Push Notifications
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("Registered for push!")
+        self.pushNotifications.registerDeviceToken(deviceToken) {
+            
+            guard let event = Configuration.CurrentEvent else { return }
+            try? self.pushNotifications.subscribe(interest: event.id+"-session")
+            try? self.pushNotifications.subscribe(interest: event.id+"-techTalk")
+            try? self.pushNotifications.subscribe(interest: event.id+"-mealsRafflesEtc")
+            try? self.pushNotifications.subscribe(interest: event.id+"-importantMessages")
+            UserDefaults.standard.set(true, forKey: event.id+"-session")
+            UserDefaults.standard.set(true, forKey: event.id+"-techTalk")
+            UserDefaults.standard.set(true, forKey: event.id+"-mealsRafflesEtc")
+            UserDefaults.standard.set(true, forKey: event.id+"-importantMessages")
+        }
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register for push")
+        print("Failed to register for push \(error)")
     }
 }
 

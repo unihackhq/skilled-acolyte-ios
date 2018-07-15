@@ -14,7 +14,6 @@ class LeaveTeamViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var teamName: UILabel!
     @IBOutlet weak var teamDescription: UILabel!
     @IBOutlet weak var btnLeaveTeam: UIButton!
-    var team:Team?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,11 +64,13 @@ class LeaveTeamViewController: UIViewController, UITableViewDataSource {
     
     @IBAction func btnLeaveTeamTapped() {
         
+        guard let team = Configuration.CurrentTeam else { return }
+        
         let alert = UIAlertController(title: "Confirm", message: "Are you sure you want to leave this team?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Leave", style: .destructive, handler: { (action) in
             guard let student = Configuration.CurrentStudent else { return }
-            Networking.shared.leaveTeam(forStudentId: student.id, teamId: self.team!.id, completion: { (error) in
+            Networking.shared.leaveTeam(forStudentId: student.id, teamId: team.id, completion: { (error) in
                 if let error = error {
                     // TODO: better handle error
                     let alert = UIAlertController(title: "Leave Team Error", message: "\(error)", preferredStyle: .alert)

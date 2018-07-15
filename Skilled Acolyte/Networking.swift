@@ -167,26 +167,6 @@ class Networking: NSObject {
         }
     }
     
-    func getAllStudents(completion:((Error?, [Student]) -> Void)?) {
-        
-        request(method: Methods.GET, url: "/students", body: nil, secure: true) { (error, response) in
-            
-            var students: [Student] = [Student]()
-            if let response = response as? [[String:Any]] {
-                // Loop through and build students out of the response
-                for jsonStudent in response {
-                    let student = Student(data: jsonStudent)
-                    students.append(student)
-                }
-            }
-            
-            self.handleIfError(error: error, response: response)
-            if let completion = completion {
-                completion(error, students)
-            }
-        }
-    }
-    
     func updateStudent(student: Student, completion:((Error?, Student?) -> Void)?) {
         
         let url = "/students/\(student.id)"
@@ -202,6 +182,27 @@ class Networking: NSObject {
             }
             if let completion = completion {
                 completion(error, updatedStudent)
+            }
+        }
+    }
+    
+    func getEventAttendees(byEventId eventId: String, completion:((Error?, [Student]) -> Void)?) {
+        
+        let url = "/events/\(eventId)/attendees"
+        request(method: Methods.GET, url: url, body: nil, secure: true) { (error, response) in
+            
+            var students: [Student] = [Student]()
+            if let response = response as? [[String:Any]] {
+                // Loop through and build events out of the response
+                for jsonStudent in response {
+                    let student = Student(data: jsonStudent)
+                    students.append(student)
+                }
+            }
+            
+            self.handleIfError(error: error, response: response)
+            if let completion = completion {
+                completion(error, students)
             }
         }
     }
@@ -374,7 +375,7 @@ class Networking: NSObject {
     
     func leaveTeam(forStudentId studentId: String, teamId: String, completion:((Error?) -> Void)?) {
         
-        let url = "/students/\(studentId)/teams/\(teamId)/reject"
+        let url = "/students/\(studentId)/teams/\(teamId)/leave"
         request(method: Methods.POST, url: url, body: nil, secure: true) { (error, response) in
             
             self.handleIfError(error: error, response: response)

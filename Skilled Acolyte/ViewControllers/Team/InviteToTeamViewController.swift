@@ -14,7 +14,7 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var btnFinish: UIButton!
     var newTeam: Team!
     var invites: [Student]! = [Student]()
-    var allStudent: [Student]?
+    var eventAttendees: [Student]! = [Student]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +30,14 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
     
     func populate(withNewTeam newTeam: Team) {
         self.newTeam = newTeam
-        Networking.shared.getAllStudents { (error, student) in
+        Networking.shared.getEventAttendees(byEventId: newTeam.eventId) { (error, eventAttendees) in
             if let error = error {
                 // TODO: better handle error
                 let alert = UIAlertController(title: "Student Error", message: "\(error)", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             } else {
-                self.allStudent = student
+                self.eventAttendees = eventAttendees
                 self.tableView.reloadData()
             }
         }
@@ -124,7 +124,7 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
         } else if cell?.reuseIdentifier == "FindNewTeamMemberCell" {
             // Present a tableview of all students available to invite to the team
             let findNewTeamMemberVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "FindNewTeamMemberViewController") as! FindNewTeamMemberViewController
-            findNewTeamMemberVC.populate(withStudents: invites, delegate: self)
+            findNewTeamMemberVC.populate(withStudents: eventAttendees, delegate: self)
             navigationController?.pushViewController(findNewTeamMemberVC, animated: true)
         }
     }

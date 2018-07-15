@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import PushNotifications
 
 class HomepageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -104,24 +105,6 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    func registerPushNotifications() {
-        
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-                guard settings.authorizationStatus == .authorized else { return }
-                DispatchQueue.main.async {
-                    UIApplication.shared.registerForRemoteNotifications()
-                }
-            }
-        } else {
-            // Fallback on iOS 9 and earlier versions
-            DispatchQueue.main.async {
-                UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert], categories: nil))
-                UIApplication.shared.registerForRemoteNotifications()
-            }
-        }
-    }
-    
     func checkPushNotificationStatus() {
         
         DispatchQueue.main.async {
@@ -149,31 +132,25 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func enablePushNotificationsTapped() {
 
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-                // Remove this cell since it is request once only
-                self.removeCell(withData: "EnablePushNotificationsCell")
-                
-                guard granted else {
-                    print("Failed to grant push notifications")
-                    if let error = error {
-                        print(error)
-                    }
-                    let alert = UIAlertController(title: "Denied", message: "You can enable push notifications from the Settings app later", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                    return
-                }
-                
-                // Granted!
-                self.registerPushNotifications()
-            }
-        } else {
-            // Fallback on iOS 9 and earlier versions
-            self.registerPushNotifications()
-            
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
             // Remove this cell since it is request once only
             self.removeCell(withData: "EnablePushNotificationsCell")
+
+            guard granted else {
+                print("Failed to grant push notifications")
+                if let error = error {
+                    print(error)
+                }
+                let alert = UIAlertController(title: "Denied", message: "You can enable push notifications from the Settings app later", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+
+            // Granted!
+            DispatchQueue.main.async {
+                PushNotifications.shared.registerForRemoteNotifications()
+            }
         }
     }
     

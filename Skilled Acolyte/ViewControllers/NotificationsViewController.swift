@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PushNotifications
 
 class NotificationsViewController: UIViewController {
 
@@ -15,13 +16,53 @@ class NotificationsViewController: UIViewController {
     @IBOutlet weak var techTalkNotificationsSwitch: UISwitch!
     @IBOutlet weak var lunchDinnerNotificationsSwitch: UISwitch!
     @IBOutlet weak var otherNotificationsSwitch: UISwitch!
+    let pushNotifications = PushNotifications.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
-        // TODO: load up notification settings
+        loadSwitchSettings(animated: false)
+    }
+
+    func loadSwitchSettings(animated: Bool) {
+        
+        guard let event = Configuration.CurrentEvent else { return }
+        
+        sessionNotificationsSwitch.setOn(UserDefaults.standard.bool(forKey: event.id+"-session"), animated: animated)
+        techTalkNotificationsSwitch.setOn(UserDefaults.standard.bool(forKey: event.id+"-techTalk"), animated: animated)
+        lunchDinnerNotificationsSwitch.setOn(UserDefaults.standard.bool(forKey: event.id+"-mealsRafflesEtc"), animated: animated)
+        otherNotificationsSwitch.setOn(UserDefaults.standard.bool(forKey: event.id+"-importantMessages"), animated: animated)
+    }
+    
+    func saveNotificationSettings() {
+        
+        guard let event = Configuration.CurrentEvent else { return }
+        
+        if sessionNotificationsSwitch.isOn {
+            try? self.pushNotifications.subscribe(interest: event.id+"-session")
+        } else {
+            try? self.pushNotifications.unsubscribe(interest: event.id+"-session")
+        }
+        if techTalkNotificationsSwitch.isOn {
+            try? self.pushNotifications.subscribe(interest: event.id+"-techTalk")
+        } else {
+            try? self.pushNotifications.unsubscribe(interest: event.id+"-techTalk")
+        }
+        if lunchDinnerNotificationsSwitch.isOn {
+            try? self.pushNotifications.subscribe(interest: event.id+"-mealsRafflesEtc")
+        } else {
+            try? self.pushNotifications.unsubscribe(interest: event.id+"-mealsRafflesEtc")
+        }
+        if otherNotificationsSwitch.isOn {
+            try? self.pushNotifications.subscribe(interest: event.id+"-importantMessages")
+        } else {
+            try? self.pushNotifications.unsubscribe(interest: event.id+"-importantMessages")
+        }
+        
+        UserDefaults.standard.set(sessionNotificationsSwitch.isOn, forKey: event.id+"-session")
+        UserDefaults.standard.set(techTalkNotificationsSwitch.isOn, forKey: event.id+"-techTalk")
+        UserDefaults.standard.set(lunchDinnerNotificationsSwitch.isOn, forKey: event.id+"-mealsRafflesEtc")
+        UserDefaults.standard.set(otherNotificationsSwitch.isOn, forKey: event.id+"-importantMessages")
     }
     
     @IBAction func btnBackTapped() {
@@ -30,30 +71,18 @@ class NotificationsViewController: UIViewController {
     
     @IBAction func switchChanged(sender: UISwitch) {
         
-        var switchToUpdate = ""
         if sender == allNotificationsSwitch {
-            switchToUpdate = "allNotifications"
             // This switch should enable/disable all other notifications
-            sessionNotificationsSwitch.isEnabled = sender.isOn
-            techTalkNotificationsSwitch.isEnabled = sender.isOn
-            lunchDinnerNotificationsSwitch.isEnabled = sender.isOn
-            otherNotificationsSwitch.isEnabled = sender.isOn
-            sessionNotificationsSwitch.alpha = sender.isOn ? 1 : 0.5
-            techTalkNotificationsSwitch.alpha = sender.isOn ? 1 : 0.5
-            lunchDinnerNotificationsSwitch.alpha = sender.isOn ? 1 : 0.5
-            otherNotificationsSwitch.alpha = sender.isOn ? 1 : 0.5
-        } else if sender == sessionNotificationsSwitch {
-            switchToUpdate = "sessionNotifications"
-        } else if sender == techTalkNotificationsSwitch {
-            switchToUpdate = "techTalkNotifications"
-        } else if sender == lunchDinnerNotificationsSwitch {
-            switchToUpdate = "lunchDinnerNotifications"
-        } else if sender == otherNotificationsSwitch {
-            switchToUpdate = "otherNotifications"
+            
+            sessionNotificationsSwitch.setOn(sender.isOn, animated: true)
+            techTalkNotificationsSwitch.setOn(sender.isOn, animated: true)
+            lunchDinnerNotificationsSwitch.setOn(sender.isOn, animated: true)
+            otherNotificationsSwitch.setOn(sender.isOn, animated: true)
+            
+        } else {
+            allNotificationsSwitch.setOn(true, animated: true)
         }
         
-        if sender.isOn {
-            // TODO: update 'switchToUpdate'
-        }
+        saveNotificationSettings()
     }
 }
