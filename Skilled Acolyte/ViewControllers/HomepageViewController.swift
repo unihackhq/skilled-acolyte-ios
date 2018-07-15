@@ -116,7 +116,7 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func removeCell(withData data: String) {
         
-        if let indexToRemove = tableViewData.lastIndex(of: data) {
+        if let indexToRemove = tableViewData.index(of: data) {
             tableViewData.remove(at: indexToRemove)
             DispatchQueue.main.async {
                 self.tableView.deleteRows(at: [IndexPath(row: indexToRemove, section: 0)], with: .automatic)

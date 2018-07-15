@@ -36,9 +36,11 @@ struct Team: Codable, Equatable {
             let member = Student(data: memberData)
             members.append(member)
         }
-        for inviteData in (data["invited"] as! [[String:Any]]) {
-            let invite = Student(data: inviteData)
-            pendingInvitations.append(invite)
+        if let invitations = data["invited"] as? [[String:Any]] {
+            for inviteData in invitations {
+                let invite = Student(data: inviteData)
+                pendingInvitations.append(invite)
+            }
         }
     }
     
@@ -54,18 +56,6 @@ struct Team: Codable, Equatable {
         if let longDescription = longDescription { json["longDescription"] = longDescription }
         if let devpostLink = devpostLink { json["devpostLink"] = devpostLink }
         if let photoUrl = photoUrl { json["photoUrl"] = photoUrl }
-        
-        var memberData = [[String:Any]]()
-        for member in members {
-            memberData.append(member.toJSON())
-        }
-        json["members"] = memberData
-        
-        var inviteData = [[String:Any]]()
-        for invite in pendingInvitations {
-            inviteData.append(invite.toJSON())
-        }
-        json["invited"] = inviteData
         
         return json
     }

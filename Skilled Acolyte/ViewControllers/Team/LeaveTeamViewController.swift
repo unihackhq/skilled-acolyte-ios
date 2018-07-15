@@ -77,6 +77,7 @@ class LeaveTeamViewController: UIViewController, UITableViewDataSource {
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 } else {
+                    Configuration.CurrentTeam = nil
                     self.navigationController?.popToRootViewController(animated: true)
                 }
             })

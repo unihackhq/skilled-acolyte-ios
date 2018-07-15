@@ -25,6 +25,6 @@ class InviteToTeamTableViewCell: UITableViewCell {
 
     func populateWith(student: Student) {
                 
-        studentName.text = (student.user.firstName ?? "") + " " + (student.user.lastName ?? "")
+        studentName.text = student.fullName()
     }
 }

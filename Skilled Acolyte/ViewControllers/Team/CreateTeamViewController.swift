@@ -12,6 +12,7 @@ class CreateTeamViewController: UIViewController {
 
     @IBOutlet weak var btnTeamIcon: UIButton!
     @IBOutlet weak var teamName: UITextField!
+    @IBOutlet weak var teamDescription: UITextField!
     @IBOutlet weak var btnNext: UIButton!
     var newTeam: Team! = Team()
     
@@ -75,9 +76,10 @@ class CreateTeamViewController: UIViewController {
     @IBAction func textFieldDidType() {
         
         newTeam.name = teamName.text ?? ""
+        newTeam.shortDescription = teamDescription.text ?? ""
         
         // Enable the next button when the name has been entered
-        if newTeam.name != "" {
+        if newTeam.name != "" && newTeam.shortDescription != "" {
             btnNext.alpha = 1
             btnNext.isEnabled = true
         } else {

@@ -162,7 +162,7 @@ class Networking: NSObject {
             
             self.handleIfError(error: error, response: response)
             if let completion = completion {
-                completion(error, [])
+                completion(error, teams)
             }
         }
     }
@@ -245,11 +245,10 @@ class Networking: NSObject {
     // Team
     func createTeam(team: Team, completion:((Error?, Team?) -> Void)?) {
         
-        request(method: Methods.GET, url: "/teams", body: team.toJSON(), secure: true) { (error, response) in
+        request(method: Methods.POST, url: "/teams", body: team.toJSON(), secure: true) { (error, response) in
             
             var team: Team?
-            if let response = response as? [String:Any],
-                let jsonTeam = response["team"] as? [String:Any] {
+            if let jsonTeam = response as? [String:Any] {
                 team = Team(data: jsonTeam)
                 Configuration.CurrentTeam = team
             }

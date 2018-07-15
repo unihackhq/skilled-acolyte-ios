@@ -34,7 +34,7 @@ class JoinTeamViewController: UIViewController, UITableViewDataSource, JoinTeamT
     
     func removeCell(withTeam team: Team) {
         
-        if let indexToRemove = teamInvitations.lastIndex(of: team) {
+        if let indexToRemove = teamInvitations.index(of: team) {
             teamInvitations.remove(at: indexToRemove)
             DispatchQueue.main.async {
                 self.tableView.deleteRows(at: [IndexPath(row: indexToRemove, section: 0)], with: .automatic)
@@ -63,7 +63,7 @@ class JoinTeamViewController: UIViewController, UITableViewDataSource, JoinTeamT
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let teamInvitation = teamInvitations[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "") as! JoinTeamTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "JoinTeamCell") as! JoinTeamTableViewCell
         cell.populate(withTeam: teamInvitation, delegate: self)
         
         return cell

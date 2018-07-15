@@ -705,6 +705,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.unihack.SkilledAcolyte;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "SkilledAcolyte-Debug";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
