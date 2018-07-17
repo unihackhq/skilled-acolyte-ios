@@ -39,7 +39,7 @@
                                         <rect key="frame" x="56" y="175" width="263" height="237"/>
                                         <subviews>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZn-ZB-Mu8">
-                                                <rect key="frame" x="0.0" y="171.5" width="263" height="30"/>
+                                                <rect key="frame" x="0.0" y="181" width="263" height="30"/>
                                                 <color key="backgroundColor" red="0.96862745100000003" green="0.7725490196" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik" pointSize="16"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -56,13 +56,13 @@
                                                 </connections>
                                             </button>
                                             <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zPS-xH-xDu">
-                                                <rect key="frame" x="0.0" y="133.5" width="263" height="30"/>
+                                                <rect key="frame" x="0.0" y="143" width="263" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="ZbC-fi-K25"/>
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <integer key="value" value="5"/>
@@ -79,13 +79,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make sure to enter the same email you have in Eventbrite." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmf-6O-d0g">
-                                                <rect key="frame" x="0.0" y="209.5" width="263" height="26"/>
+                                                <rect key="frame" x="0.0" y="219" width="263" height="26.5"/>
                                                 <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the Imagination Hackathon." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaB-jI-KAv">
-                                                <rect key="frame" x="0.0" y="68.5" width="263" height="40"/>
+                                                <rect key="frame" x="0.0" y="68.5" width="263" height="49.5"/>
                                                 <fontDescription key="fontDescription" name="TeXGyreAdventor-Regular" family="TeX Gyre Adventor" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

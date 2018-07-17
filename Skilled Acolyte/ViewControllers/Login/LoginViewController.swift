@@ -46,10 +46,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func login() {
         
-        guard let email = emailLabel.text else {
+        guard var email = emailLabel.text else {
             print("No email supplied!")
             return
         }
+        
+        email = (email as NSString).replacingOccurrences(of: " ", with: "")
         
         Networking.shared.login(email: email) { (error) in
             

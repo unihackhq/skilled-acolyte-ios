@@ -81,10 +81,21 @@
                                     <constraint firstAttribute="width" constant="240" id="Wwo-gz-uyb"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecC-57-AMC">
+                                <rect key="frame" x="16" y="213" width="343" height="61"/>
+                                <string key="text">We just sent you an email to login! 
+Tap "Login on iOS" in the email or enter your user code below.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="99n-SE-aQg" firstAttribute="centerX" secondItem="eos-7J-t64" secondAttribute="centerX" id="1K0-xx-4NI"/>
+                            <constraint firstItem="ecC-57-AMC" firstAttribute="leading" secondItem="kbE-Md-C7y" secondAttribute="leading" constant="16" id="CyZ-c8-mTy"/>
+                            <constraint firstItem="99n-SE-aQg" firstAttribute="top" secondItem="ecC-57-AMC" secondAttribute="bottom" constant="20" id="idU-Vg-Xm1"/>
+                            <constraint firstItem="kbE-Md-C7y" firstAttribute="trailing" secondItem="ecC-57-AMC" secondAttribute="trailing" constant="16" id="kVt-bA-C1e"/>
                             <constraint firstItem="99n-SE-aQg" firstAttribute="centerY" secondItem="eos-7J-t64" secondAttribute="centerY" id="lMW-xA-qYq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kbE-Md-C7y"/>
@@ -96,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r5a-Ws-aAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="110" y="-534"/>
+            <point key="canvasLocation" x="109.59999999999999" y="-534.78260869565224"/>
         </scene>
         <!--Home-->
         <scene sceneID="Kef-SN-wdo">

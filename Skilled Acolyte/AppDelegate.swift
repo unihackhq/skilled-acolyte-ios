@@ -21,16 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Currently running this app for local development
         Configuration.Environment = "dev"
         
-        
         // If we're already logged in start on the home screen, otherwise login
-        var startingVC:UIViewController? = nil
         if Configuration.CurrentStudent != nil {
-             startingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationController")
+            showHomeVC()
         } else {
-            startingVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
+            showLoginVC()
         }
-        window?.rootViewController = startingVC
-        
         
         // Register for notifications
         self.pushNotifications.start(instanceId: "57148181-1dd1-4b6d-9779-aec284a39473")
@@ -79,6 +75,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Failed to register for push \(error)")
+    }
+
+    // MARK: - Deep Linking
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        print("opening url: \(url)")
+        
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
+            let host = components.host else {
+            return false
+        }
+        
+        var pathComponents = components.path.components(separatedBy: "/")
+        pathComponents.removeFirst()
+        
+        if host == "token",
+            let token = pathComponents.first {
+            
+            // We've got the token, attempt to verify
+            Networking.shared.verifyLoginToken(token: token) { (error, jwt) in
+                if error == nil {
+                    // If we're already logged in start on the home screen, otherwise login
+                    if Configuration.CurrentStudent != nil {
+                        self.showHomeVC()
+                    } else {
+                        self.showLoginVC()
+                    }
+                } else {
+                    self.showVerifyVC()
+                }
+            }
+        }
+        
+        return true
+    }
+    
+    // MARK: - Navigation Methods
+    
+    func showHomeVC() {
+        
+        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationController")
+    }
+    
+    func showOnboardingVC() {
+        
+        let verifyVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "ConfirmDetailsViewController")
+        let navController = UINavigationController(rootViewController: verifyVC)
+        navController.navigationBar.isHidden = true
+        window?.rootViewController = navController
+    }
+    
+    func showLoginVC() {
+        
+        window?.rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
+    }
+    
+    func showVerifyVC() {
+        
+        window?.rootViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "VerifyViewController")
     }
 }
 
