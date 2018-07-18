@@ -186,6 +186,7 @@ class Networking: NSObject {
         }
     }
     
+    // Event
     func getEventAttendees(byEventId eventId: String, completion:((Error?, [Student]) -> Void)?) {
         
         let url = "/events/\(eventId)/attendees"
@@ -203,6 +204,27 @@ class Networking: NSObject {
             self.handleIfError(error: error, response: response)
             if let completion = completion {
                 completion(error, students)
+            }
+        }
+    }
+    
+    func getEventSchedule(byEventId eventId: String, completion:((Error?, [ScheduleItem]) -> Void)?) {
+        
+        let url = "/events/\(eventId)/schedule"
+        request(method: Methods.GET, url: url, body: nil, secure: true) { (error, response) in
+            
+            var scheduleItems: [ScheduleItem] = [ScheduleItem]()
+            if let response = response as? [[String:Any]] {
+                // Loop through and build events out of the response
+                for jsonScheduleItem in response {
+                    let scheduleItem = ScheduleItem(data: jsonScheduleItem)
+                    scheduleItems.append(scheduleItem)
+                }
+            }
+            
+            self.handleIfError(error: error, response: response)
+            if let completion = completion {
+                completion(error, scheduleItems)
             }
         }
     }
