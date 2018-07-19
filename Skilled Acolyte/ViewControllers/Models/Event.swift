@@ -13,7 +13,13 @@ struct Event: Codable {
     var id: String = ""
     var name: String = ""
     var location: String?
+//    var startDate: Date?
+//    var endDate: Date?
     var logoUrl: String?
+//    var logoColour: UIColor?
+    var sponsors: EventInfoItem?
+    var prizes: EventInfoItem?
+    var judges: EventInfoItem?
     
     init(data: [String:Any]?) {
         guard let data = data else { return }
@@ -23,8 +29,14 @@ struct Event: Codable {
         name = data["name"] as! String
         
         // Optional things
+//        startDate = Tools().date(fromIso: data["startDate"] as? String)
+//        endDate = Tools().date(fromIso: data["endDate"] as? String)
         location = data["location"] as? String
         logoUrl = data["logoUrl"] as? String
+//        logoColour = Tools().uiColor(fromHex: data["logoColour"] as? String)
+        sponsors = EventInfoItem(name: "Sponsors", data: data["sponsors"] as? [String:Any])
+        prizes = EventInfoItem(name: "Prizes", data: data["prizes"] as? [String:Any])
+        judges = EventInfoItem(name: "Judges", data: data["judges"] as? [String:Any])
     }
     
     func downloadPhoto() -> UIImage? {
@@ -35,5 +47,48 @@ struct Event: Codable {
         } else {
             return nil
         }
+    }
+    
+    func toJSON() -> [String:Any] {
+        
+        var json = [String:Any]()
+        
+        if id != "" { json["id"] = id }
+        if name != "" { json["name"] = name }
+        
+        if let location = location { json["location"] = location }
+        if let logoUrl = logoUrl { json["logoUrl"] = logoUrl }
+        if let sponsors = sponsors { json["sponsors"] = sponsors.toJSON() }
+        if let prizes = prizes { json["prizes"] = prizes.toJSON() }
+        if let judges = judges { json["judges"] = judges.toJSON() }
+        
+        return json
+    }
+}
+
+struct EventInfoItem: Codable {
+    var name: String!
+    var summary: String?
+    var url: String?
+    
+    init(name: String, data: [String:Any]?) {
+        guard let data = data else { return }
+        
+        self.name = name
+        
+        summary = data["summary"] as? String
+        url = data["url"] as? String
+    }
+    
+    func toJSON() -> [String:Any] {
+        
+        var json = [String:Any]()
+        
+        if name != "" { json["name"] = name }
+        
+        if let summary = summary { json["summary"] = summary }
+        if let url = url { json["url"] = url }
+        
+        return json
     }
 }

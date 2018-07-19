@@ -8,6 +8,7 @@
 
 import Foundation
 import SVProgressHUD
+import JWTDecode
 
 class Networking: NSObject {
     
@@ -48,7 +49,7 @@ class Networking: NSObject {
         }
     }
     
-    func verifyLoginToken(token: String, completion:((Error?, String?) -> Void)?) {
+    func verifyLoginToken(token: String, completion:((Error?, String?, String?) -> Void)?) {
         
         request(method: Methods.POST, url: "/token", body: ["token":token], secure: false) { (error, response) in
             
@@ -58,8 +59,31 @@ class Networking: NSObject {
             }
             
             self.handleIfError(error: error, response: response)
-            if let completion = completion {
-                completion(error, self.jwtToken)
+            if let jwt = self.jwtToken {
+                // Decode the jwt using this nice library :)
+                var jwtObject:JWT? = nil
+                do {
+                    jwtObject = try decode(jwt: jwt)
+                } catch {
+                    print("Failed to decode jwt token: \(jwt)")
+                    if let completion = completion {
+                        completion(error, self.jwtToken, nil)
+                    }
+                    return
+                }
+                
+                // Extract student id from jwt
+                if let studentId = jwtObject!.body["userId"] as? String {
+                    if let completion = completion {
+                        completion(error, self.jwtToken, studentId)
+                    }
+                    return
+                } else {
+                    print("Decoded jwt token but could not find userId inside: \(jwtObject!.body)")
+                    if let completion = completion {
+                        completion(error, self.jwtToken, nil)
+                    }
+                }
             }
         }
     }
@@ -73,7 +97,7 @@ class Networking: NSObject {
             var student: Student?
             if let response = response as? [String:Any] {
                 student = Student(data: response)
-                // TODO: Store student for current student easy access. UserDefaults?
+                Configuration.CurrentStudent = student
             }
             
             self.handleIfError(error: error, response: response)
@@ -445,8 +469,8 @@ class Networking: NSObject {
             }
             
             var newError = error
-            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
-                newError = NSError(domain: "UnihackDomain", code: httpResponse.statusCode, userInfo: jsonDecode as? [String:Any])
+            if let httpResponse = response as? HTTPURLResponse, (httpResponse.statusCode < 200 || httpResponse.statusCode >= 300) {
+                newError = NSError(domain: "UnihackErrorDomain", code: httpResponse.statusCode, userInfo: jsonDecode as? [String:Any])
             }
             
             // Call completion on main thread if it exists

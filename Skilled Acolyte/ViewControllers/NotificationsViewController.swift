@@ -32,6 +32,13 @@ class NotificationsViewController: UIViewController {
         techTalkNotificationsSwitch.setOn(UserDefaults.standard.bool(forKey: event.id+"-techTalk"), animated: animated)
         lunchDinnerNotificationsSwitch.setOn(UserDefaults.standard.bool(forKey: event.id+"-mealsRafflesEtc"), animated: animated)
         otherNotificationsSwitch.setOn(UserDefaults.standard.bool(forKey: event.id+"-importantMessages"), animated: animated)
+        
+        // Enable the all notifications switch if any other switch is on
+        let notificationsOn = ( sessionNotificationsSwitch.isOn ||
+                                techTalkNotificationsSwitch.isOn ||
+                                lunchDinnerNotificationsSwitch.isOn ||
+                                otherNotificationsSwitch.isOn)
+        allNotificationsSwitch.setOn(notificationsOn, animated: animated)
     }
     
     func saveNotificationSettings() {
@@ -81,6 +88,10 @@ class NotificationsViewController: UIViewController {
             
         } else {
             allNotificationsSwitch.setOn(true, animated: true)
+            // Turning on any switch should turn on important messages
+            if sender.isOn {
+                otherNotificationsSwitch.setOn(sender.isOn, animated: true)
+            }
         }
         
         saveNotificationSettings()

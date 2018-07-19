@@ -80,7 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Deep Linking
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("opening url: \(url)")
         
         guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
             let host = components.host else {
@@ -90,22 +89,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var pathComponents = components.path.components(separatedBy: "/")
         pathComponents.removeFirst()
         
-        if host == "token",
-            let token = pathComponents.first {
+        if host == "token", let token = pathComponents.first, token != "" {
             
             // We've got the token, attempt to verify
-            Networking.shared.verifyLoginToken(token: token) { (error, jwt) in
-                if error == nil {
-                    // If we're already logged in start on the home screen, otherwise login
-                    if Configuration.CurrentStudent != nil {
-                        self.showHomeVC()
-                    } else {
-                        self.showLoginVC()
-                    }
-                } else {
-                    self.showVerifyVC()
+            Networking.shared.verifyLoginToken(token: token) { (error, jwt, studentId) in
+                
+                if let error = error {
+                    self.showLoginVC()
+                    self.showErrorAlert(message: String(describing: error))
+                } else if let studentId = studentId {
+                    Networking.shared.getStudent(byId: studentId, completion: { (error, student) in
+                        
+                        if let error = error {
+                            self.showLoginVC()
+                            self.showErrorAlert(message: String(describing: error))
+                        } else if let student = Configuration.CurrentStudent {
+                            if student.firstLaunch != nil && student.firstLaunch == true {
+                                self.showVerifyVC()
+                            } else {
+                                self.showHomeVC()
+                            }
+                        } else {
+                            self.showLoginVC()
+                            self.showErrorAlert(message: "You opened a UNIHACK link, but there was no user associated with it.")
+                        }
+                    })
                 }
             }
+        } else {
+            self.showLoginVC()
+            showErrorAlert(message: "You opened a UNIHACK link, but there was no user information in it.")
         }
         
         return true
@@ -134,6 +147,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func showVerifyVC() {
         
         window?.rootViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "VerifyViewController")
+    }
+    
+    // MARK: - Other
+    
+    func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        window?.rootViewController?.present(alert, animated: true, completion: nil)
     }
 }
 

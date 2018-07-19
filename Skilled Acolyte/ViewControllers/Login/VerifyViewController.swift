@@ -50,7 +50,7 @@ class VerifyViewController: UIViewController {
     
     func verifyStudentToken(token: String, completion: ((Student?) -> Void)?) {
      
-        Networking.shared.verifyLoginToken(token: token) { (error, jwt) in
+        Networking.shared.verifyLoginToken(token: token) { (error, jwt, studentId) in
             
             if let error = error {
                 // TODO: better handle error
@@ -61,28 +61,7 @@ class VerifyViewController: UIViewController {
                 if let completion = completion {
                     completion(nil)
                 }
-            } else if let jwt = jwt {
-                
-                // Decode the jwt using this nice library :)
-                var jwtObject:JWT? = nil
-                do {
-                    jwtObject = try decode(jwt: jwt)
-                } catch {
-                    print("Failed to decode jwt token: \(jwt)")
-                    if let completion = completion {
-                        completion(nil)
-                    }
-                    return
-                }
-                
-                // Extract student id from jwt
-                guard let studentId = jwtObject!.body["userId"] as? String else {
-                    print("Decoded jwt token but could not find userId inside: \(jwtObject!.body)")
-                    if let completion = completion {
-                        completion(nil)
-                    }
-                    return
-                }
+            } else if let studentId = studentId {
                 
                 // Get and store the current student
                 Networking.shared.getStudent(byId: studentId, completion: { (error, student) in
