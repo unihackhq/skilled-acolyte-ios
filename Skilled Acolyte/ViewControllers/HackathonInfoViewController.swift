@@ -15,7 +15,12 @@ class HackathonInfoViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+   
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         loadUrlToWebView(url: "https://handbook.readthedocs.io/en/latest/")
     }
     
@@ -23,6 +28,7 @@ class HackathonInfoViewController: UIViewController, UIWebViewDelegate {
         super.viewDidDisappear(animated)
         
         SVProgressHUD.dismiss()
+        webView.stopLoading()
     }
     
     func loadUrlToWebView(url: String) {

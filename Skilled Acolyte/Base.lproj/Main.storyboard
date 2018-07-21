@@ -160,7 +160,7 @@ Tap "Login on iOS" in the email or enter your user code below.</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NextUpCell" rowHeight="115" id="2kx-ir-CjN">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTableViewCell" rowHeight="115" id="2kx-ir-CjN" customClass="HomeTableViewCell" customModule="Skilled_Acolyte" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="143" width="375" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2kx-ir-CjN" id="WYq-jK-Ngc">
@@ -170,13 +170,13 @@ Tap "Login on iOS" in the email or enter your user code below.</string>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kIF-Ng-usE">
                                                     <rect key="frame" x="16" y="8" width="343" height="99"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Next On The Schedule&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RzW-Qy-sy0">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RzW-Qy-sy0">
                                                             <rect key="frame" x="16" y="29" width="311" height="58"/>
                                                             <fontDescription key="fontDescription" name="TeXGyreAdventor-Bold" family="TeX Gyre Adventor" pointSize="14"/>
                                                             <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Up" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ack-wV-M7d">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ack-wV-M7d">
                                                             <rect key="frame" x="16" y="12" width="311" height="17"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="Kgo-cW-lS6"/>
@@ -210,9 +210,64 @@ Tap "Login on iOS" in the email or enter your user code below.</string>
                                                 <constraint firstAttribute="bottom" secondItem="kIF-Ng-usE" secondAttribute="bottom" constant="8" id="yDM-8f-AGV"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="itemBody" destination="RzW-Qy-sy0" id="wsF-9g-jJa"/>
+                                            <outlet property="itemTitle" destination="Ack-wV-M7d" id="qtV-5t-Iwg"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NextTechTalkCell" rowHeight="115" id="bEI-OL-sj3">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NextUpCell" rowHeight="115" id="T7G-GR-78n" customClass="HomeTableViewCell" customModule="Skilled_Acolyte" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="258" width="375" height="115"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T7G-GR-78n" id="4TP-2b-gZc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3UN-Z4-mgd">
+                                                    <rect key="frame" x="16" y="8" width="343" height="99"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Next On The Schedule&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdE-mn-vFT">
+                                                            <rect key="frame" x="16" y="29" width="311" height="58"/>
+                                                            <fontDescription key="fontDescription" name="TeXGyreAdventor-Bold" family="TeX Gyre Adventor" pointSize="14"/>
+                                                            <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Up" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73H-uP-MRK">
+                                                            <rect key="frame" x="16" y="12" width="311" height="17"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="17" id="XgV-6b-ErZ"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="17"/>
+                                                            <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="73H-uP-MRK" firstAttribute="leading" secondItem="3UN-Z4-mgd" secondAttribute="leading" constant="16" id="61f-cu-2YJ"/>
+                                                        <constraint firstItem="ZdE-mn-vFT" firstAttribute="trailing" secondItem="73H-uP-MRK" secondAttribute="trailing" id="8BX-qa-V6f"/>
+                                                        <constraint firstAttribute="trailing" secondItem="73H-uP-MRK" secondAttribute="trailing" constant="16" id="JcZ-VH-E5A"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ZdE-mn-vFT" secondAttribute="bottom" constant="12" id="QOK-cR-vrf"/>
+                                                        <constraint firstItem="ZdE-mn-vFT" firstAttribute="leading" secondItem="73H-uP-MRK" secondAttribute="leading" id="Qcp-dS-lPP"/>
+                                                        <constraint firstItem="ZdE-mn-vFT" firstAttribute="top" secondItem="73H-uP-MRK" secondAttribute="bottom" id="Vg7-CR-pNQ"/>
+                                                        <constraint firstItem="73H-uP-MRK" firstAttribute="top" secondItem="3UN-Z4-mgd" secondAttribute="top" constant="12" id="YIJ-nt-E17"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="12"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="3UN-Z4-mgd" secondAttribute="trailing" constant="16" id="Fid-pK-FGX"/>
+                                                <constraint firstItem="3UN-Z4-mgd" firstAttribute="leading" secondItem="4TP-2b-gZc" secondAttribute="leading" constant="16" id="MHD-n5-aHK"/>
+                                                <constraint firstItem="3UN-Z4-mgd" firstAttribute="top" secondItem="4TP-2b-gZc" secondAttribute="top" constant="8" id="Oi3-Zl-wjh"/>
+                                                <constraint firstAttribute="bottom" secondItem="3UN-Z4-mgd" secondAttribute="bottom" constant="8" id="Wrn-5o-4dU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NextTechTalkCell" rowHeight="115" id="bEI-OL-sj3" customClass="HomeTableViewCell" customModule="Skilled_Acolyte" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="373" width="375" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bEI-OL-sj3" id="qWf-Gi-2gb">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
@@ -262,11 +317,11 @@ Tap "Login on iOS" in the email or enter your user code below.</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HackathonToDoCell" rowHeight="115" id="wHG-C7-JJm">
-                                        <rect key="frame" x="0.0" y="373" width="375" height="115"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HackathonToDoCell" rowHeight="115" id="wHG-C7-JJm" customClass="HomeTableViewCell" customModule="Skilled_Acolyte" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="488" width="375" height="115"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wHG-C7-JJm" id="QUh-0T-AZ0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="114.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDa-Bo-h80">

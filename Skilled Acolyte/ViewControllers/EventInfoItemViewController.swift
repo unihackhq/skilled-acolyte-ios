@@ -33,6 +33,7 @@ class EventInfoItemViewController: UIViewController, UIWebViewDelegate {
         super.viewDidDisappear(animated)
         
         SVProgressHUD.dismiss()
+        webView.stopLoading()
     }
     
     func populate(withEventInfoItem eventInfoItem: EventInfoItem) {

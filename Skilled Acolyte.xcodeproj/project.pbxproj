@@ -18,6 +18,7 @@
 		6505125A20FD5F3D00FEC449 /* HackathonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6505125920FD5F3D00FEC449 /* HackathonInfoViewController.swift */; };
 		652AB48D21035ABE00A287A9 /* EventInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652AB48C21035ABD00A287A9 /* EventInfoTableViewCell.swift */; };
 		652AB48F21035BD300A287A9 /* EventInfoItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652AB48E21035BD300A287A9 /* EventInfoItemViewController.swift */; };
+		652AB4912103811500A287A9 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652AB4902103811500A287A9 /* HomeTableViewCell.swift */; };
 		6531699B20F1BBA000144B2E /* ConfirmDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531699A20F1BBA000144B2E /* ConfirmDetailsViewController.swift */; };
 		6531699D20F1BEF200144B2E /* ConfirmImageDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531699C20F1BEF200144B2E /* ConfirmImageDetailTableViewCell.swift */; };
 		6537CD6420E7A56300EF0E5F /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6537CD6220E7A56200EF0E5F /* Onboarding.storyboard */; };
@@ -82,6 +83,7 @@
 		6505125920FD5F3D00FEC449 /* HackathonInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackathonInfoViewController.swift; sourceTree = "<group>"; };
 		652AB48C21035ABD00A287A9 /* EventInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoTableViewCell.swift; sourceTree = "<group>"; };
 		652AB48E21035BD300A287A9 /* EventInfoItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoItemViewController.swift; sourceTree = "<group>"; };
+		652AB4902103811500A287A9 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		6531699720F1AFEB00144B2E /* Skilled Acolyte.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Skilled Acolyte.entitlements"; sourceTree = "<group>"; };
 		6531699A20F1BBA000144B2E /* ConfirmDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsViewController.swift; sourceTree = "<group>"; };
 		6531699C20F1BEF200144B2E /* ConfirmImageDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmImageDetailTableViewCell.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				65975C2E20BA711500AC3C72 /* Team */,
 				6571ED43209D933A0006F868 /* Models */,
 				285C57AB20AD6ACD00C57F03 /* HomepageViewController.swift */,
+				652AB4902103811500A287A9 /* HomeTableViewCell.swift */,
 				65900F2E20FF7F810051BF0E /* ScheduleViewController.swift */,
 				65900F3020FF80AE0051BF0E /* ScheduleItemTableViewCell.swift */,
 				65900F3220FF822A0051BF0E /* ScheduleItemViewController.swift */,
@@ -527,6 +530,7 @@
 				6571ED4F209D9B290006F868 /* Student.swift in Sources */,
 				285C57AE20AD6AD500C57F03 /* SettingsViewController.swift in Sources */,
 				65900F3320FF822A0051BF0E /* ScheduleItemViewController.swift in Sources */,
+				652AB4912103811500A287A9 /* HomeTableViewCell.swift in Sources */,
 				285C57B220AD6AED00C57F03 /* TicketTransferConfirmationViewController.swift in Sources */,
 				6571ED45209D935C0006F868 /* User.swift in Sources */,
 				285C57AA20AD6AC400C57F03 /* VerifyViewController.swift in Sources */,

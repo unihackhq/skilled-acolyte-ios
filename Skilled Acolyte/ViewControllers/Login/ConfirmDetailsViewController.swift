@@ -36,6 +36,11 @@ class ConfirmDetailsViewController: UIViewController, UITableViewDataSource, UIG
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Enable swipe back navigation option
+        if view.window?.rootViewController == self {
+            navigationController?.interactivePopGestureRecognizer?.delegate = self
+        }
+        
         switch confirmingStep {
         case 1:
             confirmDetailTitle.text = "Personal Details"
@@ -66,10 +71,6 @@ class ConfirmDetailsViewController: UIViewController, UITableViewDataSource, UIG
             break
         default:
             print("Error: Went too far confirming student details. Step: \(confirmingStep!)")
-        }
-        
-        if view.window?.rootViewController == self {
-            navigationController?.interactivePopGestureRecognizer?.delegate = self
         }
     }
 

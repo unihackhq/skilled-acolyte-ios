@@ -8,6 +8,7 @@
 
 import UIKit
 import PushNotifications
+import UserNotifications
 
 class NotificationsViewController: UIViewController {
 
@@ -24,6 +25,31 @@ class NotificationsViewController: UIViewController {
         loadSwitchSettings(animated: false)
     }
 
+    func enablePushNotifications() {
+        
+        if UIApplication.shared.isRegisteredForRemoteNotifications == false {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+                
+                guard granted else {
+                    print("Failed to grant push notifications")
+                    if let error = error {
+                        print(error)
+                    }
+                    let alert = UIAlertController(title: "Denied", message: "You can enable push notifications from the Settings app later", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+                
+                // Granted! Safely call UIApplication inside main thread
+                DispatchQueue.main.async {
+                    PushNotifications.shared.registerForRemoteNotifications()
+                }
+            }
+        }
+        
+    }
+    
     func loadSwitchSettings(animated: Bool) {
         
         guard let event = Configuration.CurrentEvent else { return }
@@ -80,6 +106,7 @@ class NotificationsViewController: UIViewController {
         
         if sender == allNotificationsSwitch {
             // This switch should enable/disable all other notifications
+            enablePushNotifications()
             
             sessionNotificationsSwitch.setOn(sender.isOn, animated: true)
             techTalkNotificationsSwitch.setOn(sender.isOn, animated: true)

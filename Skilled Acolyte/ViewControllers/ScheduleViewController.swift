@@ -16,14 +16,23 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
         guard let event = Configuration.CurrentEvent else { return }
         
         Networking.shared.getEventSchedule(byEventId: event.id) { (error, schedule) in
             if let error = error {
-                // todo: handle error
+                // todo: better handle error
+                let alert = UIAlertController(title: "Schedule Error", message: "\(error)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             } else {
+                
+                // Make schedule mutable and order it by time
+                var schedule = schedule
+                schedule.sort(by: { (item1, item2) -> Bool in
+                    // Validate start times. If not present these should be at the bottom
+                    guard let start1 = item1.startDate, let start2 = item2.startDate else { return false }
+                    return start1 < start2
+                })
                 
                 // Break the schedule up into days
                 var eventsByDay = [[ScheduleItem]]()

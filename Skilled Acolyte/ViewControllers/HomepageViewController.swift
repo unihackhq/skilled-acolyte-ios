@@ -10,7 +10,7 @@ import UIKit
 import UserNotifications
 import PushNotifications
 
-class HomepageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomepageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var lblEventName: UILabel!
@@ -20,19 +20,23 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var lblNextTechTalk: UILabel!
     @IBOutlet weak var lblToDo: UILabel!
     
-    var tableViewData: [String]! = [String]()
+    var tableViewTitles: [String]! = [String]()
+    var tableViewData: [String:Any] = [String:Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Enable swipe back navigation option
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
+        
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableViewData = [
-            "EnablePushNotificationsCell",
-            "NextUpCell",
-            "NextTechTalkCell",
-            "HackathonToDoCell"
+        tableViewTitles = [
+            "Enable Push Notifications",
+            "Next Up",
+            "Tech Talks",
+            "To Do"
         ]
         
         guard let student = Configuration.CurrentStudent else { return }
@@ -51,9 +55,20 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
                     // TODO: this student has more than one events. show some way for them to switch between events
                 }
                 
-                guard let firstEvent = events.first else { return }
-                Configuration.CurrentEvent = firstEvent
-                self.lblEventName.text = firstEvent.name
+                // Update to the latest event, otherwise use the first event found
+                if let currentEvent = Configuration.CurrentEvent {
+                    for event in events {
+                        if event.id == currentEvent.id {
+                            Configuration.CurrentEvent = event
+                            break
+                        }
+                    }
+                    
+                } else if let firstEvent = events.first {
+                    Configuration.CurrentEvent = firstEvent
+                }
+                guard let selectedEvent = Configuration.CurrentEvent else { return }
+                self.refreshEvent(selectedEvent)
                 
                 // Download and match up any teams the student has
                 Networking.shared.getStudentTeams(byStudentId: student.id) { (error, teams) in
@@ -65,23 +80,46 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
                     } else {
                         Configuration.StudentTeams = teams
                         for team in teams {
-                            if team.eventId == firstEvent.id {
+                            if team.eventId == selectedEvent.id {
                                 Configuration.CurrentTeam = team
                                 break
                             }
                         }
                     }
                 }
+                
+                // Download and match up the schedule for this event
+                Networking.shared.getEventSchedule(byEventId: selectedEvent.id, completion: { (error, schedule) in
+                    
+                    if let error = error {
+                        let alert = UIAlertController(title: "Event Schedule Error", message: "\(error)", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    } else {
+                        // Make schedule mutable and order it by time
+                        var schedule = schedule
+                        schedule.sort(by: { (item1, item2) -> Bool in
+                            // Validate start times. If not present these should be at the bottom
+                            guard let start1 = item1.startDate, let start2 = item2.startDate else { return false }
+                            return start1 < start2
+                        })
+                        
+                        self.refreshSchedule(schedule)
+                    }
+                })
             }
         }
-        
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         
-        guard let student = Configuration.CurrentStudent else { return }
-        refreshSettingsButtonForStudent(student)
+        if let student = Configuration.CurrentStudent {
+            refreshSettingsButtonForStudent(student)
+        }
+        
+        if let event = Configuration.CurrentEvent {
+            refreshEvent(event)
+        }
         
         checkPushNotificationStatus()
     }
@@ -105,6 +143,38 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    func refreshEvent(_ event: Event) {
+        
+        self.lblEventName.text = event.name
+    }
+    
+    func refreshSchedule(_ schedule: [ScheduleItem]) {
+        
+        var nextOnSchedule: ScheduleItem?
+        var nextTechTalk: ScheduleItem?
+        var nextHackathonToDo: Any?
+        
+        for scheduleItem in schedule {
+            if nextOnSchedule == nil {
+                nextOnSchedule = scheduleItem
+            }
+            if nextTechTalk == nil && scheduleItem.type == ScheduleItemType.TechTalk {
+                nextTechTalk = scheduleItem
+            }
+            // TOOD: next hackathon todo
+        }
+        
+        tableViewData = [String:Any]()
+        if let nextOnSchedule = nextOnSchedule {
+            tableViewData["Next Up"] = nextOnSchedule
+        }
+        if let nextTechTalk = nextTechTalk {
+            tableViewData["Tech Talks"] = nextTechTalk
+        }
+        
+        tableView.reloadData()
+    }
+    
     func checkPushNotificationStatus() {
         
         DispatchQueue.main.async {
@@ -116,8 +186,8 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func removeCell(withData data: String) {
         
-        if let indexToRemove = tableViewData.index(of: data) {
-            tableViewData.remove(at: indexToRemove)
+        if let indexToRemove = tableViewTitles.index(of: data) {
+            tableViewTitles.remove(at: indexToRemove)
             DispatchQueue.main.async {
                 self.tableView.deleteRows(at: [IndexPath(row: indexToRemove, section: 0)], with: .automatic)
             }
@@ -154,12 +224,18 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    func nextUpTapped() {
+    func nextUpTapped(scheduleItem: ScheduleItem) {
 
+        let scheduleItemVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ScheduleItemViewController") as! ScheduleItemViewController
+        navigationController?.pushViewController(scheduleItemVC, animated: true)
+        scheduleItemVC.populate(with: scheduleItem)
     }
 
-    func techTalksTapped() {
+    func techTalksTapped(scheduleItem: ScheduleItem) {
 
+        let scheduleItemVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ScheduleItemViewController") as! ScheduleItemViewController
+        navigationController?.pushViewController(scheduleItemVC, animated: true)
+        scheduleItemVC.populate(with: scheduleItem)
     }
 
     func toDoTapped() {
@@ -169,13 +245,19 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableViewData.count
+        return tableViewTitles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let resuseId = tableViewData[indexPath.row]
-        return tableView.dequeueReusableCell(withIdentifier: resuseId)!
+        let title = tableViewTitles[indexPath.row]
+        if title == "Enable Push Notifications" {
+            return tableView.dequeueReusableCell(withIdentifier:"EnablePushNotificationsCell")!
+        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell") as! HomeTableViewCell
+        cell.populate(withTitle: title, content: tableViewData[title])
+        return cell
     }
     
     // MARK: - UITableViewDelegate
@@ -183,15 +265,24 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let cell = tableView.cellForRow(at: indexPath)
-        if cell?.reuseIdentifier == "EnablePushNotificationsCell" {
+        let title = tableViewTitles[indexPath.row]
+        let content = tableViewData[title]
+        
+        if title == "Enable Push Notifications" {
             enablePushNotificationsTapped()
-        } else if cell?.reuseIdentifier == "NextUpCell" {
-            nextUpTapped()
-        } else if cell?.reuseIdentifier == "NextTechTalkCell" {
-            techTalksTapped()
-        } else if cell?.reuseIdentifier == "HackathonToDoCell" {
+        } else if title == "Next Up", let content = content as? ScheduleItem {
+            nextUpTapped(scheduleItem: content)
+        } else if title == "Tech Talks", let content = content as? ScheduleItem {
+            techTalksTapped(scheduleItem: content)
+        } else if title == "To Do" {
             toDoTapped()
         }
+    }
+    
+    // MARK: - UIGestureRecognizerDelegate
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        // Enables the navigation swipe back feature
+        return true
     }
 }
