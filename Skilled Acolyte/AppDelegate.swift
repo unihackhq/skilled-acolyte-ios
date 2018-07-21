@@ -62,14 +62,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.pushNotifications.registerDeviceToken(deviceToken) {
             
             guard let event = Configuration.CurrentEvent else { return }
-            try? self.pushNotifications.subscribe(interest: event.id+"-session")
-            try? self.pushNotifications.subscribe(interest: event.id+"-techTalk")
-            try? self.pushNotifications.subscribe(interest: event.id+"-mealsRafflesEtc")
-            try? self.pushNotifications.subscribe(interest: event.id+"-importantMessages")
-            UserDefaults.standard.set(true, forKey: event.id+"-session")
-            UserDefaults.standard.set(true, forKey: event.id+"-techTalk")
-            UserDefaults.standard.set(true, forKey: event.id+"-mealsRafflesEtc")
-            UserDefaults.standard.set(true, forKey: event.id+"-importantMessages")
+            try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.Session)
+            try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.TechTalk)
+            try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.Special)
+            try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.Other)
+            UserDefaults.standard.set(true, forKey: event.id+"-"+ScheduleItemType.Session)
+            UserDefaults.standard.set(true, forKey: event.id+"-"+ScheduleItemType.TechTalk)
+            UserDefaults.standard.set(true, forKey: event.id+"-"+ScheduleItemType.Special)
+            UserDefaults.standard.set(true, forKey: event.id+"-"+ScheduleItemType.Other)
         }
     }
     

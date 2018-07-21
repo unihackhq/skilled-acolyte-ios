@@ -33,8 +33,15 @@ struct ScheduleItem: Codable {
         if let startDateStr = data["startDate"] as? String {
             startDate = Tools().date(fromIso: startDateStr)
         }
-        if let endDateStr = data["startDate"] as? String {
+        if let endDateStr = data["endDate"] as? String {
             endDate = Tools().date(fromIso: endDateStr)
         }
     }
+}
+
+struct ScheduleItemType {
+    static let Session = "session"
+    static let TechTalk = "techTalk"
+    static let Special = "mealsRafflesEtc"
+    static let Other = "importantMessages"
 }

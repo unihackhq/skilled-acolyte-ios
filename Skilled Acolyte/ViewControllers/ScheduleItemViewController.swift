@@ -12,27 +12,45 @@ class ScheduleItemViewController: UIViewController {
 
     @IBOutlet weak var itemTitle: UILabel!
     @IBOutlet weak var itemSubtitle: UILabel!
+    @IBOutlet weak var itemType: UILabel!
     @IBOutlet weak var itemContent: UITextView!
+    var scheduleItem: ScheduleItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        var durationStr = ""
+        
+        if let startDate = scheduleItem.startDate, let endDate = scheduleItem.endDate {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            durationStr = formatter.string(from: startDate) + " - " + formatter.string(from: endDate) + "\n"
+        }
+        
+        itemTitle.text = scheduleItem.name
+        itemSubtitle.text = durationStr + (scheduleItem.location ?? "")
+        itemContent.text = scheduleItem.scheduleDescription
+        
+        if let scheduleType = scheduleItem.type {
+            switch scheduleType {
+            case ScheduleItemType.Session:
+                itemType.text = "Session   "
+            case ScheduleItemType.TechTalk:
+                itemType.text = "Tech Talk   "
+            case ScheduleItemType.Special:
+                itemType.text = "Special   "
+            case ScheduleItemType.Other:
+                itemType.text = "Other   "
+            default:
+                itemType.text = ""
+            }
+        }
+        itemType.isHidden = (scheduleItem.type == nil)
     }
     
     func populate(with scheduleItem: ScheduleItem) {
         
-        var startTimeStr = ""
-        
-        if let startDate = scheduleItem.startDate {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HHa"
-            startTimeStr = formatter.string(from: startDate) + " "
-        }
-                
-        itemTitle.text = scheduleItem.name
-        itemSubtitle.text = startTimeStr + (scheduleItem.location ?? "")
-        itemContent.text = scheduleItem.scheduleDescription
+        self.scheduleItem = scheduleItem
     }
     
     @IBAction func btnBackTapped() {

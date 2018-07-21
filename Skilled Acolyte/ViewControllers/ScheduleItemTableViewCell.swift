@@ -12,8 +12,8 @@ class ScheduleItemTableViewCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subtitle: UILabel!
-    @IBOutlet weak var contentPreview: UILabel!
-    
+    @IBOutlet weak var type: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,16 +27,32 @@ class ScheduleItemTableViewCell: UITableViewCell {
 
     func populate(with scheduleItem: ScheduleItem) {
         
-        var startTimeStr = ""
+        var durationStr = ""
         
-        if let startDate = scheduleItem.startDate {
+        if let startDate = scheduleItem.startDate, let endDate = scheduleItem.endDate {
             let formatter = DateFormatter()
-            formatter.dateFormat = "HHa"
-            startTimeStr = formatter.string(from: startDate) + " "
+            formatter.dateFormat = "HH:mm"
+            durationStr = formatter.string(from: startDate) + " - " + formatter.string(from: endDate) + " - "
         }
         
         title.text = scheduleItem.name
-        subtitle.text = startTimeStr + (scheduleItem.location ?? "")
-        contentPreview.text = scheduleItem.scheduleDescription
+        subtitle.text = durationStr + (scheduleItem.location ?? "")
+        
+        if let scheduleType = scheduleItem.type {
+            switch scheduleType {
+            case ScheduleItemType.Session:
+                type.text = "Session   "
+            case ScheduleItemType.TechTalk:
+                type.text = "Tech Talk   "
+            case ScheduleItemType.Special:
+                type.text = "Special   "
+            case ScheduleItemType.Other:
+                type.text = "Other   "
+            default:
+                type.text = ""
+            }
+        }
+        type.isHidden = (scheduleItem.type == nil)
+        
     }
 }

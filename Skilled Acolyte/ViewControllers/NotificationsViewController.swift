@@ -28,10 +28,10 @@ class NotificationsViewController: UIViewController {
         
         guard let event = Configuration.CurrentEvent else { return }
         
-        sessionNotificationsSwitch.setOn(UserDefaults.standard.bool(forKey: event.id+"-session"), animated: animated)
-        techTalkNotificationsSwitch.setOn(UserDefaults.standard.bool(forKey: event.id+"-techTalk"), animated: animated)
-        lunchDinnerNotificationsSwitch.setOn(UserDefaults.standard.bool(forKey: event.id+"-mealsRafflesEtc"), animated: animated)
-        otherNotificationsSwitch.setOn(UserDefaults.standard.bool(forKey: event.id+"-importantMessages"), animated: animated)
+        sessionNotificationsSwitch.setOn(UserDefaults.standard.bool(forKey: event.id+"-"+ScheduleItemType.Session), animated: animated)
+        techTalkNotificationsSwitch.setOn(UserDefaults.standard.bool(forKey: event.id+"-"+ScheduleItemType.TechTalk), animated: animated)
+        lunchDinnerNotificationsSwitch.setOn(UserDefaults.standard.bool(forKey: event.id+"-"+ScheduleItemType.Special), animated: animated)
+        otherNotificationsSwitch.setOn(UserDefaults.standard.bool(forKey: event.id+"-"+ScheduleItemType.Other), animated: animated)
         
         // Enable the all notifications switch if any other switch is on
         let notificationsOn = ( sessionNotificationsSwitch.isOn ||
@@ -46,30 +46,30 @@ class NotificationsViewController: UIViewController {
         guard let event = Configuration.CurrentEvent else { return }
         
         if sessionNotificationsSwitch.isOn {
-            try? self.pushNotifications.subscribe(interest: event.id+"-session")
+            try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.Session)
         } else {
-            try? self.pushNotifications.unsubscribe(interest: event.id+"-session")
+            try? self.pushNotifications.unsubscribe(interest: event.id+"-"+ScheduleItemType.Session)
         }
         if techTalkNotificationsSwitch.isOn {
-            try? self.pushNotifications.subscribe(interest: event.id+"-techTalk")
+            try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.TechTalk)
         } else {
-            try? self.pushNotifications.unsubscribe(interest: event.id+"-techTalk")
+            try? self.pushNotifications.unsubscribe(interest: event.id+"-"+ScheduleItemType.TechTalk)
         }
         if lunchDinnerNotificationsSwitch.isOn {
-            try? self.pushNotifications.subscribe(interest: event.id+"-mealsRafflesEtc")
+            try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.Special)
         } else {
-            try? self.pushNotifications.unsubscribe(interest: event.id+"-mealsRafflesEtc")
+            try? self.pushNotifications.unsubscribe(interest: event.id+"-"+ScheduleItemType.Special)
         }
         if otherNotificationsSwitch.isOn {
-            try? self.pushNotifications.subscribe(interest: event.id+"-importantMessages")
+            try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.Other)
         } else {
-            try? self.pushNotifications.unsubscribe(interest: event.id+"-importantMessages")
+            try? self.pushNotifications.unsubscribe(interest: event.id+"-"+ScheduleItemType.Other)
         }
         
-        UserDefaults.standard.set(sessionNotificationsSwitch.isOn, forKey: event.id+"-session")
-        UserDefaults.standard.set(techTalkNotificationsSwitch.isOn, forKey: event.id+"-techTalk")
-        UserDefaults.standard.set(lunchDinnerNotificationsSwitch.isOn, forKey: event.id+"-mealsRafflesEtc")
-        UserDefaults.standard.set(otherNotificationsSwitch.isOn, forKey: event.id+"-importantMessages")
+        UserDefaults.standard.set(sessionNotificationsSwitch.isOn, forKey: event.id+"-"+ScheduleItemType.Session)
+        UserDefaults.standard.set(techTalkNotificationsSwitch.isOn, forKey: event.id+"-"+ScheduleItemType.TechTalk)
+        UserDefaults.standard.set(lunchDinnerNotificationsSwitch.isOn, forKey: event.id+"-"+ScheduleItemType.Special)
+        UserDefaults.standard.set(otherNotificationsSwitch.isOn, forKey: event.id+"-"+ScheduleItemType.Other)
     }
     
     @IBAction func btnBackTapped() {

@@ -17,9 +17,7 @@ struct Event: Codable {
 //    var endDate: Date?
     var logoUrl: String?
 //    var logoColour: UIColor?
-    var sponsors: EventInfoItem?
-    var prizes: EventInfoItem?
-    var judges: EventInfoItem?
+    var eventInfo: [EventInfoItem] = [EventInfoItem]()
     
     init(data: [String:Any]?) {
         guard let data = data else { return }
@@ -34,9 +32,9 @@ struct Event: Codable {
         location = data["location"] as? String
         logoUrl = data["logoUrl"] as? String
 //        logoColour = Tools().uiColor(fromHex: data["logoColour"] as? String)
-        sponsors = EventInfoItem(name: "Sponsors", data: data["sponsors"] as? [String:Any])
-        prizes = EventInfoItem(name: "Prizes", data: data["prizes"] as? [String:Any])
-        judges = EventInfoItem(name: "Judges", data: data["judges"] as? [String:Any])
+        eventInfo.append(EventInfoItem(name: "Sponsors", data: data["sponsors"] as? [String:Any]))
+        eventInfo.append(EventInfoItem(name: "Prizes", data: data["prizes"] as? [String:Any]))
+        eventInfo.append(EventInfoItem(name: "Judges", data: data["judges"] as? [String:Any]))
     }
     
     func downloadPhoto() -> UIImage? {
@@ -56,11 +54,13 @@ struct Event: Codable {
         if id != "" { json["id"] = id }
         if name != "" { json["name"] = name }
         
+        
         if let location = location { json["location"] = location }
         if let logoUrl = logoUrl { json["logoUrl"] = logoUrl }
-        if let sponsors = sponsors { json["sponsors"] = sponsors.toJSON() }
-        if let prizes = prizes { json["prizes"] = prizes.toJSON() }
-        if let judges = judges { json["judges"] = judges.toJSON() }
+        
+        for item in eventInfo {
+            json[item.name] = item.toJSON()
+        }
         
         return json
     }

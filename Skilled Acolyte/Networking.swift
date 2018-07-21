@@ -19,7 +19,7 @@ class Networking: NSObject {
         static let GET = "GET"
         static let POST = "POST"
         static let PUT = "PUT"
-        static let DETET = "DELETE"
+        static let DETETE = "DELETE"
     }
     
     let session: URLSession! = URLSession(configuration: URLSessionConfiguration.default)
