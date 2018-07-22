@@ -415,7 +415,7 @@ Tap "Login on iOS" in the email or enter your user code below.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7cF-Ll-JRj"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="7aC-bi-hyP"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="7aC-bi-hyP"/>
                     <connections>
                         <outlet property="btnSettings" destination="YiR-nu-hIQ" id="HTk-Nw-s6A"/>
                         <outlet property="lblEventName" destination="8C9-2K-aIk" id="K2X-RC-3Tc"/>
@@ -435,6 +435,7 @@ Tap "Login on iOS" in the email or enter your user code below.</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.99607843137254903" green="0.76078431372549016" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="S4w-KP-JFb" kind="relationship" relationship="viewControllers" id="k4z-cm-5kJ"/>
@@ -539,7 +540,7 @@ Tap "Login on iOS" in the email or enter your user code below.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DnY-K3-Bfk"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Event" id="bSg-lB-M3r"/>
+                    <tabBarItem key="tabBarItem" title="Event" image="event" id="bSg-lB-M3r"/>
                     <connections>
                         <outlet property="tableView" destination="i6t-vp-a71" id="3eC-ex-eK3"/>
                     </connections>
@@ -634,7 +635,7 @@ Tap "Login on iOS" in the email or enter your user code below.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="a7Z-Ee-tut"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Handbook" id="Ium-Gq-EQe"/>
+                    <tabBarItem key="tabBarItem" title="Handbook" image="handbook" id="Ium-Gq-EQe"/>
                     <connections>
                         <outlet property="webView" destination="SZ4-lg-B0X" id="RwV-D0-uID"/>
                     </connections>
@@ -986,7 +987,7 @@ line 4..</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rx9-SV-xuZ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Schedule" id="rXd-rO-lc6"/>
+                    <tabBarItem key="tabBarItem" title="Schedule" image="schedule" id="rXd-rO-lc6"/>
                     <connections>
                         <outlet property="tableView" destination="g4W-0s-BG1" id="BNC-m3-Ifj"/>
                     </connections>
@@ -1115,4 +1116,10 @@ Don't lose it :)</string>
             <point key="canvasLocation" x="4342" y="-723"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="event" width="24" height="24"/>
+        <image name="handbook" width="24" height="24"/>
+        <image name="home" width="24" height="24"/>
+        <image name="schedule" width="24" height="24"/>
+    </resources>
 </document>
