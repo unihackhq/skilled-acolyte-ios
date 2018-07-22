@@ -41,13 +41,13 @@ class ScheduleItemTableViewCell: UITableViewCell {
         if let scheduleType = scheduleItem.type {
             switch scheduleType {
             case ScheduleItemType.Session:
-                type.text = "Session   "
+                type.text = "Session    "
             case ScheduleItemType.TechTalk:
-                type.text = "Tech Talk   "
+                type.text = "Tech Talk    "
             case ScheduleItemType.Special:
-                type.text = "Special   "
+                type.text = "Special    "
             case ScheduleItemType.Other:
-                type.text = "Other   "
+                type.text = "Other    "
             default:
                 type.text = ""
             }

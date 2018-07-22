@@ -107,6 +107,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 cell = UITableViewCell(style: .default, reuseIdentifier: reuseId)
             }
         }
+        cell?.textLabel?.font = UIFont(name: "Rubik-Regular", size: 17)
+        cell?.detailTextLabel?.font = UIFont(name: "Rubik-Light", size: 13)
         
         if cellData == "User" {
             guard let student = Configuration.CurrentStudent else {

@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Rubik-Light.ttf">
+            <string>Rubik-Light</string>
+        </array>
         <array key="Rubik-Medium.ttf">
             <string>Rubik-Medium</string>
         </array>
@@ -18,6 +21,9 @@
         </array>
         <array key="texgyreadventor-bold.otf">
             <string>TeXGyreAdventor-Bold</string>
+        </array>
+        <array key="texgyreadventor-regular.otf">
+            <string>TeXGyreAdventor-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -117,23 +123,23 @@ Tap "Login on iOS" in the email or enter your user code below.</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="115" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rOU-1n-vtS">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rOU-1n-vtS">
                                 <rect key="frame" x="0.0" y="136" width="375" height="482"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EnablePushNotificationsCell" rowHeight="115" id="5YH-kB-NGW">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="115"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EnablePushNotificationsCell" id="5YH-kB-NGW">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5YH-kB-NGW" id="Tde-5W-jJi">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2WV-R7-DIE">
-                                                    <rect key="frame" x="16" y="8" width="343" height="99"/>
+                                                    <rect key="frame" x="16" y="8" width="343" height="104"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap here to enable push notifications to receive alerts about the event" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVX-on-sFO">
-                                                            <rect key="frame" x="28" y="12" width="287" height="75"/>
-                                                            <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable push notifications to receive special alerts about the event" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVX-on-sFO">
+                                                            <rect key="frame" x="28" y="12" width="287" height="80"/>
+                                                            <fontDescription key="fontDescription" name="TeXGyreAdventor-Bold" family="TeX Gyre Adventor" pointSize="16"/>
                                                             <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -160,26 +166,29 @@ Tap "Login on iOS" in the email or enter your user code below.</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTableViewCell" rowHeight="115" id="2kx-ir-CjN" customClass="HomeTableViewCell" customModule="Skilled_Acolyte" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="143" width="375" height="115"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTableViewCell" id="2kx-ir-CjN" customClass="HomeTableViewCell" customModule="Skilled_Acolyte" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="148" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2kx-ir-CjN" id="WYq-jK-Ngc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kIF-Ng-usE">
-                                                    <rect key="frame" x="16" y="8" width="343" height="99"/>
+                                                    <rect key="frame" x="16" y="8" width="343" height="104"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RzW-Qy-sy0">
-                                                            <rect key="frame" x="16" y="29" width="311" height="58"/>
-                                                            <fontDescription key="fontDescription" name="TeXGyreAdventor-Bold" family="TeX Gyre Adventor" pointSize="14"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RzW-Qy-sy0">
+                                                            <rect key="frame" x="16" y="28" width="311" height="64"/>
+                                                            <string key="text">Body 1
+Body 2
+Body 3</string>
+                                                            <fontDescription key="fontDescription" name="TeXGyreAdventor-Regular" family="TeX Gyre Adventor" pointSize="14"/>
                                                             <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ack-wV-M7d">
-                                                            <rect key="frame" x="16" y="12" width="311" height="17"/>
+                                                            <rect key="frame" x="16" y="12" width="311" height="16"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="17" id="Kgo-cW-lS6"/>
+                                                                <constraint firstAttribute="height" constant="16" id="Kgo-cW-lS6"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="17"/>
                                                             <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -215,159 +224,6 @@ Tap "Login on iOS" in the email or enter your user code below.</string>
                                             <outlet property="itemTitle" destination="Ack-wV-M7d" id="qtV-5t-Iwg"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NextUpCell" rowHeight="115" id="T7G-GR-78n" customClass="HomeTableViewCell" customModule="Skilled_Acolyte" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="258" width="375" height="115"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T7G-GR-78n" id="4TP-2b-gZc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3UN-Z4-mgd">
-                                                    <rect key="frame" x="16" y="8" width="343" height="99"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Next On The Schedule&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZdE-mn-vFT">
-                                                            <rect key="frame" x="16" y="29" width="311" height="58"/>
-                                                            <fontDescription key="fontDescription" name="TeXGyreAdventor-Bold" family="TeX Gyre Adventor" pointSize="14"/>
-                                                            <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Up" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73H-uP-MRK">
-                                                            <rect key="frame" x="16" y="12" width="311" height="17"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="17" id="XgV-6b-ErZ"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="17"/>
-                                                            <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstItem="73H-uP-MRK" firstAttribute="leading" secondItem="3UN-Z4-mgd" secondAttribute="leading" constant="16" id="61f-cu-2YJ"/>
-                                                        <constraint firstItem="ZdE-mn-vFT" firstAttribute="trailing" secondItem="73H-uP-MRK" secondAttribute="trailing" id="8BX-qa-V6f"/>
-                                                        <constraint firstAttribute="trailing" secondItem="73H-uP-MRK" secondAttribute="trailing" constant="16" id="JcZ-VH-E5A"/>
-                                                        <constraint firstAttribute="bottom" secondItem="ZdE-mn-vFT" secondAttribute="bottom" constant="12" id="QOK-cR-vrf"/>
-                                                        <constraint firstItem="ZdE-mn-vFT" firstAttribute="leading" secondItem="73H-uP-MRK" secondAttribute="leading" id="Qcp-dS-lPP"/>
-                                                        <constraint firstItem="ZdE-mn-vFT" firstAttribute="top" secondItem="73H-uP-MRK" secondAttribute="bottom" id="Vg7-CR-pNQ"/>
-                                                        <constraint firstItem="73H-uP-MRK" firstAttribute="top" secondItem="3UN-Z4-mgd" secondAttribute="top" constant="12" id="YIJ-nt-E17"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="12"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="3UN-Z4-mgd" secondAttribute="trailing" constant="16" id="Fid-pK-FGX"/>
-                                                <constraint firstItem="3UN-Z4-mgd" firstAttribute="leading" secondItem="4TP-2b-gZc" secondAttribute="leading" constant="16" id="MHD-n5-aHK"/>
-                                                <constraint firstItem="3UN-Z4-mgd" firstAttribute="top" secondItem="4TP-2b-gZc" secondAttribute="top" constant="8" id="Oi3-Zl-wjh"/>
-                                                <constraint firstAttribute="bottom" secondItem="3UN-Z4-mgd" secondAttribute="bottom" constant="8" id="Wrn-5o-4dU"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NextTechTalkCell" rowHeight="115" id="bEI-OL-sj3" customClass="HomeTableViewCell" customModule="Skilled_Acolyte" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="373" width="375" height="115"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bEI-OL-sj3" id="qWf-Gi-2gb">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJg-1z-tay">
-                                                    <rect key="frame" x="16" y="8" width="343" height="99"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Next Tech Talk&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRK-cm-uT4">
-                                                            <rect key="frame" x="16" y="29" width="311" height="58"/>
-                                                            <fontDescription key="fontDescription" name="TeXGyreAdventor-Bold" family="TeX Gyre Adventor" pointSize="14"/>
-                                                            <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tech Talks" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJi-Fj-wR5">
-                                                            <rect key="frame" x="16" y="12" width="311" height="17"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="17" id="b4R-WJ-Nlb"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="17"/>
-                                                            <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstItem="aRK-cm-uT4" firstAttribute="top" secondItem="wJi-Fj-wR5" secondAttribute="bottom" id="Hmu-f7-mfK"/>
-                                                        <constraint firstAttribute="trailing" secondItem="wJi-Fj-wR5" secondAttribute="trailing" constant="16" id="WZ2-ry-DzR"/>
-                                                        <constraint firstItem="wJi-Fj-wR5" firstAttribute="top" secondItem="RJg-1z-tay" secondAttribute="top" constant="12" id="aWR-Nz-mFu"/>
-                                                        <constraint firstAttribute="bottom" secondItem="aRK-cm-uT4" secondAttribute="bottom" constant="12" id="ofi-6d-fM7"/>
-                                                        <constraint firstItem="aRK-cm-uT4" firstAttribute="trailing" secondItem="wJi-Fj-wR5" secondAttribute="trailing" id="pgB-OT-OiW"/>
-                                                        <constraint firstItem="aRK-cm-uT4" firstAttribute="leading" secondItem="wJi-Fj-wR5" secondAttribute="leading" id="u6O-bY-Zne"/>
-                                                        <constraint firstItem="wJi-Fj-wR5" firstAttribute="leading" secondItem="RJg-1z-tay" secondAttribute="leading" constant="16" id="yhl-pZ-Mt9"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="12"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="RJg-1z-tay" firstAttribute="top" secondItem="qWf-Gi-2gb" secondAttribute="top" constant="8" id="7gs-HU-i5X"/>
-                                                <constraint firstAttribute="bottom" secondItem="RJg-1z-tay" secondAttribute="bottom" constant="8" id="B9w-8S-cvW"/>
-                                                <constraint firstItem="RJg-1z-tay" firstAttribute="leading" secondItem="qWf-Gi-2gb" secondAttribute="leading" constant="16" id="nd4-Cl-OPA"/>
-                                                <constraint firstAttribute="trailing" secondItem="RJg-1z-tay" secondAttribute="trailing" constant="16" id="v42-Wz-xHj"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HackathonToDoCell" rowHeight="115" id="wHG-C7-JJm" customClass="HomeTableViewCell" customModule="Skilled_Acolyte" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="488" width="375" height="115"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wHG-C7-JJm" id="QUh-0T-AZ0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="114.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDa-Bo-h80">
-                                                    <rect key="frame" x="16" y="8" width="343" height="98.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Make a team, get members,  submit a project&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJE-t0-PjD">
-                                                            <rect key="frame" x="16" y="29" width="311" height="57.5"/>
-                                                            <fontDescription key="fontDescription" name="TeXGyreAdventor-Bold" family="TeX Gyre Adventor" pointSize="14"/>
-                                                            <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Do" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QpX-Xh-A8z">
-                                                            <rect key="frame" x="16" y="12" width="311" height="17"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="17" id="bKt-I6-Oq9"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="17"/>
-                                                            <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                    <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstItem="QpX-Xh-A8z" firstAttribute="top" secondItem="KDa-Bo-h80" secondAttribute="top" constant="12" id="MJo-Iw-W7S"/>
-                                                        <constraint firstAttribute="bottom" secondItem="NJE-t0-PjD" secondAttribute="bottom" constant="12" id="Yd3-E9-isA"/>
-                                                        <constraint firstAttribute="trailing" secondItem="QpX-Xh-A8z" secondAttribute="trailing" constant="16" id="cFZ-Yl-Y94"/>
-                                                        <constraint firstItem="NJE-t0-PjD" firstAttribute="top" secondItem="QpX-Xh-A8z" secondAttribute="bottom" id="oQy-OS-b38"/>
-                                                        <constraint firstItem="QpX-Xh-A8z" firstAttribute="leading" secondItem="KDa-Bo-h80" secondAttribute="leading" constant="16" id="qPD-1L-AZB"/>
-                                                        <constraint firstItem="NJE-t0-PjD" firstAttribute="trailing" secondItem="QpX-Xh-A8z" secondAttribute="trailing" id="tk7-Iq-R7u"/>
-                                                        <constraint firstItem="NJE-t0-PjD" firstAttribute="leading" secondItem="QpX-Xh-A8z" secondAttribute="leading" id="wDF-Gi-B2H"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="12"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="KDa-Bo-h80" firstAttribute="top" secondItem="QUh-0T-AZ0" secondAttribute="top" constant="8" id="4Lx-j2-3JO"/>
-                                                <constraint firstAttribute="trailing" secondItem="KDa-Bo-h80" secondAttribute="trailing" constant="16" id="THT-46-7ri"/>
-                                                <constraint firstAttribute="bottom" secondItem="KDa-Bo-h80" secondAttribute="bottom" constant="8" id="Z6e-3y-ff2"/>
-                                                <constraint firstItem="KDa-Bo-h80" firstAttribute="leading" secondItem="QUh-0T-AZ0" secondAttribute="leading" constant="16" id="wgK-Wh-h77"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </prototypes>
                                 <sections/>
                                 <connections>
@@ -388,7 +244,8 @@ Tap "Login on iOS" in the email or enter your user code below.</string>
                                     <constraint firstAttribute="width" constant="40" id="YY3-0v-gCJ"/>
                                     <constraint firstAttribute="width" secondItem="YiR-nu-hIQ" secondAttribute="height" multiplier="1:1" id="bCA-Og-BWs"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik" pointSize="16"/>
+                                <state key="normal" title="AB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="20"/>
@@ -462,23 +319,27 @@ Tap "Login on iOS" in the email or enter your user code below.</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="115" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i6t-vp-a71">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i6t-vp-a71">
                                 <rect key="frame" x="0.0" y="136" width="375" height="482"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventInfoTableViewCell" id="Y7X-JU-pBb" customClass="EventInfoTableViewCell" customModule="Skilled_Acolyte" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="115"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y7X-JU-pBb" id="p2x-ce-xwT">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="115"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OtL-cH-jBb">
-                                                    <rect key="frame" x="16" y="8" width="343" height="99"/>
+                                                    <rect key="frame" x="16" y="8" width="343" height="114"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ce-I2-Vij">
-                                                            <rect key="frame" x="16" y="33" width="311" height="54"/>
-                                                            <fontDescription key="fontDescription" name="TeXGyreAdventor-Bold" family="TeX Gyre Adventor" pointSize="14"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ce-I2-Vij">
+                                                            <rect key="frame" x="16" y="33" width="311" height="69"/>
+                                                            <string key="text">Summary 1
+Summary 2
+Summary 3
+Summary 4</string>
+                                                            <fontDescription key="fontDescription" name="TeXGyreAdventor-Regular" family="TeX Gyre Adventor" pointSize="14"/>
                                                             <color key="textColor" red="0.15686274510000001" green="0.18823529410000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -565,7 +426,7 @@ Tap "Login on iOS" in the email or enter your user code below.</string>
                                 </connections>
                             </webView>
                             <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0c-Oq-lk9">
-                                <rect key="frame" x="-29.5" y="15" width="100" height="40"/>
+                                <rect key="frame" x="-28" y="16.5" width="100" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="B3P-YG-OX9"/>
@@ -579,8 +440,8 @@ Tap "Login on iOS" in the email or enter your user code below.</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyG-8l-2UV">
-                                <rect key="frame" x="16" y="20" width="37" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <rect key="frame" x="16" y="20" width="41" height="33"/>
+                                <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik" pointSize="17"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -750,7 +611,7 @@ line 4..</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OU1-VD-80q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2423" y="509"/>
+            <point key="canvasLocation" x="3258" y="509"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="DQu-pk-D2f">
@@ -807,7 +668,7 @@ line 4..</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J89-Si-5P0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3111" y="1187"/>
+            <point key="canvasLocation" x="3258" y="1187"/>
         </scene>
         <!--Schedule Item View Controller-->
         <scene sceneID="eHr-rG-gRc">
@@ -824,8 +685,8 @@ line 4..</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggb-Ku-Cgn">
-                                <rect key="frame" x="16" y="36" width="37" height="30"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <rect key="frame" x="16" y="36" width="41" height="33"/>
+                                <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik" pointSize="17"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -837,22 +698,22 @@ line 4..</string>
                                 <rect key="frame" x="16" y="164.5" width="343" height="502.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="TeXGyreAdventor-Regular" family="TeX Gyre Adventor" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcc-CU-A8R">
-                                <rect key="frame" x="16" y="114" width="65.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="16" y="114" width="68.5" height="20.5"/>
+                                <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="17"/>
                                 <color key="textColor" white="0.65465959821428577" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule   " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUJ-S5-qwx">
-                                <rect key="frame" x="290.5" y="114" width="68.5" height="22"/>
+                                <rect key="frame" x="288" y="114" width="71" height="25"/>
                                 <color key="backgroundColor" white="0.65465959819999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="7yf-Df-Vr3"/>
+                                    <constraint firstAttribute="height" constant="25" id="7yf-Df-Vr3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -917,23 +778,23 @@ line 4..</string>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="9Fa-ua-jCd"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5I-3K-RLm">
-                                                    <rect key="frame" x="15" y="36" width="48.5" height="13"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                                    <rect key="frame" x="15" y="36" width="49" height="13"/>
+                                                    <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik" pointSize="14"/>
                                                     <color key="textColor" white="0.65465959821428577" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule   " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUR-eP-pnj">
-                                                    <rect key="frame" x="300.5" y="31" width="59.5" height="18"/>
+                                                    <rect key="frame" x="299" y="31" width="61" height="18"/>
                                                     <color key="backgroundColor" white="0.65465959819999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="nht-Ug-ti3"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
+                                                    <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
