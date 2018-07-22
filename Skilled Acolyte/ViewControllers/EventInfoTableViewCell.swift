@@ -10,6 +10,7 @@ import UIKit
 
 class EventInfoTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var colouredView: UIView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var summary: UILabel!
     

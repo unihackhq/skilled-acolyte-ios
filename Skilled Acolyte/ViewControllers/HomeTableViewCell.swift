@@ -11,7 +11,10 @@ import UIKit
 class HomeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var itemTitle: UILabel!
-    @IBOutlet weak var itemBody: UILabel!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var colouredView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,16 +32,21 @@ class HomeTableViewCell: UITableViewCell {
         
         if let content = content as? ScheduleItem {
             
-            var durationStr = ""
+            name.text = content.name
             
             if let startDate = content.startDate, let endDate = content.endDate {
                 let formatter = DateFormatter()
                 formatter.dateFormat = "HH:mm"
-                durationStr = formatter.string(from: startDate) + " - " + formatter.string(from: endDate) + "\n"
+                time.text = formatter.string(from: startDate) + " - " + formatter.string(from: endDate) + "\n"
+            } else {
+                time.text = ""
             }
             
-            itemBody.text = content.name + "\n" + durationStr + (content.location ?? "")
-            
+            if let locationStr = content.location {
+                location.text = locationStr
+            } else {
+                location.text = ""
+            }
         }
     }
 }

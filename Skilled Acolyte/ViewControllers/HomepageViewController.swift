@@ -25,7 +25,8 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
         // Enable swipe back navigation option
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         
-        tabBarController?.tabBar.tintColor = Tools().uiColor(fromHex: "FEC22E")
+//        tabBarController?.tabBar.tintColor = Tools().uiColor(fromHex: "FEC22E")
+        tabBarController?.tabBar.tintColor = Tools().uiColor(fromHex: "FFFFFF")
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -143,14 +144,17 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
         
         // Refresh Event
         self.lblEventName.text = event.name
-        
+        if let eventColour = event.logoColour {
+            tabBarController?.tabBar.tintColor = Tools().uiColor(fromHex: eventColour)
+        }
+
         // Refresh Schedule
         var nextOnSchedule: ScheduleItem?
         var nextTechTalk: ScheduleItem?
         var nextHackathonToDo: Any?
         
         for scheduleItem in schedule {
-            if nextOnSchedule == nil {
+            if nextOnSchedule == nil && scheduleItem.type != ScheduleItemType.TechTalk {
                 nextOnSchedule = scheduleItem
             }
             if nextTechTalk == nil && scheduleItem.type == ScheduleItemType.TechTalk {
@@ -185,6 +189,7 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
                 self.removeCell(withData: "Enable Push Notifications")
             } else if !self.tableViewTitles.contains("Enable Push Notifications") {
                 self.tableViewTitles.append("Enable Push Notifications")
+                self.tableView.reloadData()
             }
         }
     }
@@ -262,6 +267,16 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell") as! HomeTableViewCell
         cell.populate(withTitle: title, content: tableViewData[title])
+        
+        if let currentEvent = Configuration.CurrentEvent, let eventColour = Tools().uiColor(fromHex: currentEvent.logoColour) {
+            cell.colouredView.backgroundColor = eventColour
+            // Vary the strength of the colour for alternating cells
+            if indexPath.row % 2 == 0 {
+                cell.colouredView.alpha = 0.2
+            } else {
+                cell.colouredView.alpha = 0.3
+            }
+        }
         return cell
     }
     

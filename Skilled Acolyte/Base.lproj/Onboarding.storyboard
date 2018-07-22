@@ -32,6 +32,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upper-bound-unihack-border" translatesAutoresizingMaskIntoConstraints="NO" id="99E-Bv-sBX">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lower-bound-unihack-border" translatesAutoresizingMaskIntoConstraints="NO" id="cz6-39-u88">
+                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <viewLayoutGuide key="safeArea" id="j2l-zO-L6x"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="msH-6x-kwn" customClass="TPKeyboardAvoidingScrollView">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
@@ -76,6 +83,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="112.5" height="58.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="jZn-BI-yQP" secondAttribute="height" multiplier="160:83" id="w1p-Ve-Paf"/>
+                                                    <constraint firstAttribute="width" constant="112.5" id="zpZ-WD-jnK"/>
                                                 </constraints>
                                             </imageView>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make sure to enter the same email you have in Eventbrite." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmf-6O-d0g">
@@ -91,7 +99,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="YaB-jI-KAv" firstAttribute="leading" secondItem="jZn-BI-yQP" secondAttribute="leading" id="32J-Au-ud1"/>
                                             <constraint firstItem="gmf-6O-d0g" firstAttribute="leading" secondItem="aZA-Qc-tis" secondAttribute="leading" id="4MG-2L-tGP"/>
@@ -114,18 +122,10 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="jZn-BI-yQP" firstAttribute="width" secondItem="msH-6x-kwn" secondAttribute="width" multiplier="0.3" id="aUd-KW-FZ0"/>
                                     <constraint firstItem="aZA-Qc-tis" firstAttribute="centerX" secondItem="msH-6x-kwn" secondAttribute="centerX" id="jR4-iO-zZ2"/>
                                     <constraint firstItem="aZA-Qc-tis" firstAttribute="top" secondItem="msH-6x-kwn" secondAttribute="top" constant="175" id="t0a-bn-LsL"/>
                                 </constraints>
                             </scrollView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upper-bound-unihack-border" translatesAutoresizingMaskIntoConstraints="NO" id="99E-Bv-sBX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lower-bound-unihack-border" translatesAutoresizingMaskIntoConstraints="NO" id="cz6-39-u88">
-                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
-                                <viewLayoutGuide key="safeArea" id="j2l-zO-L6x"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>

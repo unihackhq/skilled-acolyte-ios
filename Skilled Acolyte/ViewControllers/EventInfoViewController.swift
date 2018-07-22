@@ -29,6 +29,17 @@ class EventInfoViewController: UIViewController, UITableViewDataSource, UITableV
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventInfoTableViewCell") as! EventInfoTableViewCell
         cell.populate(withInfo: event.eventInfo[indexPath.row])
         
+        // Colour the cells
+        if let currentEvent = Configuration.CurrentEvent, let eventColour = Tools().uiColor(fromHex: currentEvent.logoColour) {
+            cell.colouredView.backgroundColor = eventColour
+            // Vary the strength of the colour for alternating cells
+            if indexPath.row % 2 == 0 {
+                cell.colouredView.alpha = 0.2
+            } else {
+                cell.colouredView.alpha = 0.3
+            }
+        }
+        
         return cell
     }
     
@@ -39,6 +50,7 @@ class EventInfoViewController: UIViewController, UITableViewDataSource, UITableV
         
         let eventInfoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EventInfoItemViewController") as! EventInfoItemViewController
         eventInfoVC.populate(withEventInfoItem: event.eventInfo[indexPath.row])
+        
         navigationController?.pushViewController(eventInfoVC, animated: true)
     }
 }

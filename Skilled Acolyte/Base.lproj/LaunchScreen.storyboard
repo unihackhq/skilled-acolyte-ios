@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,16 +24,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unihack-logo-sided" translatesAutoresizingMaskIntoConstraints="NO" id="rUJ-Bj-1mV">
-                                <rect key="frame" x="56" y="195" width="112.5" height="58.5"/>
+                                <rect key="frame" x="56.5" y="195" width="112.5" height="58.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rUJ-Bj-1mV" secondAttribute="height" multiplier="160:83" id="BUW-0i-zRU"/>
+                                    <constraint firstAttribute="width" constant="112.5" id="zoI-1S-m2Z"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upper-bound-unihack-border" translatesAutoresizingMaskIntoConstraints="NO" id="EkI-T1-MhI">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOD-lV-BTa">
-                                <rect key="frame" x="56" y="255" width="262.5" height="0.0"/>
+                                <rect key="frame" x="56.5" y="254.5" width="262.5" height="0.0"/>
                                 <fontDescription key="fontDescription" name="TeXGyreAdventor-Regular" family="TeX Gyre Adventor" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -55,7 +54,6 @@
                             <constraint firstItem="YtQ-8C-lNn" firstAttribute="width" secondItem="YtQ-8C-lNn" secondAttribute="height" multiplier="75:16" id="U1H-43-rld"/>
                             <constraint firstAttribute="trailing" secondItem="EkI-T1-MhI" secondAttribute="trailing" id="YsY-eN-eYp"/>
                             <constraint firstItem="HOD-lV-BTa" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="aCb-zq-93i"/>
-                            <constraint firstItem="rUJ-Bj-1mV" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.3" id="ba6-zX-6ea"/>
                             <constraint firstItem="HOD-lV-BTa" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.7" id="erW-Ma-R2X"/>
                             <constraint firstItem="EkI-T1-MhI" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="fWW-8S-COr"/>
                             <constraint firstItem="EkI-T1-MhI" firstAttribute="width" secondItem="EkI-T1-MhI" secondAttribute="height" multiplier="375:128" id="ng9-G6-vIl"/>

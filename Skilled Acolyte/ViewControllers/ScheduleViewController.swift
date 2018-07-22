@@ -71,7 +71,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleItemCell") as! ScheduleItemTableViewCell
         cell.populate(with: tableViewData[indexPath.section][indexPath.row])
-
+        
         return cell
     }
     

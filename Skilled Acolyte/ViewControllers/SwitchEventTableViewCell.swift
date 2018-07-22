@@ -39,5 +39,11 @@ class SwitchEventTableViewCell: UITableViewCell {
         } else {
             eventImage.image = nil
         }
+        
+        if let eventColour = event.logoColour {
+            eventImage.backgroundColor = Tools().uiColor(fromHex: eventColour)
+        } else {
+            eventImage.backgroundColor = UIColor.clear
+        }
     }
 }

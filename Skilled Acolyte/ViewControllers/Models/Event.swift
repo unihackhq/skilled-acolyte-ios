@@ -13,10 +13,10 @@ struct Event: Codable {
     var id: String = ""
     var name: String = ""
     var location: String?
-//    var startDate: Date?
-//    var endDate: Date?
+    var startDate: Date?
+    var endDate: Date?
     var logoUrl: String?
-//    var logoColour: UIColor?
+    var logoColour: String?
     var eventInfo: [EventInfoItem] = [EventInfoItem]()
     
     init(data: [String:Any]?) {
@@ -27,11 +27,12 @@ struct Event: Codable {
         name = data["name"] as! String
         
         // Optional things
-//        startDate = Tools().date(fromIso: data["startDate"] as? String)
-//        endDate = Tools().date(fromIso: data["endDate"] as? String)
+        startDate = Tools().date(fromIso: data["startDate"] as? String)
+        endDate = Tools().date(fromIso: data["endDate"] as? String)
         location = data["location"] as? String
         logoUrl = data["logoUrl"] as? String
-//        logoColour = Tools().uiColor(fromHex: data["logoColour"] as? String)
+        logoColour = data["logoColor"] as? String
+        
         eventInfo.append(EventInfoItem(name: "Sponsors", data: data["sponsors"] as? [String:Any]))
         eventInfo.append(EventInfoItem(name: "Prizes", data: data["prizes"] as? [String:Any]))
         eventInfo.append(EventInfoItem(name: "Judges", data: data["judges"] as? [String:Any]))
@@ -54,9 +55,11 @@ struct Event: Codable {
         if id != "" { json["id"] = id }
         if name != "" { json["name"] = name }
         
-        
+        if let startDate = startDate { json["startDate"] = Tools().iso(fromDate: startDate) }
+        if let endDate = endDate { json["endDate"] = Tools().iso(fromDate: endDate) }
         if let location = location { json["location"] = location }
         if let logoUrl = logoUrl { json["logoUrl"] = logoUrl }
+        if let logoColour = logoColour { json["logoColour"] = logoColour }
         
         for item in eventInfo {
             json[item.name] = item.toJSON()
