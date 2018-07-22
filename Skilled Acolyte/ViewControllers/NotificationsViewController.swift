@@ -104,9 +104,10 @@ class NotificationsViewController: UIViewController {
     
     @IBAction func switchChanged(sender: UISwitch) {
         
+        // This switch should enable/disable all other notifications
+        enablePushNotifications()
+        
         if sender == allNotificationsSwitch {
-            // This switch should enable/disable all other notifications
-            enablePushNotifications()
             
             sessionNotificationsSwitch.setOn(sender.isOn, animated: true)
             techTalkNotificationsSwitch.setOn(sender.isOn, animated: true)

@@ -16,10 +16,6 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var lblEventName: UILabel!
     @IBOutlet weak var btnSettings: UIButton!
     
-    @IBOutlet weak var lblNextUp: UILabel!
-    @IBOutlet weak var lblNextTechTalk: UILabel!
-    @IBOutlet weak var lblToDo: UILabel!
-    
     var tableViewTitles: [String]! = [String]()
     var tableViewData: [String:Any] = [String:Any]()
     
@@ -32,27 +28,34 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableViewTitles = [
-            "Enable Push Notifications",
-            "Next Up",
-            "Tech Talks",
-            "To Do"
-        ]
+        lblEventName.text = ""
+        btnSettings.isHidden = true
         
         guard let student = Configuration.CurrentStudent else { return }
         
-        // Load the student's events
-        Networking.shared.getStudentEvents(byStudentId: student.id) { (error, events) in
+        // Load the latest student data
+        Networking.shared.getStudent(byId: student.id) { (error, student) in
             
             if let error = error {
                 // TODO: better handle error
-                let alert = UIAlertController(title: "Event Error", message: "\(error)", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Student Error", message: "\(error)", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
-            } else {
-                Configuration.StudentsEvents = events
+            }
+            guard let student = student else { return }
                 
-                // Update to the latest event, otherwise use the first event found
+            // Load the student's events
+            Networking.shared.getStudentEvents(byStudentId: student.id) { (error, events) in
+                
+                if let error = error {
+                    // TODO: better handle error
+                    let alert = UIAlertController(title: "Event Error", message: "\(error)", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                Configuration.StudentsEvents = events
+                    
+                // Update the current event. If there is none use the first event found
                 if let currentEvent = Configuration.CurrentEvent {
                     for event in events {
                         if event.id == currentEvent.id {
@@ -64,7 +67,6 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
                     Configuration.CurrentEvent = firstEvent
                 }
                 guard let selectedEvent = Configuration.CurrentEvent else { return }
-                self.refreshEvent(selectedEvent)
                 
                 // Download and match up any teams the student has
                 Networking.shared.getStudentTeams(byStudentId: student.id) { (error, teams) in
@@ -73,13 +75,13 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
                         let alert = UIAlertController(title: "Team Error", message: "\(error)", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
-                    } else {
-                        Configuration.StudentTeams = teams
-                        for team in teams {
-                            if team.eventId == selectedEvent.id {
-                                Configuration.CurrentTeam = team
-                                break
-                            }
+                    }
+                    
+                    Configuration.StudentTeams = teams
+                    for team in teams {
+                        if team.eventId == selectedEvent.id {
+                            Configuration.CurrentTeam = team
+                            break
                         }
                     }
                 }
@@ -91,18 +93,18 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
                         let alert = UIAlertController(title: "Event Schedule Error", message: "\(error)", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
-                    } else {
-                        // Make schedule mutable and order it by time
-                        var schedule = schedule
-                        schedule.sort(by: { (item1, item2) -> Bool in
-                            // Validate start times. If not present these should be at the bottom
-                            guard let start1 = item1.startDate, let start2 = item2.startDate else { return false }
-                            return start1 < start2
-                        })
-                        
-                        Configuration.CurrentSchedule = schedule
-                        self.refreshSchedule(schedule)
                     }
+                    
+                    // Make schedule mutable and order it by time
+                    var schedule = schedule
+                    schedule.sort(by: { (item1, item2) -> Bool in
+                        // Validate start times. If not present these should be at the bottom
+                        guard let start1 = item1.startDate, let start2 = item2.startDate else { return false }
+                        return start1 < start2
+                    })
+                    
+                    Configuration.CurrentSchedule = schedule
+                    self.refreshPage(student: student, event: selectedEvent, schedule: schedule)
                 })
             }
         }
@@ -110,15 +112,11 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
 
     override func viewWillAppear(_ animated: Bool) {
         
-        if let student = Configuration.CurrentStudent {
-            refreshSettingsButtonForStudent(student)
+        if let student = Configuration.CurrentStudent,
+            let event = Configuration.CurrentEvent,
+            let schedule = Configuration.CurrentSchedule {
+            refreshPage(student: student, event: event, schedule: schedule)
         }
-        
-        if let event = Configuration.CurrentEvent {
-            refreshEvent(event)
-        }
-        
-        checkPushNotificationStatus()
     }
     
     override func didReceiveMemoryWarning() {
@@ -126,8 +124,10 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-    func refreshSettingsButtonForStudent(_ student: Student) {
+    func refreshPage(student: Student, event: Event, schedule: [ScheduleItem]) {
         
+        // Refresh Student
+        btnSettings.isHidden = false
         // Try to load in an image
         if let image = student.downloadPhoto() {
             btnSettings.setImage(image, for: .normal)
@@ -138,15 +138,11 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
             let initials = student.initials()
             btnSettings.setTitle(initials, for: .normal)
         }
-    }
-    
-    func refreshEvent(_ event: Event) {
         
+        // Refresh Event
         self.lblEventName.text = event.name
-    }
-    
-    func refreshSchedule(_ schedule: [ScheduleItem]) {
         
+        // Refresh Schedule
         var nextOnSchedule: ScheduleItem?
         var nextTechTalk: ScheduleItem?
         var nextHackathonToDo: Any?
@@ -161,12 +157,20 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
             // TOOD: next hackathon todo
         }
         
+        tableViewTitles = [String]()
         tableViewData = [String:Any]()
+        checkPushNotificationStatus()
         if let nextOnSchedule = nextOnSchedule {
             tableViewData["Next Up"] = nextOnSchedule
+            tableViewTitles.append("Next Up")
         }
         if let nextTechTalk = nextTechTalk {
             tableViewData["Tech Talks"] = nextTechTalk
+            tableViewTitles.append("Tech Talks")
+        }
+        if let nextHackathonToDo = nextHackathonToDo {
+            tableViewData["To Do"] = nextHackathonToDo
+            tableViewTitles.append("To Do")
         }
         
         tableView.reloadData()
@@ -177,6 +181,8 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
         DispatchQueue.main.async {
             if UIApplication.shared.isRegisteredForRemoteNotifications {
                 self.removeCell(withData: "Enable Push Notifications")
+            } else if !self.tableViewTitles.contains("Enable Push Notifications") {
+                self.tableViewTitles.append("Enable Push Notifications")
             }
         }
     }
@@ -186,7 +192,7 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
         if let indexToRemove = tableViewTitles.index(of: data) {
             tableViewTitles.remove(at: indexToRemove)
             DispatchQueue.main.async {
-                self.tableView.deleteRows(at: [IndexPath(row: indexToRemove, section: 0)], with: .automatic)
+                self.tableView.reloadData()
             }
         }
     }

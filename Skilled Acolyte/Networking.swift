@@ -210,6 +210,27 @@ class Networking: NSObject {
         }
     }
     
+    func getUniversities(completion:((Error?, [University]?) -> Void)?) {
+        
+        let url = "/universities"
+        request(method: Methods.GET, url: url, body: nil, secure: true) { (error, response) in
+            
+            var universities: [University] = [University]()
+            if let response = response as? [[String:Any]] {
+                // Loop through and build universities out of the response
+                for jsonUniversity in response {
+                    let university = University(data: jsonUniversity)
+                    universities.append(university)
+                }
+            }
+            
+            self.handleIfError(error: error, response: response)
+            if let completion = completion {
+                completion(error, universities)
+            }
+        }
+    }
+    
     // Event
     func getEventAttendees(byEventId eventId: String, completion:((Error?, [Student]) -> Void)?) {
         

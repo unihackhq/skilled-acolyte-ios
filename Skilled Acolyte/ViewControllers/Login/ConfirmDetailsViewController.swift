@@ -137,45 +137,49 @@ class ConfirmDetailsViewController: UIViewController, UITableViewDataSource, UIG
         btnBackTapped()
     }
     
-    func confirmDetailUpdated(value: String, for confirmingDetail: String) {
+    func confirmDetailUpdated(value: Any, for confirmingDetail: String) {
+        
+        let textValue = value as? String ?? ""
+        let dateValue = value as? Date ?? Date()
+        let universityValue = value as? University ?? Configuration.CurrentStudent!.university
         
         switch confirmingDetail {
         case ConfirmDetail.ProfilePhoto:
-            confirmingStudent.photoUrl = value
+            confirmingStudent.photoUrl = textValue
         case ConfirmDetail.FirstName:
-            confirmingStudent.user.firstName = value
+            confirmingStudent.user.firstName = textValue
             break
         case ConfirmDetail.LastName:
-            confirmingStudent.user.lastName = value
+            confirmingStudent.user.lastName = textValue
             break
         case ConfirmDetail.PreferredName:
             if let firstName = confirmingStudent.user.firstName,
-                value == "" {
+                textValue == "" {
                 confirmingStudent.user.preferredName = firstName
             } else {
-                confirmingStudent.user.preferredName = value
+                confirmingStudent.user.preferredName = textValue
             }
             break
         case ConfirmDetail.DateOfBirth:
-            // TODO: extract date
+            confirmingStudent.user.dateOfBirth = dateValue
             break
         case ConfirmDetail.Gender:
-            confirmingStudent.user.gender = value
+            confirmingStudent.user.gender = textValue
             break
         case ConfirmDetail.Email:
-            confirmingStudent.user.email = value
+            confirmingStudent.user.email = textValue
             break
         case ConfirmDetail.MobileNumber:
-            confirmingStudent.user.mobile = value
+            confirmingStudent.user.mobile = textValue
             break
         case ConfirmDetail.EducationalInstitution:
-            // TODO: sort out university id. drop down?
+            confirmingStudent.university = universityValue
             break
         case ConfirmDetail.Course:
-            confirmingStudent.degree = value
+            confirmingStudent.degree = textValue
             break
         case ConfirmDetail.YearLevel:
-            confirmingStudent.studyLevel = value
+            confirmingStudent.studyLevel = textValue
             break
         default:
             print("Error: Couldn't find detail to confirm: \(confirmingDetail) : \(value)")

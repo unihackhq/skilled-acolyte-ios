@@ -10,20 +10,28 @@ import UIKit
 
 protocol ConfirmDetailTableViewCellDelegate: class {
     func confirmDetailNextTapped()
-    func confirmDetailBackTapped()
-    func confirmDetailUpdated(value: String, for confirmingDetail: String)
+    func confirmDetailUpdated(value: Any, for confirmingDetail: String)
 }
 
-class ConfirmDetailTableViewCell: UITableViewCell {
+class ConfirmDetailTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak private var detailName: UILabel!
     @IBOutlet weak private var detailValue: UITextField!
+    private var pickerView: UIPickerView! = UIPickerView()
+    private var pickerViewData: [Any]! = [Any]()
+    private var datePicker: UIDatePicker! = UIDatePicker()
     weak private var delegate: ConfirmDetailTableViewCellDelegate?
     private var confirmingDetail: String!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        
+        datePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
+        datePicker.datePickerMode = .date
     }
 
     override func layoutSubviews() {
@@ -34,27 +42,15 @@ class ConfirmDetailTableViewCell: UITableViewCell {
         customView.backgroundColor = UIColor.clear
         detailValue.inputAccessoryView = customView
         
-        let buttonWidth:CGFloat = 125
+        let buttonWidth:CGFloat = frame.size.width-32
         
-        let btnNext = UIButton(frame: CGRect.init(x: frame.size.width-buttonWidth-16, y: 0, width: buttonWidth, height: 40))
+        // Add the "next" button to the keyboard
+        let btnNext = UIButton(frame: CGRect.init(x: (frame.size.width-buttonWidth)/2, y: 0, width: buttonWidth, height: 40))
         btnNext.backgroundColor = UIColor.init(red: 1, green: 203/255, blue: 81/255, alpha: 1) // TODO: add in correct yellow colour
         btnNext.setTitle("Next", for: .normal)
         btnNext.layer.cornerRadius = btnNext.frame.size.height/2
         btnNext.addTarget(self, action: #selector(nextTapped), for: .touchUpInside)
         customView.addSubview(btnNext)
-        
-        let btnBack = UIButton(frame: CGRect.init(x: 16, y: 0, width: buttonWidth, height: 40))
-        btnBack.backgroundColor = UIColor.lightGray
-        btnBack.setTitle("Back", for: .normal)
-        btnBack.layer.cornerRadius = btnNext.frame.size.height/2
-        btnBack.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
-        customView.addSubview(btnBack)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
     func populateWith(confirmingDetail: String, student: Student, delegate: ConfirmDetailTableViewCellDelegate!) {
@@ -83,11 +79,13 @@ class ConfirmDetailTableViewCell: UITableViewCell {
             detailValue.placeholder = student.user.firstName ?? ""
             break
         case ConfirmDetail.DateOfBirth:
-// TODO: extract date correctly
-            detailValue.text = student.user.dateOfBirth ?? ""
-            detailValue.placeholder = "YYYY-MM-DD"
-            detailValue.isEnabled = false
-            detailValue.alpha = 0.5
+            if let dob = student.user.dateOfBirth {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "d MMMM yyyy"
+                detailValue.text = formatter.string(from: dob)
+                datePicker.date = dob
+            }
+            detailValue.inputView = datePicker
             break
         case ConfirmDetail.Gender:
             detailValue.text = student.user.gender ?? ""
@@ -102,10 +100,12 @@ class ConfirmDetailTableViewCell: UITableViewCell {
             detailValue.keyboardType = .phonePad
             break
         case ConfirmDetail.EducationalInstitution:
-// TODO: extract from uni id
-            detailValue.text = student.universityId ?? ""
-            detailValue.isEnabled = false
-            detailValue.alpha = 0.5
+            if let uni = student.university {
+                detailValue.text = uni.name
+            }
+            detailValue.placeholder = "Select One"
+            detailValue.inputView = pickerView
+            loadUniversities(currentUniversity: student.university)
             break
         case ConfirmDetail.Course:
             detailValue.text = student.degree ?? ""
@@ -115,6 +115,29 @@ class ConfirmDetailTableViewCell: UITableViewCell {
             break
         default:
             print("Error: Couldn't find detail to confirm: \(confirmingDetail)")
+        }
+    }
+    
+    func loadUniversities(currentUniversity: University?) {
+        Networking.shared.getUniversities { (error, universities) in
+            if let error = error {
+                let alert = UIAlertController(title: "Universities Error", message: "\(error)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+            }
+            self.pickerViewData = universities
+            self.pickerView.reloadAllComponents()
+            
+            // Select the current row
+            if let currentUniversity = currentUniversity {
+                let row = self.pickerViewData.index { (compareItem) -> Bool in
+                    if let compareItem = compareItem as? University {
+                        return compareItem == currentUniversity
+                    }
+                    return false
+                }
+                self.pickerView.selectRow(row!, inComponent: 0, animated: false)
+            }
         }
     }
     
@@ -129,13 +152,6 @@ class ConfirmDetailTableViewCell: UITableViewCell {
         }
     }
     
-    @objc func backTapped() {
-        detailValue.resignFirstResponder()
-        if let delegate = delegate {
-            delegate.confirmDetailBackTapped()
-        }
-    }
-    
     @IBAction func textFieldDidType() {
         
         let text = detailValue.text ?? ""
@@ -143,5 +159,47 @@ class ConfirmDetailTableViewCell: UITableViewCell {
         if let delegate = delegate {
             delegate.confirmDetailUpdated(value: text, for: confirmingDetail)
         }
+    }
+    
+    @objc func datePickerChanged() {
+        
+        let newDate = datePicker.date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMMM yyyy"
+        detailValue.text = formatter.string(from: newDate)
+        
+        if let delegate = delegate {
+            delegate.confirmDetailUpdated(value: newDate, for: confirmingDetail)
+        }
+    }
+    
+    // MARK: - UIPickerViewDelegate
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        if let university = pickerViewData[row] as? University {
+            detailValue.text = university.name
+            
+            if let delegate = delegate {
+                delegate.confirmDetailUpdated(value: university, for: confirmingDetail)
+            }
+        }
+    }
+    
+    // MARK: - UIPickerViewDataSource
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerViewData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if let university = pickerViewData[row] as? University {
+            return university.name
+        }
+        return ""
     }
 }

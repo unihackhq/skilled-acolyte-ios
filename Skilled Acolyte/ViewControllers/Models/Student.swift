@@ -12,7 +12,7 @@ struct Student: Codable, Equatable {
     
     var firstLaunch: Bool?
     var id: String = ""
-    var universityId: String?
+    var university: University?
     var user: User = User(data: nil)
     var studyLevel: String?
     var degree: String?
@@ -28,7 +28,7 @@ struct Student: Codable, Equatable {
         // Initalizers
         firstLaunch = data["firstLaunch"] as? Bool
         id = data["id"] as! String
-        universityId = data["universityId"] as? String
+        university = University(data: data["university"] as? [String:Any])
         
         // Personal data
         user = User(data: data["user"] as? [String:Any])
@@ -98,7 +98,7 @@ struct Student: Codable, Equatable {
         if id != "" { json["id"] = id }
         json["user"] = user.toJSON()
         
-        if let universityId = universityId { json["universityId"] = universityId }
+        if let university = university { json["universityId"] = university.id }
         if let studyLevel = studyLevel { json["studyLevel"] = studyLevel }
         if let degree = degree { json["degree"] = degree }
         if let photoUrl = photoUrl { json["photoUrl"] = photoUrl }

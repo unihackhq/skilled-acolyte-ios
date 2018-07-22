@@ -15,7 +15,7 @@ struct User: Codable {
     var lastName: String?
     var preferredName: String?
     var email: String?
-    var dateOfBirth: String?
+    var dateOfBirth: Date?
     var gender: String?
     var mobile: String?
     
@@ -27,7 +27,9 @@ struct User: Codable {
         lastName = data["lastName"] as? String
         preferredName = data["preferredName"] as? String
         email = data["email"] as? String
-        dateOfBirth = data["dateOfBirth"] as? String // TODO: this needs converting from "YYYY-MM-DD" to timestamp
+        if let dob = data["dateOfBirth"] as? String {
+            dateOfBirth = Tools().date(fromIso: dob)
+        }
         gender = data["gender"] as? String
         mobile = data["mobile"] as? String
     }
@@ -42,7 +44,7 @@ struct User: Codable {
         if let lastName = lastName { json["lastName"] = lastName }
         if let preferredName = preferredName { json["preferredName"] = preferredName }
         if let email = email { json["email"] = email }
-        if let dateOfBirth = dateOfBirth { json["dateOfBirth"] = dateOfBirth } // TODO: convert back to string
+        if let dateOfBirth = dateOfBirth { json["dateOfBirth"] = Tools().iso(fromDate: dateOfBirth) } // TODO: convert back to string
         if let gender = gender { json["gender"] = gender }
         if let mobile = mobile { json["mobile"] = mobile }
         

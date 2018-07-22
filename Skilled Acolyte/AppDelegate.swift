@@ -146,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func showVerifyVC() {
         
-        window?.rootViewController = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "VerifyViewController")
+        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VerifyViewController")
     }
     
     // MARK: - Other

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct University {
+struct University: Codable, Equatable {
     
     var id: String = ""
     var name: String = ""
@@ -20,5 +20,20 @@ struct University {
         id = data["id"] as! String
         name = data["name"] as! String
         country = data["country"] as! String
+    }
+    
+    func toJSON() -> [String:Any] {
+        
+        var json = [String:Any]()
+        
+        if id != "" { json["id"] = id }
+        if name != "" { json["name"] = name }
+        if country != "" { json["country"] = country }
+        
+        return json
+    }
+    
+    static func == (left: University, right: University) -> Bool {
+        return left.id == right.id
     }
 }

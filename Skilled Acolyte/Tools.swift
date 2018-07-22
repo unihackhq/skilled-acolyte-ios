@@ -22,7 +22,15 @@ struct Tools {
         guard let iso = iso else { return nil }
         
         let formatter = DateFormatter()
+        
+        // Convert from full ISO format
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        if let dateAttempt = formatter.date(from: iso) {
+            return dateAttempt
+        }
+        
+        // Convert from partial ISO format
+        formatter.dateFormat = "yyyy-MM-dd"
         return formatter.date(from: iso)
     }
     
