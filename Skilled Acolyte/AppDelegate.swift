@@ -8,6 +8,7 @@
 
 import UIKit
 import PushNotifications
+import HockeySDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,6 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Register for notifications
         self.pushNotifications.start(instanceId: "57148181-1dd1-4b6d-9779-aec284a39473")
         
+        // Register Hockey App
+        BITHockeyManager.shared().configure(withIdentifier: "2e6440b4b3b74872963ab7a16e8e83ff")
+        BITHockeyManager.shared().start()
+        BITHockeyManager.shared().authenticator.authenticateInstallation()
+
         return true
     }
 

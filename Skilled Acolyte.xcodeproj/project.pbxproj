@@ -311,6 +311,8 @@
 				6550A18C209726F100068551 /* Frameworks */,
 				6550A18D209726F100068551 /* Resources */,
 				D44C20D36E73ED047772F47A /* [CP] Embed Pods Frameworks */,
+				65986940210445320067C0D6 /* Hockey App Run Script */,
+				350142523393358802344519 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -330,6 +332,7 @@
 				6550A1A0209726F400068551 /* Frameworks */,
 				6550A1A1209726F400068551 /* Resources */,
 				21B49FD0F7C87FB08A67408C /* [CP] Embed Pods Frameworks */,
+				F5F9CC4C7E2E3EF614A26B5B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -433,6 +436,24 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Skilled AcolyteTests/Pods-Skilled AcolyteTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		350142523393358802344519 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Skilled Acolyte/Pods-Skilled Acolyte-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/HockeySDK/HockeySDKResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HockeySDKResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Skilled Acolyte/Pods-Skilled Acolyte-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		41EBFDE17AADFA71543C070F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -469,6 +490,20 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		65986940210445320067C0D6 /* Hockey App Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Hockey App Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FILE=\"${SRCROOT}/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi\n";
+		};
 		D44C20D36E73ED047772F47A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -491,6 +526,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Skilled Acolyte/Pods-Skilled Acolyte-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5F9CC4C7E2E3EF614A26B5B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Skilled AcolyteTests/Pods-Skilled AcolyteTests-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/HockeySDK/HockeySDKResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HockeySDKResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Skilled AcolyteTests/Pods-Skilled AcolyteTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
