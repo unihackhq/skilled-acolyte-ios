@@ -51,9 +51,6 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
                 self.present(alert, animated: true, completion: nil)
             } else {
                 Configuration.StudentsEvents = events
-                if events.count > 1 {
-                    // TODO: this student has more than one events. show some way for them to switch between events
-                }
                 
                 // Update to the latest event, otherwise use the first event found
                 if let currentEvent = Configuration.CurrentEvent {
@@ -63,7 +60,6 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
                             break
                         }
                     }
-                    
                 } else if let firstEvent = events.first {
                     Configuration.CurrentEvent = firstEvent
                 }
@@ -104,6 +100,7 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
                             return start1 < start2
                         })
                         
+                        Configuration.CurrentSchedule = schedule
                         self.refreshSchedule(schedule)
                     }
                 })
@@ -179,7 +176,7 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
         
         DispatchQueue.main.async {
             if UIApplication.shared.isRegisteredForRemoteNotifications {
-                self.removeCell(withData: "EnablePushNotificationsCell")
+                self.removeCell(withData: "Enable Push Notifications")
             }
         }
     }

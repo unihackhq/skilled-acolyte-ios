@@ -90,15 +90,8 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-//        // Maxiumum team size is 6, so only show the 'add' cell when there are fewer students
-//        if invites.count < 6 {
-//            return invites.count+1
-//        } else {
-//            return invites.count
-//        }
-        
         // You can invite any number, but only 6 can accept invitations
-        return invites.count
+        return invites.count+1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

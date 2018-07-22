@@ -16,54 +16,44 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let event = Configuration.CurrentEvent else { return }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        Networking.shared.getEventSchedule(byEventId: event.id) { (error, schedule) in
-            if let error = error {
-                // todo: better handle error
-                let alert = UIAlertController(title: "Schedule Error", message: "\(error)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                
-                // Make schedule mutable and order it by time
-                var schedule = schedule
-                schedule.sort(by: { (item1, item2) -> Bool in
-                    // Validate start times. If not present these should be at the bottom
-                    guard let start1 = item1.startDate, let start2 = item2.startDate else { return false }
-                    return start1 < start2
-                })
-                
-                // Break the schedule up into days
-                var eventsByDay = [[ScheduleItem]]()
-                var previousEventDay:Int?
-                
-                
-                for scheduleItem in schedule {
-                    guard let startDate = scheduleItem.startDate else { continue }
-                    
-                    // Compare today's day with yesterdays and add a new day if there's a difference
-                    let itemDay = NSCalendar.current.component(.day, from: startDate)
-                    if let previousEventDay = previousEventDay {
-                        if previousEventDay != itemDay {
-                            eventsByDay.append([ScheduleItem]())
-                        }
-                    } else {
-                        eventsByDay.append([ScheduleItem]())
-                    }
-                    previousEventDay = itemDay
-                    
-                    // Update the schedule for this day
-                    var previousScheduleDay = eventsByDay.last!
-                    previousScheduleDay.append(scheduleItem)
-                    eventsByDay[eventsByDay.count-1] = previousScheduleDay
-                    
+        guard let schedule = Configuration.CurrentSchedule else { return }
+        refreshSchedule(schedule)
+    }
+    
+    func refreshSchedule(_ schedule: [ScheduleItem]) {
+        
+        // Break the schedule up into days
+        var eventsByDay = [[ScheduleItem]]()
+        var previousEventDay:Int?
+        
+        for scheduleItem in schedule {
+            guard let startDate = scheduleItem.startDate else { continue }
+            
+            // Compare today's day with yesterdays and add a new day if there's a difference
+            let itemDay = NSCalendar.current.component(.day, from: startDate)
+            if let previousEventDay = previousEventDay {
+                if previousEventDay != itemDay {
+                    eventsByDay.append([ScheduleItem]())
                 }
-                
-                self.tableViewData = eventsByDay
-                self.tableView.reloadData()
+            } else {
+                eventsByDay.append([ScheduleItem]())
             }
+            previousEventDay = itemDay
+            
+            // Update the schedule for this day
+            var previousScheduleDay = eventsByDay.last!
+            previousScheduleDay.append(scheduleItem)
+            eventsByDay[eventsByDay.count-1] = previousScheduleDay
+            
         }
+        
+        self.tableViewData = eventsByDay
+        self.tableView.reloadData()
     }
     
     // MARK: - UITableViewDataSource

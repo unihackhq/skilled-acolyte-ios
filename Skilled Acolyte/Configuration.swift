@@ -159,4 +159,23 @@ struct Configuration {
             return nil
         }
     }
+    static var CurrentSchedule: [ScheduleItem]? {
+        set(schedule) {
+            if let schedule = schedule {
+                do {
+                    UserDefaults.standard.set(try? PropertyListEncoder().encode(schedule), forKey: "schedule")
+                }
+            } else {
+                UserDefaults.standard.removeObject(forKey: "schedule")
+            }
+        }
+        get {
+            if let decodedData = UserDefaults.standard.value(forKey: "schedule") as? Data {
+                do {
+                    return try? PropertyListDecoder().decode([ScheduleItem].self, from: decodedData)
+                }
+            }
+            return nil
+        }
+    }
 }
