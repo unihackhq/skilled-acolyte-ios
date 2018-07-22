@@ -265,6 +265,13 @@ class Networking: NSObject {
                     let scheduleItem = ScheduleItem(data: jsonScheduleItem)
                     scheduleItems.append(scheduleItem)
                 }
+                
+                // Order the schedule by time
+                scheduleItems.sort(by: { (item1, item2) -> Bool in
+                    // Validate start times. If not present these should be at the bottom
+                    guard let start1 = item1.startDate, let start2 = item2.startDate else { return false }
+                    return start1 < start2
+                })
             }
             
             self.handleIfError(error: error, response: response)

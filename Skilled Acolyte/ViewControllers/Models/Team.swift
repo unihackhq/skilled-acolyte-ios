@@ -32,9 +32,11 @@ struct Team: Codable, Equatable {
         longDescription = data["longDescription"] as? String
         devpostLink = data["devpostLink"] as? String
         photoUrl = data["photoUrl"] as? String
-        for memberData in (data["members"] as! [[String:Any]]) {
-            let member = Student(data: memberData)
-            members.append(member)
+        if let membersData = data["members"] as? [[String:Any]] {
+            for memberData in membersData {
+                let member = Student(data: memberData)
+                members.append(member)
+            }
         }
         if let invitations = data["invited"] as? [[String:Any]] {
             for inviteData in invitations {

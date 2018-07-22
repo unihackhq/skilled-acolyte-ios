@@ -64,6 +64,29 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         let event = events[indexPath.row]
         Configuration.CurrentEvent = event
         
-        btnBackTapped()
+        // Get the correct team for this event
+        Configuration.CurrentTeam = nil
+        if let teams = Configuration.StudentTeams {
+            for team in teams {
+                if team.eventId == event.id {
+                    Configuration.CurrentTeam = team
+                    break
+                }
+            }
+        }
+        
+        // Get the correct schedule for this event
+        Networking.shared.getEventSchedule(byEventId: event.id, completion: { (error, schedule) in
+            
+            if let error = error {
+                let alert = UIAlertController(title: "Schedule Error", message: "\(error)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            Configuration.CurrentSchedule = schedule
+            
+            // Finished - leave the page
+            self.btnBackTapped()
+        })
     }
 }

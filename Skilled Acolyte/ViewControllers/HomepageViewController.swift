@@ -81,10 +81,21 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
                     }
                     
                     Configuration.StudentTeams = teams
-                    for team in teams {
-                        if team.eventId == selectedEvent.id {
-                            Configuration.CurrentTeam = team
-                            break
+                    if let currentTeam = Configuration.CurrentTeam {
+                        // Update the current team
+                        for team in teams {
+                            if team.id == currentTeam.id {
+                                Configuration.CurrentTeam = team
+                                break
+                            }
+                        }
+                    } else {
+                        // Ensure we are setting a team for this event
+                        for team in teams {
+                            if team.eventId == selectedEvent.id {
+                                Configuration.CurrentTeam = team
+                                break
+                            }
                         }
                     }
                 }
@@ -97,14 +108,6 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
-                    
-                    // Make schedule mutable and order it by time
-                    var schedule = schedule
-                    schedule.sort(by: { (item1, item2) -> Bool in
-                        // Validate start times. If not present these should be at the bottom
-                        guard let start1 = item1.startDate, let start2 = item2.startDate else { return false }
-                        return start1 < start2
-                    })
                     
                     Configuration.CurrentSchedule = schedule
                     self.refreshPage(student: student, event: selectedEvent, schedule: schedule)
