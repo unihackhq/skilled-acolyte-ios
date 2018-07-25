@@ -60,29 +60,10 @@ class Networking: NSObject {
             
             self.handleIfError(error: error, response: response)
             if let jwt = self.jwtToken {
-                // Decode the jwt using this nice library :)
-                var jwtObject:JWT? = nil
-                do {
-                    jwtObject = try decode(jwt: jwt)
-                } catch {
-                    print("Failed to decode jwt token: \(jwt)")
-                    if let completion = completion {
-                        completion(error, self.jwtToken, nil)
-                    }
-                    return
-                }
                 
-                // Extract student id from jwt
-                if let studentId = jwtObject!.body["userId"] as? String {
-                    if let completion = completion {
-                        completion(error, self.jwtToken, studentId)
-                    }
-                    return
-                } else {
-                    print("Decoded jwt token but could not find userId inside: \(jwtObject!.body)")
-                    if let completion = completion {
-                        completion(error, self.jwtToken, nil)
-                    }
+                let studentId = self.decodeStudent(jwt: jwt)
+                if let completion = completion {
+                    completion(error, self.jwtToken, studentId)
                 }
             }
         }
@@ -532,6 +513,25 @@ class Networking: NSObject {
             return URL(string: Constants.HOST_URL + path)!
         }
         
+    }
+    
+    func decodeStudent(jwt: String) -> String? {
+        // Decode the jwt using this nice library :)
+        var jwtObject:JWT? = nil
+        do {
+            jwtObject = try decode(jwt: jwt)
+        } catch {
+            print("Failed to decode jwt token: \(jwt)")
+            return nil
+        }
+        
+        // Extract student id from jwt
+        if let studentId = jwtObject!.body["userId"] as? String {
+            return studentId
+        } else {
+            print("Decoded jwt token but could not find userId inside: \(jwtObject!.body)")
+            return nil
+        }
     }
     
     @discardableResult func handleIfError(error:Error?, response:Any?) -> Bool {

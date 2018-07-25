@@ -103,30 +103,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.showLoginVC()
                     self.showErrorAlert(message: String(describing: error))
                 } else if let studentId = studentId {
-                    Networking.shared.getStudent(byId: studentId, completion: { (error, student) in
-                        
-                        if let error = error {
-                            self.showLoginVC()
-                            self.showErrorAlert(message: String(describing: error))
-                        } else if let student = Configuration.CurrentStudent {
-                            if student.firstLaunch != nil && student.firstLaunch == true {
-                                self.showOnboardingVC()
-                            } else {
-                                self.showHomeVC()
-                            }
-                        } else {
-                            self.showLoginVC()
-                            self.showErrorAlert(message: "You opened a UNIHACK link, but there was no user associated with it.")
-                        }
-                    })
+                    self.loginStudent(byId: studentId)
                 }
             }
+        } else if host == "student", let jwt = pathComponents.first, jwt != "" {
+            
+            // We've got a student jwt here, extract the student id and login
+            if let studentId = Networking.shared.decodeStudent(jwt: jwt) {
+                self.loginStudent(byId: studentId)
+            } else {
+                self.showLoginVC()
+                self.showErrorAlert(message: "You opened a UNIHACK link, but it didn't contain the correct information.")
+            }
+            
         } else {
             self.showLoginVC()
             showErrorAlert(message: "You opened a UNIHACK link, but there was no user information in it.")
         }
         
         return true
+    }
+    
+    func loginStudent(byId studentId: String) {
+        
+        Networking.shared.getStudent(byId: studentId, completion: { (error, student) in
+            
+            if let error = error {
+                self.showLoginVC()
+                self.showErrorAlert(message: String(describing: error))
+            } else if let student = Configuration.CurrentStudent {
+                if student.firstLaunch != nil && student.firstLaunch == true {
+                    self.showOnboardingVC()
+                } else {
+                    self.showHomeVC()
+                }
+            } else {
+                self.showLoginVC()
+                self.showErrorAlert(message: "You opened a UNIHACK link, but there was no user associated with it.")
+            }
+        })
     }
     
     // MARK: - Navigation Methods
