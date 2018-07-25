@@ -35,9 +35,7 @@ class NotificationsViewController: UIViewController {
                     if let error = error {
                         print(error)
                     }
-                    let alert = UIAlertController(title: "Denied", message: "You can enable push notifications from the Settings app later", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    Tools().showErrorMessage(title: "Access Denied", message: "You can enable push notifications from the settings app later", view: self.view)
                     return
                 }
                 

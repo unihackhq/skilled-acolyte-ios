@@ -45,10 +45,7 @@ class LeaveTeamViewController: UIViewController, UITableViewDataSource, UITableV
             guard let student = Configuration.CurrentStudent else { return }
             Networking.shared.leaveTeam(forStudentId: student.id, teamId: team.id, completion: { (error) in
                 if let error = error {
-                    // TODO: better handle error
-                    let alert = UIAlertController(title: "Leave Team Error", message: "\(error)", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    Tools().showError(title: "Leave Team Error", error: error, view: self.view)
                 } else {
                     Configuration.CurrentTeam = nil
                     self.navigationController?.popToRootViewController(animated: true)
@@ -67,10 +64,7 @@ class LeaveTeamViewController: UIViewController, UITableViewDataSource, UITableV
         for student in unsentInvitations {
             Networking.shared.inviteUserToTeam(teamId: team.id, userId: student.id) { (error) in
                 if let error = error {
-                    // TODO: better handle error
-                    let alert = UIAlertController(title: "Team Invite Error", message: "\(error)", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    Tools().showError(title: "Team Invite Error", error: error, view: self.view)
                 } else {
                     invitationsRemaining -= 1
                     
@@ -96,9 +90,7 @@ class LeaveTeamViewController: UIViewController, UITableViewDataSource, UITableV
         Networking.shared.getStudentTeams(byStudentId: student.id) { (error, teams) in
             
             if let error = error {
-                let alert = UIAlertController(title: "Team Error", message: "\(error)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                Tools().showError(title: "Team Error", error: error, view: self.view)
             } else {
                 Configuration.StudentTeams = teams
                 
@@ -219,10 +211,7 @@ class LeaveTeamViewController: UIViewController, UITableViewDataSource, UITableV
             guard let team = Configuration.CurrentTeam else { return }
             Networking.shared.getEventAttendees(byEventId: team.eventId) { (error, eventAttendees) in
                 if let error = error {
-                    // TODO: better handle error
-                    let alert = UIAlertController(title: "Student Error", message: "\(error)", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    Tools().showError(title: "Student Error", error: error, view: self.view)
                 } else {
                     
                     // Filter the list from current members and sent invitations

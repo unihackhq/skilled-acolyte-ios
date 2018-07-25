@@ -20,11 +20,8 @@ class JoinTeamViewController: UIViewController, UITableViewDataSource, JoinTeamT
         
         Networking.shared.getStudentInvites(byStudentId: student.id) { (error, teamInvitations) in
             
-            // TODO: better handle error
             if let error = error {
-                let alert = UIAlertController(title: "Invite Error", message: "\(error)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                Tools().showError(title: "Invite Error", error: error, view: self.view)
             } else {
                 self.teamInvitations = teamInvitations
                 self.tableView.reloadData()
@@ -78,20 +75,15 @@ class JoinTeamViewController: UIViewController, UITableViewDataSource, JoinTeamT
         if team.members.count < 6 {
             Networking.shared.acceptTeamInvite(forStudentId: student.id, teamId: team.id) { (error) in
             
-                // TODO: better handle error
                 if let error = error {
-                    let alert = UIAlertController(title: "Accept Invite Error", message: "\(error)", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    Tools().showError(title: "Accept Invite Error", error: error, view: self.view)
                 } else {
                     Configuration.CurrentTeam = team
                     self.navigationController?.popToRootViewController(animated: true)
                 }
             }
         } else {
-            let alert = UIAlertController(title: "Team Full", message: "Sorry, this team already has reached its capacity of 6 members.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
+            Tools().showErrorMessage(title: "Team Full", message: "Sorry, this team has already reached capacity", view: self.view)
         }
     }
     
@@ -101,11 +93,8 @@ class JoinTeamViewController: UIViewController, UITableViewDataSource, JoinTeamT
         
         Networking.shared.rejectTeamInvite(forStudentId: student.id, teamId: team.id) { (error) in
             
-            // TODO: better handle error
             if let error = error {
-                let alert = UIAlertController(title: "Reject Invite Error", message: "\(error)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                Tools().showError(title: "Reject Invite Error", error: error, view: self.view)
             } else {
                 // Delete this request and refresh the tableview
                 self.removeCell(withTeam: team)

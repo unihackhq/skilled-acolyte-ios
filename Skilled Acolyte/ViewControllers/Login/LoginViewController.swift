@@ -57,10 +57,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             Networking.shared.login(email: email) { (error) in
                 
                 if let error = error {
-                    // TODO: better handle error
-                    let alert = UIAlertController(title: "Login Error", message: "\(error)", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    if let error = error as NSError?, let statusCode = error.userInfo["statusCode"] as? Int, statusCode == 400 {
+                        // Custom error message for probably the most common error. Unknown email address
+                        Tools().showErrorMessage(title: "Login Error", message: "We couldn't find your email address", view: self.view)
+                    } else {
+                        Tools().showError(title: "Login Error", error: error, view: self.view)
+                    }
                 } else {
                     self.showVerify(email: email)
                 }

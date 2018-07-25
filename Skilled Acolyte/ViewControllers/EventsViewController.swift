@@ -20,10 +20,7 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         Networking.shared.getStudentEvents(byStudentId: student.id) { (error, events) in
             
             if let error = error {
-                // TODO: better handle error
-                let alert = UIAlertController(title: "Event Error", message: "\(error)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                Tools().showError(title: "Event Error", error: error, view: self.view)
             } else {
                 self.events = events
                 self.tableView.reloadData()
@@ -79,9 +76,7 @@ class EventsViewController: UIViewController, UITableViewDataSource, UITableView
         Networking.shared.getEventSchedule(byEventId: event.id, completion: { (error, schedule) in
             
             if let error = error {
-                let alert = UIAlertController(title: "Schedule Error", message: "\(error)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                Tools().showError(title: "Event Schedule Error", error: error, view: self.view)
             }
             Configuration.CurrentSchedule = schedule
             

@@ -59,4 +59,26 @@ struct Tools {
             alpha: CGFloat(1.0)
         )
     }
+    
+    func showError(title: String, error: Error?, view: UIView) {
+        guard let error = error as NSError? else { return }
+        
+        let alert = UIAlertController(title: title, message: String(describing: error), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        if let message = error.userInfo["message"] as? String {
+            alert.message = message
+        } else if let statusCode = error.userInfo["statusCode"], let errorType = error.userInfo["error"] {
+            alert.message = "\(statusCode) - \(errorType)"
+        }
+        
+        view.window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
+    
+    func showErrorMessage(title: String, message: String, view: UIView) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        view.window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
 }

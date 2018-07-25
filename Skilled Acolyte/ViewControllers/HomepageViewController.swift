@@ -39,10 +39,7 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
         Networking.shared.getStudent(byId: student.id) { (error, student) in
             
             if let error = error {
-                // TODO: better handle error
-                let alert = UIAlertController(title: "Student Error", message: "\(error)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                Tools().showError(title: "Student Error", error: error, view: self.view)
             }
             guard let student = student else { return }
                 
@@ -50,10 +47,7 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
             Networking.shared.getStudentEvents(byStudentId: student.id) { (error, events) in
                 
                 if let error = error {
-                    // TODO: better handle error
-                    let alert = UIAlertController(title: "Event Error", message: "\(error)", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    Tools().showError(title: "Event Error", error: error, view: self.view)
                 }
                 Configuration.StudentsEvents = events
                     
@@ -74,9 +68,7 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
                 Networking.shared.getStudentTeams(byStudentId: student.id) { (error, teams) in
                     
                     if let error = error {
-                        let alert = UIAlertController(title: "Team Error", message: "\(error)", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
+                        Tools().showError(title: "Team Error", error: error, view: self.view)
                     }
                     
                     Configuration.StudentTeams = teams
@@ -103,9 +95,7 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
                 Networking.shared.getEventSchedule(byEventId: selectedEvent.id, completion: { (error, schedule) in
                     
                     if let error = error {
-                        let alert = UIAlertController(title: "Event Schedule Error", message: "\(error)", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
+                        Tools().showError(title: "Event Schedule Error", error: error, view: self.view)
                     }
                     
                     Configuration.CurrentSchedule = schedule
@@ -223,9 +213,7 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
                 if let error = error {
                     print(error)
                 }
-                let alert = UIAlertController(title: "Denied", message: "You can enable push notifications from the Settings app later", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                Tools().showErrorMessage(title: "Access Denied", message: "You can enable push notifications from the settings app later", view: self.view)
                 return
             }
 

@@ -55,26 +55,4 @@ class ConfirmImageDetailTableViewCell: UITableViewCell {
             print("Error: Couldn't find image detail to confirm: \(confirmingDetail)")
         }
     }
-    
-//    @IBAction func btnConfirmImageTapped() {
-//
-//        let alert = UIAlertController(title: "Set Profile Photo", message: "Enter the URL of a photo", preferredStyle: .alert)
-//        alert.addTextField { (textField) in
-//            textField.keyboardType = .URL
-//        }
-//        alert.addAction(UIAlertAction(title: "Set", style: .default, handler: { (action) in
-//            let textField = alert.textFields!.first!
-//            if let urlText = textField.text {
-//
-//                // Download the image with 'strict' validation
-//                guard let url = URL(string: urlText) else { return }
-//                guard let data = try? Data(contentsOf: url) else { return }
-//                guard let image = UIImage(data: data) else { return }
-//
-//                // If successful, set the image, remove the text, and save the url
-//                self.detailImage.setImage(image, for: .normal)
-//            }
-//        }))
-//        self.present(alert, animated: true, completion: nil)
-//    }
 }

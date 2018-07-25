@@ -121,9 +121,7 @@ class ConfirmDetailTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPicke
     func loadUniversities(currentUniversity: University?) {
         Networking.shared.getUniversities { (error, universities) in
             if let error = error {
-                let alert = UIAlertController(title: "Universities Error", message: "\(error)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+                Tools().showError(title: "Universities Error", error: error, view: self)
             }
             self.pickerViewData = universities
             self.pickerView.reloadAllComponents()

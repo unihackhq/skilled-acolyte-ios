@@ -101,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if let error = error {
                     self.showLoginVC()
-                    self.showErrorAlert(message: String(describing: error))
+                    Tools().showError(title: "Error verifying token", error: error, view: self.window!.rootViewController!.view)
                 } else if let studentId = studentId {
                     self.loginStudent(byId: studentId)
                 }
@@ -113,12 +113,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.loginStudent(byId: studentId)
             } else {
                 self.showLoginVC()
-                self.showErrorAlert(message: "You opened a UNIHACK link, but it didn't contain the correct information.")
+                Tools().showErrorMessage(title: "Error logging in", message: "You opened a UNIHACK link, but it didn't contain the correct information.", view: self.window!.rootViewController!.view)
             }
             
         } else {
             self.showLoginVC()
-            showErrorAlert(message: "You opened a UNIHACK link, but there was no user information in it.")
+            Tools().showErrorMessage(title: "Error logging in", message: "You opened a UNIHACK link, but there was no user information in it.", view: self.window!.rootViewController!.view)
         }
         
         return true
@@ -130,7 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             if let error = error {
                 self.showLoginVC()
-                self.showErrorAlert(message: String(describing: error))
+                Tools().showError(title: "Error logging in", error: error, view: self.window!.rootViewController!.view)
             } else if let student = Configuration.CurrentStudent {
                 if student.firstLaunch != nil && student.firstLaunch == true {
                     self.showOnboardingVC()
@@ -139,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             } else {
                 self.showLoginVC()
-                self.showErrorAlert(message: "You opened a UNIHACK link, but there was no user associated with it.")
+                Tools().showErrorMessage(title: "Error logging in", message: "You opened a UNIHACK link, but there was no user associated with it.", view: self.window!.rootViewController!.view)
             }
         })
     }
@@ -162,14 +162,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func showLoginVC() {
         
         window?.rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
-    }
-    
-    // MARK: - Other
-    
-    func showErrorAlert(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        window?.rootViewController?.present(alert, animated: true, completion: nil)
     }
 }
 

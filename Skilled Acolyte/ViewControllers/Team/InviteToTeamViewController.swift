@@ -29,10 +29,7 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
         self.newTeam = newTeam
         Networking.shared.getEventAttendees(byEventId: newTeam.eventId) { (error, eventAttendees) in
             if let error = error {
-                // TODO: better handle error
-                let alert = UIAlertController(title: "Student Error", message: "\(error)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                Tools().showError(title: "Student Error", error: error, view: self.view)
             } else {
                 self.eventAttendees = eventAttendees
                 self.tableView.reloadData()
@@ -47,10 +44,7 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
         for student in invites {
             Networking.shared.inviteUserToTeam(teamId: team.id, userId: student.user.id, completion: { (error) in
                 if let error = error {
-                    // TODO: better handle error
-                    let alert = UIAlertController(title: "Team Invite Error", message: "\(error)", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    Tools().showError(title: "Team Invite Error", error: error, view: self.view)
                 } else {
                     invitationsRemaining -= 1
                     
@@ -72,10 +66,7 @@ class InviteToTeamViewController: UIViewController, UITableViewDataSource, UITab
         Networking.shared.createTeam(team: newTeam) { (error, team) in
             
             if let error = error {
-                // TODO: better handle error
-                let alert = UIAlertController(title: "Create Team Error", message: "\(error)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                Tools().showError(title: "Create Team Error", error: error, view: self.view)
             } else if let team = team {
                 self.sendInvitations(toTeam: team)
             }

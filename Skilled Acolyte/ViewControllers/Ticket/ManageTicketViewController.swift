@@ -32,20 +32,14 @@ class ManageTicketViewController: UIViewController {
             Networking.shared.getStudentEvents(byStudentId: student.id) { (error, events) in
                 
                 if let error = error {
-                    // TODO: better handle error
-                    let alert = UIAlertController(title: "Event Error", message: "\(error)", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    Tools().showError(title: "Event Error", error: error, view: self.view)
                 } else {
                     Configuration.StudentsEvents = events
 
                     Networking.shared.getStudentTickets(byStudentId: student.id) { (error, tickets) in
                         
                         if let error = error {
-                            // TODO: better handle error
-                            let alert = UIAlertController(title: "Ticket Error", message: "\(error)", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
+                            Tools().showError(title: "Ticket Error", error: error, view: self.view)
                         } else {
                             Configuration.StudentsTickets = tickets
                             

@@ -53,10 +53,7 @@ class VerifyViewController: UIViewController {
         Networking.shared.verifyLoginToken(token: token) { (error, jwt, studentId) in
             
             if let error = error {
-                // TODO: better handle error
-                let alert = UIAlertController(title: "Verify Login Error", message: "\(error)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                Tools().showError(title: "Verify Login Error", error: error, view: self.view)
                 
                 if let completion = completion {
                     completion(nil)
@@ -67,10 +64,7 @@ class VerifyViewController: UIViewController {
                 Networking.shared.getStudent(byId: studentId, completion: { (error, student) in
                     
                     if let error = error {
-                        // TODO: betterhandle error
-                        let alert = UIAlertController(title: "Student Error", message: "\(error)", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
+                        Tools().showError(title: "Student Error", error: error, view: self.view)
                     } else if let student = student {
                         Configuration.CurrentStudent = student
                     }
@@ -80,10 +74,7 @@ class VerifyViewController: UIViewController {
                     }
                 })
             } else {
-                let alert = UIAlertController(title: "Unknown Error", message: "Your token couldn't be verified. Unfortunately we also had an unknown error. Please hassle tech team", preferredStyle: .alert)
-                let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(alertAction)
-                self.present(alert, animated: true, completion: nil)
+                Tools().showErrorMessage(title: "Verify Login Error", message: "Your token couldn't be verified. Unfortunately we also had an unknown error. Please hassle the tech team.", view: self.view)
                 
                 if let completion = completion {
                     completion(nil)
