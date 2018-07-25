@@ -32,7 +32,13 @@ class ScheduleItemTableViewCell: UITableViewCell {
         if let startDate = scheduleItem.startDate, let endDate = scheduleItem.endDate {
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm"
-            durationStr = formatter.string(from: startDate) + " - " + formatter.string(from: endDate) + " - "
+            
+            if startDate != endDate {
+                durationStr = formatter.string(from: startDate) + " - " + formatter.string(from: endDate) + " - "
+            } else {
+                durationStr = formatter.string(from: startDate) + " - "
+            }
+            
         }
         
         title.text = scheduleItem.name

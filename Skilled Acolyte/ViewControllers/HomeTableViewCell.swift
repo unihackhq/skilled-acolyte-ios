@@ -37,7 +37,14 @@ class HomeTableViewCell: UITableViewCell {
             if let startDate = content.startDate, let endDate = content.endDate {
                 let formatter = DateFormatter()
                 formatter.dateFormat = "HH:mm"
-                time.text = formatter.string(from: startDate) + " - " + formatter.string(from: endDate) + "\n"
+                
+                // Only append the end date if it's different from the start
+                if startDate != endDate {
+                    time.text = formatter.string(from: startDate) + " - " + formatter.string(from: endDate) + "\n"
+                } else {
+                    time.text = formatter.string(from: startDate)
+                }
+
             } else {
                 time.text = ""
             }

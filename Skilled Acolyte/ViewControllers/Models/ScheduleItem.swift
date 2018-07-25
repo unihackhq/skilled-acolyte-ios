@@ -26,7 +26,7 @@ struct ScheduleItem: Codable {
         name = data["name"] as! String
         
         // Optional things
-        scheduleDescription = data["scheduleDescription"] as? String
+        scheduleDescription = data["description"] as? String
         type = data["type"] as? String
         location = data["location"] as? String
         type = data["type"] as? String

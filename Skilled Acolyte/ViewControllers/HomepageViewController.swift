@@ -25,8 +25,7 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
         // Enable swipe back navigation option
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         
-//        tabBarController?.tabBar.tintColor = Tools().uiColor(fromHex: "FEC22E")
-        tabBarController?.tabBar.tintColor = Tools().uiColor(fromHex: "FFFFFF")
+        tabBarController?.tabBar.tintColor = UIColor.gray
         
         tableView.delegate = self
         tableView.dataSource = self

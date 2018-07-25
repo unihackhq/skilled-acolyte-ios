@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let pushNotifications = PushNotifications.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
         // Currently running this app for local development
         Configuration.Environment = "dev"
@@ -111,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             self.showErrorAlert(message: String(describing: error))
                         } else if let student = Configuration.CurrentStudent {
                             if student.firstLaunch != nil && student.firstLaunch == true {
-                                self.showVerifyVC()
+                                self.showOnboardingVC()
                             } else {
                                 self.showHomeVC()
                             }
@@ -148,11 +147,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func showLoginVC() {
         
         window?.rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
-    }
-    
-    func showVerifyVC() {
-        
-        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VerifyViewController")
     }
     
     // MARK: - Other

@@ -14,6 +14,7 @@ struct Tools {
         guard let date = date else { return nil }
         
         let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         return formatter.string(from: date)
     }
@@ -22,6 +23,7 @@ struct Tools {
         guard let iso = iso else { return nil }
         
         let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
         
         // Convert from full ISO format
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
