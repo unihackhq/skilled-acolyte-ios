@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // Currently running this app for local development
-        Configuration.Environment = "dev"
+        Configuration.Environment = "prod"
         
         // If we're already logged in start on the home screen, otherwise login
         if Configuration.CurrentStudent != nil {

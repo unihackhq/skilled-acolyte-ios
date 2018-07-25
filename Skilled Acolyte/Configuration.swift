@@ -14,7 +14,7 @@ struct Configuration {
         // Options:
         // - local (localhost)
         // - local-wifi (custom ip address)
-        // - dev (todo: have a sever setup)
+        // - dev (erfan's host. may be down)
         // - [None] (prod by default)
         set(env) {
             UserDefaults.standard.set(env, forKey: "environment")
