@@ -141,13 +141,20 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
         }
 
         // Refresh Schedule
+        // First remove events that have already past
+        var currentSchedule = [ScheduleItem]()
+        for scheduleItem in schedule {
+            if let start = scheduleItem.startDate, start > Date() {
+                currentSchedule.append(scheduleItem)
+            }
+        }
         var nextOnSchedule: ScheduleItem?
         var afterOnSchedule: ScheduleItem?
         var laterOnSchedule: ScheduleItem?
         var nextTechTalk: ScheduleItem?
         var nextHackathonToDo: Any?
         
-        for scheduleItem in schedule {
+        for scheduleItem in currentSchedule {
             if nextOnSchedule == nil {
                 nextOnSchedule = scheduleItem
             }

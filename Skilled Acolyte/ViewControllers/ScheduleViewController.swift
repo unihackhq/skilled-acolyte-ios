@@ -79,7 +79,7 @@ class ScheduleViewController: UIViewController, UITableViewDataSource, UITableVi
         
         guard let eventItem = tableViewData[section].first, let startDate = eventItem.startDate else { return "" }
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE"
+        formatter.dateFormat = "EEEE, dd MMMM"
         return formatter.string(from: startDate)
     }
     
