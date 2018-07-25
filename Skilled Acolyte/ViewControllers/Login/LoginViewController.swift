@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var unihackLogo: UIImageView!
     @IBOutlet weak var containerView: UIView!
@@ -22,6 +22,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Enable swipe back navigation option
+        if view.window?.rootViewController == self {
+            navigationController?.interactivePopGestureRecognizer?.delegate = self
+        }
         
         unihackLogo.alpha = 0.0
         containerView.alpha = 0.0
@@ -52,7 +57,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             showLogin()
         } else {
             // Login then show verify view
-            
             guard var email = emailLabel.text else {
                 print("No email supplied!")
                 return
@@ -97,5 +101,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.nextButton.setTitle("Use a different email", for: .normal)
             self.detailLabel.text = "You will automatically be brought to the app once logged in."
         })
+    }
+    
+    @IBAction func aboutUnihackTapped() {
+        
+        let aboutUnihackVC = UIStoryboard(name: "Public", bundle: nil).instantiateViewController(withIdentifier: "AboutUnihackViewController")
+        navigationController?.pushViewController(aboutUnihackVC, animated: true)
+    }
+    
+    // MARK: - UIGestureRecognizerDelegate
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        // Enables the navigation swipe back feature
+        return true
     }
 }

@@ -77,8 +77,10 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         Configuration().logout()
         
-        let signInVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
-        self.view.window?.rootViewController = signInVC
+        let loginVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
+        let navController = UINavigationController(rootViewController: loginVC)
+        navController.navigationBar.isHidden = true
+        self.view.window?.rootViewController = navController
     }
     
     // MARK: - UITableViewDataSource

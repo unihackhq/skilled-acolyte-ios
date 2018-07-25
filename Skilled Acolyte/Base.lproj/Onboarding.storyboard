@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="P1D-kg-6sg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -124,10 +124,30 @@
                                             <constraint firstAttribute="width" secondItem="1gj-Tt-bP4" secondAttribute="height" multiplier="160:83" id="sL3-Sf-7bt"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G55-Ip-fCE">
+                                        <rect key="frame" x="56" y="433.5" width="263" height="31"/>
+                                        <color key="backgroundColor" red="0.96862745100000003" green="0.7725490196" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Light" family="Rubik" pointSize="16"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="What is a Hackathon?">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="aboutUnihackTapped" destination="P1D-kg-6sg" eventType="touchUpInside" id="Y0M-S6-tNB"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="1gj-Tt-bP4" firstAttribute="width" secondItem="1gj-Tt-bP4" secondAttribute="height" multiplier="160:83" id="1A9-f3-BEq"/>
+                                    <constraint firstItem="G55-Ip-fCE" firstAttribute="centerX" secondItem="msH-6x-kwn" secondAttribute="centerX" id="2sL-YM-zLh"/>
+                                    <constraint firstItem="G55-Ip-fCE" firstAttribute="top" secondItem="aZA-Qc-tis" secondAttribute="bottom" id="CEW-Uu-kE7"/>
                                     <constraint firstItem="1gj-Tt-bP4" firstAttribute="top" secondItem="msH-6x-kwn" secondAttribute="top" constant="175" id="Ikq-7i-Nus"/>
+                                    <constraint firstItem="G55-Ip-fCE" firstAttribute="width" secondItem="iZn-ZB-Mu8" secondAttribute="width" id="dLw-xH-IEY"/>
                                     <constraint firstItem="1gj-Tt-bP4" firstAttribute="leading" secondItem="aZA-Qc-tis" secondAttribute="leading" id="epE-Mf-vNf"/>
                                     <constraint firstItem="aZA-Qc-tis" firstAttribute="centerX" secondItem="msH-6x-kwn" secondAttribute="centerX" id="jR4-iO-zZ2"/>
                                     <constraint firstItem="aZA-Qc-tis" firstAttribute="top" secondItem="1gj-Tt-bP4" secondAttribute="bottom" constant="10" id="lYH-Ad-Us6"/>
@@ -153,6 +173,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="L8j-h5-IlV"/>
                     </view>
+                    <navigationItem key="navigationItem" id="JNJ-rC-J9H"/>
                     <connections>
                         <outlet property="containerView" destination="aZA-Qc-tis" id="Jrx-Bm-PwT"/>
                         <outlet property="detailLabel" destination="gmf-6O-d0g" id="s0g-0p-aWz"/>

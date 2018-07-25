@@ -166,7 +166,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func showLoginVC() {
         
-        window?.rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
+        let loginVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
+        let navController = UINavigationController(rootViewController: loginVC)
+        navController.navigationBar.isHidden = true
+        window?.rootViewController = navController
     }
 }
 
