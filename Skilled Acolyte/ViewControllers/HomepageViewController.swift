@@ -142,12 +142,20 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
 
         // Refresh Schedule
         var nextOnSchedule: ScheduleItem?
+        var afterOnSchedule: ScheduleItem?
+        var laterOnSchedule: ScheduleItem?
         var nextTechTalk: ScheduleItem?
         var nextHackathonToDo: Any?
         
         for scheduleItem in schedule {
-            if nextOnSchedule == nil && scheduleItem.type != ScheduleItemType.TechTalk {
+            if nextOnSchedule == nil {
                 nextOnSchedule = scheduleItem
+            }
+            if afterOnSchedule == nil && nextOnSchedule != nil && scheduleItem != nextOnSchedule! {
+                afterOnSchedule = scheduleItem
+            }
+            if laterOnSchedule == nil && afterOnSchedule != nil && scheduleItem != afterOnSchedule! {
+                laterOnSchedule = scheduleItem
             }
             if nextTechTalk == nil && scheduleItem.type == ScheduleItemType.TechTalk {
                 nextTechTalk = scheduleItem
@@ -161,6 +169,14 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
         if let nextOnSchedule = nextOnSchedule {
             tableViewData["Next Up"] = nextOnSchedule
             tableViewTitles.append("Next Up")
+        }
+        if let afterOnSchedule = afterOnSchedule {
+            tableViewData["After"] = afterOnSchedule
+            tableViewTitles.append("After")
+        }
+        if let laterOnSchedule = laterOnSchedule {
+            tableViewData["Later"] = laterOnSchedule
+            tableViewTitles.append("Later")
         }
         if let nextTechTalk = nextTechTalk {
             tableViewData["Tech Talks"] = nextTechTalk
@@ -280,7 +296,7 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
         
         if title == "Enable Push Notifications" {
             enablePushNotificationsTapped()
-        } else if title == "Next Up", let content = content as? ScheduleItem {
+        } else if (title == "Next Up" || title == "After" || title == "Later"), let content = content as? ScheduleItem {
             nextUpTapped(scheduleItem: content)
         } else if title == "Tech Talks", let content = content as? ScheduleItem {
             techTalksTapped(scheduleItem: content)

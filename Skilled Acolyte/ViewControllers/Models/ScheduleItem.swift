@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ScheduleItem: Codable {
+struct ScheduleItem: Codable, Equatable {
     
     var id: String = ""
     var name: String = ""
@@ -36,6 +36,10 @@ struct ScheduleItem: Codable {
         if let endDateStr = data["endDate"] as? String {
             endDate = Tools().date(fromIso: endDateStr)
         }
+    }
+    
+    static func == (left: ScheduleItem, right: ScheduleItem) -> Bool {
+        return left.id == right.id
     }
 }
 
