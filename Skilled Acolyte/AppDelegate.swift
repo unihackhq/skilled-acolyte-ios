@@ -96,6 +96,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if host == "token", let token = pathComponents.first, token != "" {
             
+            // Ensure the old user is logged out first
+            Configuration().logout()
             // We've got the token, attempt to verify
             Networking.shared.verifyLoginToken(token: token) { (error, jwt, studentId) in
                 
@@ -108,8 +110,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         } else if host == "student", let jwt = pathComponents.first, jwt != "" {
             
+            // Ensure the old user is logged out first
+            Configuration().logout()
             // We've got a student jwt here, extract the student id and login
             if let studentId = Networking.shared.decodeStudent(jwt: jwt) {
+                Networking.shared.jwtToken = jwt
                 self.loginStudent(byId: studentId)
             } else {
                 self.showLoginVC()
@@ -126,8 +131,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func loginStudent(byId studentId: String) {
         
-        // Ensure the old user is logged out first
-        Configuration().logout()
         Networking.shared.getStudent(byId: studentId, completion: { (error, student) in
             
             if let error = error {

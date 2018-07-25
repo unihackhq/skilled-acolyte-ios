@@ -222,7 +222,7 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (granted, error) in
             // Remove this cell since it is request once only
-            self.removeCell(withData: "EnablePushNotificationsCell")
+            self.removeCell(withData: "Enable Push Notifications")
 
             guard granted else {
                 print("Failed to grant push notifications")
@@ -236,6 +236,7 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
             // Granted!
             DispatchQueue.main.async {
                 PushNotifications.shared.registerForRemoteNotifications()
+                
             }
         }
     }

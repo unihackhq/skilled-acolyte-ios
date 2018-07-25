@@ -65,6 +65,8 @@ class Networking: NSObject {
                 if let completion = completion {
                     completion(error, self.jwtToken, studentId)
                 }
+            } else if let completion = completion {
+                completion(error, self.jwtToken, nil)
             }
         }
     }
