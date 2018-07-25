@@ -126,6 +126,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func loginStudent(byId studentId: String) {
         
+        // Ensure the old user is logged out first
+        Configuration().logout()
         Networking.shared.getStudent(byId: studentId, completion: { (error, student) in
             
             if let error = error {

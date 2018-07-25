@@ -178,4 +178,16 @@ struct Configuration {
             return nil
         }
     }
+    
+    func logout() {
+        Configuration.CurrentStudent = nil
+        Configuration.CurrentTicket = nil
+        Configuration.StudentsTickets = nil
+        Configuration.CurrentEvent = nil
+        Configuration.StudentsEvents = nil
+        Configuration.CurrentTeam = nil
+        Configuration.StudentTeams = nil
+        Configuration.CurrentSchedule = nil
+        Networking.shared.jwtToken = nil
+    }
 }

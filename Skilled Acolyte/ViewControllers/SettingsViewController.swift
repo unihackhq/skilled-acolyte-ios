@@ -75,10 +75,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func signOutTapped() {
         
-        Configuration.CurrentStudent = nil
-        Configuration.CurrentTeam = nil
-        Configuration.CurrentEvent = nil
-        Configuration.CurrentTicket = nil
+        Configuration().logout()
         
         let signInVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController")
         self.view.window?.rootViewController = signInVC
