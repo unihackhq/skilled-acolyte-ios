@@ -70,6 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.Session)
             try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.TechTalk)
             try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.Special)
+            try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.Event)
             try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.Other)
             UserDefaults.standard.set(true, forKey: event.id+"-"+ScheduleItemType.Session)
             UserDefaults.standard.set(true, forKey: event.id+"-"+ScheduleItemType.TechTalk)

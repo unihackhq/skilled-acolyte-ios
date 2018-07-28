@@ -47,5 +47,6 @@ struct ScheduleItemType {
     static let Session = "session"
     static let TechTalk = "techTalk"
     static let Special = "mealsRafflesEtc"
+    static let Event = "event"
     static let Other = "importantMessages"
 }

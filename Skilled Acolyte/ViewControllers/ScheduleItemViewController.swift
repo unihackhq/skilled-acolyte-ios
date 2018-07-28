@@ -24,11 +24,16 @@ class ScheduleItemViewController: UIViewController {
         if let startDate = scheduleItem.startDate, let endDate = scheduleItem.endDate {
             let formatter = DateFormatter()
             formatter.dateFormat = "HH:mm"
-            durationStr = formatter.string(from: startDate) + " - " + formatter.string(from: endDate) + "\n"
+            
+            if startDate != endDate {
+                durationStr = formatter.string(from: startDate) + " - " + formatter.string(from: endDate)
+            } else {
+                durationStr = formatter.string(from: startDate)
+            }
         }
         
         itemTitle.text = scheduleItem.name
-        itemSubtitle.text = durationStr + (scheduleItem.location ?? "")
+        itemSubtitle.text = durationStr + (scheduleItem.location != nil && scheduleItem.location != "" ? (" - " + scheduleItem.location!) : "")
         itemContent.text = scheduleItem.scheduleDescription
         
         if let scheduleType = scheduleItem.type {
@@ -37,6 +42,8 @@ class ScheduleItemViewController: UIViewController {
                 itemType.text = "Session   "
             case ScheduleItemType.TechTalk:
                 itemType.text = "Tech Talk   "
+            case ScheduleItemType.Event:
+                itemType.text = "Event   "
             case ScheduleItemType.Special:
                 itemType.text = "Special   "
             case ScheduleItemType.Other:

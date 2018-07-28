@@ -85,8 +85,10 @@ class NotificationsViewController: UIViewController {
             try? self.pushNotifications.unsubscribe(interest: event.id+"-"+ScheduleItemType.Special)
         }
         if otherNotificationsSwitch.isOn {
+            try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.Event)
             try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.Other)
         } else {
+            try? self.pushNotifications.unsubscribe(interest: event.id+"-"+ScheduleItemType.Event)
             try? self.pushNotifications.unsubscribe(interest: event.id+"-"+ScheduleItemType.Other)
         }
         

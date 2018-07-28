@@ -18,6 +18,7 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var tableViewTitles: [String]! = [String]()
     var tableViewData: [String:Any] = [String:Any]()
+    var pushNotifications =  PushNotifications.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -244,6 +245,16 @@ class HomepageViewController: UIViewController, UITableViewDataSource, UITableVi
             DispatchQueue.main.async {
                 PushNotifications.shared.registerForRemoteNotifications()
                 
+                guard let event = Configuration.CurrentEvent else { return }
+                try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.Session)
+                try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.TechTalk)
+                try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.Special)
+                try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.Event)
+                try? self.pushNotifications.subscribe(interest: event.id+"-"+ScheduleItemType.Other)
+                UserDefaults.standard.set(true, forKey: event.id+"-"+ScheduleItemType.Session)
+                UserDefaults.standard.set(true, forKey: event.id+"-"+ScheduleItemType.TechTalk)
+                UserDefaults.standard.set(true, forKey: event.id+"-"+ScheduleItemType.Special)
+                UserDefaults.standard.set(true, forKey: event.id+"-"+ScheduleItemType.Other)
             }
         }
     }

@@ -100,11 +100,12 @@ class ConfirmDetailTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPicke
             detailValue.keyboardType = .phonePad
             break
         case ConfirmDetail.EducationalInstitution:
-            if let uni = student.university {
-                detailValue.text = uni.name
-            }
-            detailValue.placeholder = "Select One"
-            detailValue.inputView = pickerView
+//            if let uni = student.university {
+//                detailValue.text = uni.name
+//            }
+//            detailValue.placeholder = "Select One"
+//            detailValue.inputView = pickerView
+            detailValue.isEnabled = false
             loadUniversities(currentUniversity: student.university)
             break
         case ConfirmDetail.Course:

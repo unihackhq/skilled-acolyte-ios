@@ -34,15 +34,14 @@ class ScheduleItemTableViewCell: UITableViewCell {
             formatter.dateFormat = "HH:mm"
             
             if startDate != endDate {
-                durationStr = formatter.string(from: startDate) + " - " + formatter.string(from: endDate) + " - "
+                durationStr = formatter.string(from: startDate) + " - " + formatter.string(from: endDate)
             } else {
-                durationStr = formatter.string(from: startDate) + " - "
+                durationStr = formatter.string(from: startDate)
             }
-            
         }
         
         title.text = scheduleItem.name
-        subtitle.text = durationStr + (scheduleItem.location ?? "")
+        subtitle.text = durationStr + (scheduleItem.location != nil && scheduleItem.location != "" ? (" - " + scheduleItem.location!) : "")
         
         if let scheduleType = scheduleItem.type {
             switch scheduleType {
@@ -52,6 +51,8 @@ class ScheduleItemTableViewCell: UITableViewCell {
                 type.text = "Tech Talk    "
             case ScheduleItemType.Special:
                 type.text = "Special    "
+            case ScheduleItemType.Event:
+                type.text = "Event    "
             case ScheduleItemType.Other:
                 type.text = "Other    "
             default:
